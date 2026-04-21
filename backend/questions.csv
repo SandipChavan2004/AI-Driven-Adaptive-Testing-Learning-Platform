@@ -1,0 +1,1201 @@
+﻿id,subject,topic,difficulty,question,A,B,C,D,correct
+1,C Programming,Basics,easy,What does 'C' in the C programming language stand for?,None,No full form,None,None,B
+2,C Programming,Basics,easy,Which symbol is used to end a statement in C?,.,;,:,",",B
+3,C Programming,Basics,easy,Which function is used to print output to the console in C?,scanf,printf,input,cout,B
+4,C Programming,Basics,easy,Which header file is needed for printf and scanf?,<stdio.h>,<conio.h>,<math.h>,<string.h>,A
+5,C Programming,Basics,easy,Which data type is used to store integer values?,float,char,int,double,C
+6,C Programming,Loops,easy,Which loop executes a block of code while a condition is true?,for,while,switch,if,B
+7,C Programming,Loops,easy,How many times will 'for(int i=0;i<3;i++)' loop run?,2,3,4,Infinite,B
+8,C Programming,Arrays,easy,Indexing in C arrays starts from?,0,1,-1,Depends,A
+9,C Programming,Arrays,easy,How to declare an array of 10 ints?,int a[10];,int a;,array a[10];,int a();,A
+10,C Programming,Functions,easy,Which keyword is used to return a value from a function?,break,return,exit,stop,B
+11,C Programming,Pointers,easy,What does a pointer store?,A value,An address,A file,A function,B
+12,C Programming,Pointers,easy,How to declare a pointer to int?,int p;,int *p;,int &p;,pointer<int> p;,B
+13,C Programming,File Handling,easy,Which mode opens file for reading?,r,w,a,rw,A
+14,C Programming,Basics,easy,Which operator is used for assignment?,==,=,!=,<=,B
+15,C Programming,Basics,easy,Which of these is not a C keyword?,int,main,return,if,B
+16,C Programming,Basics,moderate_1,What is the size of 'int' typically on a 32-bit system?,2 bytes,4 bytes,8 bytes,Depends,B
+17,C Programming,Loops,moderate_1,"What will be output: 'printf(""%d"", 5/2);' ?",2,2.5,3,Error,A
+18,C Programming,Arrays,moderate_1,Which function to get length of string?,strlen,strsize,size,length,A
+19,C Programming,Functions,moderate_1,"What is a prototype of function 'int add(int, int);' used for?",Define function,Declare function signature,Call function,None,B
+20,C Programming,Pointers,moderate_1,What is NULL in pointers?,Zero address,Some value,Invalid pointer constant,Both A and C,D
+21,C Programming,File Handling,moderate_1,Which function is used to write a line to a file?,fputs,puts,putsfile,fprintf,A
+22,C Programming,Basics,moderate_1,"What is the output: 'printf(""%c"", 'A');' ?",A,'A',65,Error,A
+23,C Programming,Loops,moderate_1,What does 'break' do in loops?,Continue to next,Exit loop,Restart loop,Pause loop,B
+24,C Programming,Arrays,moderate_1,Which declaration creates a 2D array 3x3?,int a[3];,int a[3][3];,"int a(3,3);",int a[][];,B
+25,C Programming,Functions,moderate_1,What is recursion?,Function calls itself,Multiple functions,Loop inside function,None,A
+26,C Programming,Pointers,moderate_1,Can you have pointer to pointer?,Yes,No,Only in C++,Depends,A
+27,C Programming,File Handling,moderate_1,Which returns EOF on failure from fgetc?,-1,0,NULL,1,A
+28,C Programming,Basics,moderate_1,Which header is for malloc and free?,<stdlib.h>,<malloc.h>,<memory.h>,<alloc.h>,A
+29,C Programming,Basics,moderate_1,What does 'sizeof' operator return?,Size in bits,Size in bytes,Number of elements,Type name,B
+30,C Programming,Arrays,moderate_1,What is index of last element in array of size n?,n,n-1,1,0,B
+31,C Programming,Pointers,moderate_2,"What is result of 'int a=10; int *p=&a; *p=20; printf(""%d"", a);' ?",10,20,Garbage,Compile error,B
+32,C Programming,Functions,moderate_2,What is call by value?,Passes address,Passes copy of value,Pass by reference,No passing,B
+33,C Programming,Arrays,moderate_2,"What is wrong: 'char s[] = ""Hello""; s[0] = 'h';' ?",Valid,Invalid,Runtime error,Compile error,A
+34,C Programming,Loops,moderate_2,"What is output: 'for(int i=0;i<3;i++) printf(""%d"", i++);' ?",0 1 2,0 2,0 1 2 3,0 1,B
+35,C Programming,File Handling,moderate_2,Which mode appends to a file?,w,r,a,rw,C
+36,C Programming,Pointers,moderate_2,Which prints address of variable?,"printf(""%d"", &a);","printf(""%p"", &a);","printf(""%x"", a);","printf(""%s"", &a);",B
+37,C Programming,Functions,moderate_2,What is 'static' before a function?,Global visibility,Internal linkage (file scope),Inline function,No effect,B
+38,C Programming,Arrays,moderate_2,Which function copies string s2 to s1?,strcopy,strcpy,copystr,strncpy,B
+39,C Programming,Basics,moderate_2,"What is output: 'printf(""%d"", ++i);' when i starts 0?",0,1,Undefined,Error,B
+40,C Programming,Pointers,moderate_2,What does '&' operator do?,Dereference,Address-of,Multiply,Bitwise AND,B
+41,C Programming,Functions,moderate_2,What is prototype mismatch?,Different return type or params,Same signature,Duplicate function,Compile time warning only,A
+42,C Programming,File Handling,moderate_2,Which function opens file and returns pointer?,open,fopen,fileopen,fptr,B
+43,C Programming,Basics,moderate_2,What is preprocessor directive?,#include or #define,int main,printf,malloc,A
+44,C Programming,Loops,moderate_2,What is infinite loop of for?,for(;;),for(;1;),while(1),All of above,D
+45,C Programming,Arrays,moderate_2,What function compares two strings?,strcmp,strcomp,cmpstr,compare,A
+46,C Programming,Pointers,hard,What is segmentation fault?,Logical error,Access invalid memory,Compile error,Linker error,B
+47,C Programming,Functions,hard,Why use inline functions?,Reduce function call overhead,Increase security,Simpler syntax,Automatic memory,A
+48,C Programming,Pointers,hard,What is pointer arithmetic: p+1 moves by,1 byte,size of pointed type,One bit,Undefined,B
+49,C Programming,Arrays,hard,What is dynamic memory allocation function?,alloc,malloc,new,create,B
+50,C Programming,File Handling,hard,How to read formatted input from file?,fscanf,fgets,fread,scanffile,A
+51,C Programming,Basics,hard,What is undefined behavior?,Well defined,Behavior not specified by C standard,Runtime error only,Compiler error only,B
+52,C Programming,Loops,hard,What does 'continue' do?,Exit loop,Skip remaining and next iteration,Restart program,None,B
+53,C Programming,Functions,hard,Which stores local values across calls?,auto,register,static,extern,C
+54,C Programming,Pointers,hard,What is void pointer?,Pointer to void (no type),Pointer to int,Null pointer,Function pointer,A
+55,C Programming,Arrays,hard,What is advantage of dynamic array?,Fixed size,Resizable at runtime,Faster access,Simpler code,B
+56,C Programming,Basics,hard,Which converts string to integer?,atoi,atof,strtol,strcpy,A
+57,C Programming,Pointers,hard,What happens when free() used twice?,Double free error,Safe,Nothing,Memory leak,A
+58,C Programming,Functions,hard,What is varargs?,Variable arguments in function,Multiple returns,Variable types,None,A
+59,C Programming,File Handling,hard,Which reads binary data?,fread,fscanf,fgets,fopen,A
+60,C Programming,Advanced,hard,Which header for math functions?,<math.h>,<stdio.h>,<string.h>,<stdlib.h>,A
+61,AT,Introduction,easy,Automata Theory deals with?,Hardware design,Formal languages and computation,Databases,Operating systems,B
+62,AT,Introduction,easy,DFA stands for?,Deterministic Finite Automaton,Deterministic Flow Algorithm,Data Flow Analysis,Direct Finite Approach,A
+63,AT,Introduction,easy,Alphabet in automata is?,Infinite set,Finite set of symbols,Grammar,Word set,B
+64,AT,Introduction,easy,String is?,Subset of language,Sequence of symbols from alphabet,Grammar rule,Automaton state,B
+65,AT,Finite Automata,easy,DFA has?,Multiple transitions for same input,Single transition per input,No transitions,Multiple start states,B
+66,AT,Finite Automata,easy,NFA differs from DFA because?,NFA has multiple transitions for same input,NFA is slower,DFA is nondeterministic,None,A
+67,AT,Finite Automata,easy,?-transition is allowed in?,DFA,NFA,Both,None,B
+68,AT,Regular Expressions,easy,Regular expression represents?,Context-free language,Regular language,Recursive language,Finite grammar,B
+69,AT,Regular Expressions,easy,(a+b)* denotes?,a or b only,"all strings over {a,b}",a followed by b,only ?,B
+70,AT,Regular Expressions,easy,Regular expression for even number of a’s?,(baba)*,(a+b)*a,ab,aba,A
+71,AT,Grammar,easy,Grammar is used to generate?,Languages,Tokens,States,Alphabets,A
+72,AT,Grammar,easy,CFG stands for?,Context Free Grammar,Code Format Generator,Computation Function Graph,Central Finite Grammar,A
+73,AT,Grammar,easy,Terminals in grammar are?,Non-replaceable symbols,Replaceable symbols,Variables,None,A
+74,AT,Grammar,easy,Start symbol is used to?,End grammar,Begin derivation,Define alphabet,Convert states,B
+75,AT,Finite Automata,easy,Number of states in minimal DFA is?,Maximum possible,Minimum possible,Random,Fixed,B
+76,AT,Finite Automata,moderate_1,NFA can be converted to?,DFA,CFG,PDA,Turing Machine,A
+77,AT,Finite Automata,moderate_1,DFA accepts input if?,Ends in final state,Starts at final state,Contains ?,All inputs,A
+78,AT,Finite Automata,moderate_1,Regular language is closed under?,Union,Intersection,Complement,All,D
+79,AT,Finite Automata,moderate_1,Two DFAs are equivalent if they?,Accept same language,Have same states,Have same transitions,Use same alphabet,A
+80,AT,Finite Automata,moderate_1,Language of DFA is?,Set of accepted strings,Set of rejected strings,Union of alphabets,None,A
+81,AT,Regular Expressions,moderate_1,? represents?,Empty string,Empty set,Null state,Invalid input,A
+82,AT,Regular Expressions,moderate_1,Regular expression for all strings ending with a?,(a+b)*a,ab,a(a+b)*,b*a,A
+83,AT,Regular Expressions,moderate_1,Regular expression (a,b)*abb represents?,Strings ending with abb,Strings starting with abb,Only abb,B
+84,AT,Grammar,moderate_1,Chomsky hierarchy has how many types of grammars?,2,3,4,5,C
+85,AT,Grammar,moderate_1,Type 2 grammar corresponds to?,Regular,Context-Free,Context-Sensitive,Unrestricted,B
+86,AT,Grammar,moderate_1,Type 0 grammar corresponds to?,Unrestricted,Regular,Context-Free,Finite,A
+87,AT,PDA,moderate_1,PDA uses?,Stack,Queue,Tape,Register,A
+88,AT,PDA,moderate_1,PDA accepts?,Context-free languages,Regular languages,Recursive languages,All,A
+89,AT,PDA,moderate_1,"In PDA, stack helps in?",Memory storage,Non-determinism,Handling nested structures,Tokenizing input,C
+90,AT,PDA,moderate_1,Deterministic PDA is?,Less powerful than NPDA,More powerful,Equivalent,None,A
+91,AT,PDA,moderate_2,PDA can be converted to?,CFG,DFA,Turing Machine,None,A
+92,AT,Turing Machine,moderate_2,Turing Machine has?,Tape,Stack,Queue,Memory block,A
+93,AT,Turing Machine,moderate_2,Turing Machine is more powerful than PDA because it has?,Infinite memory,Stack,Input tape,Grammar,A
+94,AT,Turing Machine,moderate_2,Recursive languages are?,Decidable,Undecidable,Regular,Context-free,A
+95,AT,Turing Machine,moderate_2,Recursively enumerable languages are accepted by?,Turing Machine,PDA,DFA,NFA,A
+96,AT,Grammar,moderate_2,Ambiguous grammar means?,Two parse trees for same string,No parse tree,Single derivation,None,A
+97,AT,Grammar,moderate_2,Left recursion occurs when?,Non-terminal calls itself on left,Calls itself on right,Calls other symbols,None,A
+98,AT,Grammar,moderate_2,Removing left recursion helps in?,Top-down parsing,Bottom-up parsing,DFA conversion,None,A
+99,AT,Grammar,moderate_2,Derivation tree represents?,Structure of derivation,Automaton transitions,Grammar size,None,A
+100,AT,Grammar,moderate_2,Sentential form is?,Intermediate form in derivation,Final string,Terminal only,None,A
+101,AT,Turing Machine,hard,Universal Turing Machine can?,Simulate any other TM,Accept regular languages only,Perform arithmetic only,None,A
+102,AT,Turing Machine,hard,Halting problem is?,Undecidable,Decidable,Recursive,Regular,A
+103,AT,Turing Machine,hard,Turing recognizable means?,TM halts for accepted strings,TM halts for rejected strings,TM never halts,None,A
+104,AT,Turing Machine,hard,Recursive languages are?,Both recognizable and decidable,Only recognizable,Only undecidable,None,A
+105,AT,Grammar,hard,Context-sensitive languages are accepted by?,Linear bounded automaton,PDA,DFA,NFA,A
+106,AT,Grammar,hard,Type-1 grammar generates?,Context-sensitive language,Context-free,Regular,Recursive,A
+107,AT,Grammar,hard,Grammar without left recursion is good for?,Predictive parsing,Shift-reduce parsing,Random parsing,None,A
+108,AT,Finite Automata,hard,DFA minimization removes?,Equivalent states,Final states,Start states,None,A
+109,AT,Finite Automata,hard,Two states are equivalent if they?,Lead to same acceptance behavior,Have same names,Are final,None,A
+110,AT,Regular Expressions,hard,Regular languages are closed under?,"Union, Concatenation, Kleene star",Only union,Only intersection,None,A
+111,AT,Regular Expressions,hard,Which is not regular?,a?b?,(a+b)*,(ab)*,a*,A
+112,AT,Regular Expressions,hard,Regular language can be recognized by?,DFA,PDA,TM,Grammar only,A
+113,AT,PDA,hard,PDA accepts by?,Final state or empty stack,Tape,Queue,Transition,A
+114,AT,Turing Machine,hard,Turing Machine halts when?,No applicable transition,End of tape,Stack empty,None,A
+115,AT,Decidability,hard,Decidable problem means?,Solution by TM in finite time,Infinite loop,Unsolvable,None,A
+116,AT,Decidability,hard,Undecidable problem means?,No algorithm can solve it,TM always halts,Recursive,None,A
+117,AT,Decidability,hard,Which problem is undecidable?,Halting,Palindrome,Even number,Prime,A
+118,AT,Hierarchy,hard,Regular ? CFL ? CSL ??,Recursively Enumerable,Regular,Recursive,Finite,A
+119,AT,Hierarchy,hard,Which language class is most powerful?,Regular,Context-Free,Context-Sensitive,Recursively Enumerable,D
+120,AT,Applications,hard,Automata theory is mainly used in?,Compiler design & pattern matching,Database recovery,File systems,OS design,A
+121,Python,Basics,easy,Python is which type of language?,Interpreted,Compiled,Assembly,Machine,A
+122,Python,Basics,easy,Which symbol is used to comment a line?,#,//,<!--,*,A
+123,Python,Basics,easy,Which function displays output?,display(),print(),output(),show(),B
+124,Python,Basics,easy,Data type of 10 in Python?,int,float,str,bool,A
+125,Python,Basics,easy,What is the extension of Python files?,.py,.p,.python,.pt,A
+126,Python,Basics,easy,Keyword to define function?,func,define,def,function,C
+127,Python,Basics,easy,Python uses which indentation rule?,Curly braces,Indentation spaces,Semicolon,Parentheses,B
+128,Python,Basics,easy,Output of print(2**3)?,6,8,9,5,B
+129,Python,Basics,easy,Which is immutable type?,List,Tuple,Dict,Set,B
+130,Python,Basics,easy,Function to get user input?,read(),scan(),input(),get(),C
+131,Python,Basics,easy,Keyword for condition checking?,for,if,when,test,B
+132,Python,Basics,easy,How many keywords are there (approx)?,30+,33,50,10,B
+133,Python,Basics,easy,Which function gives length of a list?,len(),count(),size(),length(),A
+134,Python,Basics,easy,What does break do?,Exit loop,Pause loop,Restart loop,None,A
+135,Python,Basics,easy,What is the output of type([])?,list,tuple,dict,set,A
+136,Python,Control Flow,moderate_1,Which loop runs till condition false?,while,for,do-while,loop,A
+137,Python,Control Flow,moderate_1,Output of 3==3.0?,TRUE,FALSE,Error,None,A
+138,Python,Control Flow,moderate_1,elif used for?,Else-if condition,Loop,Function,Exception,A
+139,Python,Control Flow,moderate_1,Which returns multiple values?,list,tuple,both,none,C
+140,Python,Functions,moderate_1,Default parameter defined using?,=,:,->,==,A
+141,Python,Functions,moderate_1,return keyword used to?,Exit loop,Return value,End program,Print value,B
+142,Python,Functions,moderate_1,Function without return gives?,None,0,FALSE,Error,A
+143,Python,DataTypes,moderate_1,Dictionary stores data as?,Key-value pairs,Sequential,Indexed,Unordered values,A
+144,Python,DataTypes,moderate_1,Remove element from list?,remove(),delete(),pop(),both A and C,D
+145,Python,Strings,moderate_1,String slicing uses?,[],{},(),<>,A
+146,Python,Strings,moderate_1,'a' * 3 gives?,aaa,error,333,a3,A
+147,Python,Strings,moderate_1,'Python'.upper() returns?,python,PYTHON,error,None,B
+148,Python,File Handling,moderate_1,Function to open file?,open(),read(),file(),os.open(),A
+149,Python,File Handling,moderate_1,File opened using mode 'w' means?,write,read,append,both,A
+150,Python,File Handling,moderate_1,To close file use?,stop(),end(),close(),exit(),C
+151,Python,OOP,moderate_2,Keyword to define class?,class,def,object,struct,A
+152,Python,OOP,moderate_2,Method __init__() is?,Constructor,Destructor,Operator,Private method,A
+153,Python,OOP,moderate_2,self keyword refers to?,Current object,Parent class,Variable,None,A
+154,Python,OOP,moderate_2,Inheritance in Python uses?,extends,inherits,super,class(Sub),D
+155,Python,OOP,moderate_2,isinstance() used for?,Check type,Compare values,Convert type,None,A
+156,Python,Exception,moderate_2,Try-except used for?,Error handling,Function call,Loops,Input,A
+157,Python,Exception,moderate_2,Raise exception using?,raise,throw,except,try,A
+158,Python,Exception,moderate_2,finally executes?,Always,Never,Only error,None,A
+159,Python,Exception,moderate_2,Multiple exceptions handled by?,"except (E1,E2)",multiple try,nested try,None,A
+160,Python,Exception,moderate_2,assert used for?,Testing condition,Loop,I/O,None,A
+161,Python,Advanced,hard,Generator created with?,yield,return,gen,next,A
+162,Python,Advanced,hard,Decorators modify?,Functions,Classes,Modules,None,A
+163,Python,Advanced,hard,Iterator requires?,"iter, next","next(), for()",loop,run(),A
+164,Python,Advanced,hard,Lambda function used for?,Anonymous functions,Classes,Loops,None,A
+165,Python,Advanced,hard,Map function applies?,Function to iterable,Iterable to function,None,A,B
+166,Python,Advanced,hard,Filter() used for?,Filter elements by condition,Sort list,Remove duplicates,None,A
+167,Python,Advanced,hard,Reduce() is in which module?,functools,itertools,math,sys,A
+168,Python,Advanced,hard,Output of bool('')?,FALSE,TRUE,Error,None,A
+169,Python,Advanced,hard,Global variables declared using?,global,var,static,None,A
+170,Python,Advanced,hard,Which is mutable?,list,tuple,str,int,A
+171,Python,NumPy,hard,NumPy used for?,Numerical computation,Web apps,Databases,AI only,A
+172,Python,NumPy,hard,NumPy array created with?,np.array(),np.create(),np.list(),np.arr(),A
+173,Python,Pandas,hard,Pandas used for?,Data analysis,Graphics,AI,Math,A
+174,Python,Pandas,hard,Pandas DataFrame is?,2D table,1D array,Matrix,None,A
+175,Python,Pandas,hard,To read CSV use?,pd.read_csv(),pd.load(),np.read(),None,A
+176,Python,OOP,hard,Polymorphism means?,Many forms,One form,Multiple parents,None,A
+177,Python,Memory,hard,Garbage collection in Python is?,Automatic,Manual,Disabled,None,A
+178,Python,OOP,hard,Encapsulation means?,Data hiding,Inheritance,Abstraction,None,A
+179,Python,OOP,hard,Abstraction hides?,Implementation,Interface,Data,None,A
+180,Python,Advanced,hard,PEP 8 refers to?,Python style guide,Library,IDE,Framework,A
+181,Algorithm,Basics,easy,Algorithm is?,Step-by-step procedure,Data structure,Flowchart,None,A
+182,Algorithm,Basics,easy,Big O represents?,Upper bound,Lower bound,Average case,None,A
+183,Algorithm,Basics,easy,? notation gives?,Exact bound,Worst case,Average case,None,A
+184,Algorithm,Basics,easy,? notation defines?,Lower bound,Upper bound,Average,None,A
+185,Algorithm,Basics,easy,Time complexity of binary search?,O(n),O(log n),O(n²),O(1),B
+186,Algorithm,Basics,easy,Space complexity measures?,Memory usage,Time taken,CPU speed,Disk size,A
+187,Algorithm,Basics,easy,Which sorting is not comparison-based?,Counting sort,Quick sort,Merge sort,Bubble sort,A
+188,Algorithm,Basics,easy,Stability in sorting means?,Equal elements keep order,Fast sorting,Random order,None,A
+189,Algorithm,Basics,easy,Divide and Conquer example?,Merge Sort,Heap Sort,Counting Sort,None,A
+190,Algorithm,Basics,easy,Recursion is used in?,Quick Sort,Selection Sort,Insertion Sort,None,A
+191,Algorithm,Basics,easy,Complexity of bubble sort best case?,O(n),O(n log n),O(n²),O(log n),A
+192,Algorithm,Basics,easy,Which algorithm uses partitioning?,Quick Sort,Merge Sort,Heap Sort,Counting Sort,A
+193,Algorithm,Basics,easy,Which is not a sorting algorithm?,DFS,Merge Sort,Selection Sort,Insertion Sort,A
+194,Algorithm,Basics,easy,Best sorting for nearly sorted data?,Insertion Sort,Bubble Sort,Quick Sort,None,A
+195,Algorithm,Basics,easy,Which algorithm finds element faster?,Binary Search,Linear Search,Bubble Sort,None,A
+196,Algorithm,DivideConquer,moderate_1,Merge sort complexity?,O(n log n),O(n²),O(n),O(log n),A
+197,Algorithm,DivideConquer,moderate_1,Quick sort worst case?,O(n²),O(n log n),O(n),O(1),A
+198,Algorithm,DivideConquer,moderate_1,Binary search requires?,Sorted array,Unsorted array,Linked list,None,A
+199,Algorithm,DivideConquer,moderate_1,Maximum subarray problem uses?,Divide & Conquer,Greedy,DP,None,A
+200,Algorithm,DivideConquer,moderate_1,Recurrence T(n)=2T(n/2)+O(n) ? complexity?,O(n log n),O(n²),O(log n),None,A
+201,Algorithm,Greedy,moderate_1,Kruskal’s algorithm used for?,MST,Shortest path,Sorting,None,A
+202,Algorithm,Greedy,moderate_1,Prim’s algorithm builds?,MST,Shortest path,Graph,None,A
+203,Algorithm,Greedy,moderate_1,Greedy algorithm makes?,Local optimum,Global optimum,Random,None,A
+204,Algorithm,Greedy,moderate_1,Huffman coding is used in?,Data compression,Sorting,Searching,None,A
+205,Algorithm,Greedy,moderate_1,Dijkstra algorithm finds?,Shortest path,MST,Longest path,None,A
+206,Algorithm,DP,moderate_2,Dynamic programming uses?,Overlapping subproblems,Divide & Conquer,Randomization,None,A
+207,Algorithm,DP,moderate_2,0/1 Knapsack solved by?,DP,Greedy,Divide & Conquer,None,A
+208,Algorithm,DP,moderate_2,Bellman-Ford finds?,Shortest path,MST,Flow,None,A
+209,Algorithm,DP,moderate_2,Floyd-Warshall solves?,All-pairs shortest path,MST,BFS,None,A
+210,Algorithm,DP,moderate_2,Longest Common Subsequence uses?,DP,Greedy,Backtracking,None,A
+211,Algorithm,Graph,moderate_2,DFS uses?,Stack,Queue,Recursion,A or C,D
+212,Algorithm,Graph,moderate_2,BFS uses?,Queue,Stack,Tree,None,A
+213,Algorithm,Graph,moderate_2,Topological sorting applies to?,DAG,Undirected graph,Cyclic graph,None,A
+214,Algorithm,Graph,moderate_2,Which detects cycle?,DFS,BFS,Merge,None,A
+215,Algorithm,Graph,moderate_2,Shortest path with negative weights?,Bellman-Ford,Dijkstra,Prim,None,A
+216,Algorithm,Backtracking,hard,N-Queens uses?,Backtracking,Greedy,Divide & Conquer,None,A
+217,Algorithm,Backtracking,hard,Subset sum uses?,Backtracking,DP,BFS,None,A
+218,Algorithm,String,hard,KMP algorithm used for?,Pattern matching,Sorting,Searching,None,A
+219,Algorithm,String,hard,Rabin-Karp uses?,Hashing,Sorting,DP,None,A
+220,Algorithm,Graph,hard,Minimum Spanning Tree is?,Connected acyclic subgraph,Complete graph,Disconnected graph,None,A
+221,Algorithm,Optimization,hard,Greedy fails when?,Local != Global optimum,Random input,Sorted input,None,A
+222,Algorithm,Complexity,hard,NP-complete problems are?,Not solvable in poly time,Solvable easily,Constant,None,A
+223,Algorithm,Complexity,hard,Example of NP-complete?,Traveling Salesman,Sorting,Searching,None,A
+224,Algorithm,Complexity,hard,P ? NP means?,All P problems are NP,All NP problems are P,None,A,C
+225,Algorithm,DP,hard,Matrix Chain Multiplication solved by?,DP,Greedy,Recursion,None,A
+226,Algorithm,Graph,hard,Kruskal uses?,Sorting edges,BFS,DFS,None,A
+227,Algorithm,Graph,hard,Dijkstra fails with?,Negative weights,Loops,Cycles,None,A
+228,Algorithm,DP,hard,Optimal substructure means?,Problem can be divided,Problem random,None,A,D
+229,Algorithm,Optimization,hard,Branch and Bound used in?,Optimization problems,Sorting,Searching,None,A
+230,Algorithm,Complexity,hard,O(n²) means?,Quadratic growth,Linear growth,Constant,None,A
+231,Algorithm,Graph,hard,Strongly connected graph means?,Path between every vertex,Tree,None,A,A
+232,Algorithm,DP,hard,Memoization stores?,Results of subproblems,Loops,Arrays,None,A
+233,Algorithm,String,hard,LCS stands for?,Longest Common Subsequence,Linked Code Sequence,None,A,B
+234,Algorithm,Graph,hard,Acyclic graph means?,No cycles,Directed edges,None,A,C
+235,Algorithm,Basics,hard,Algorithm design technique example?,Divide and Conquer,Compilation,Linking,None,A
+236,Algorithm,Graph,hard,DFS complexity?,O(V+E),O(V²),O(E²),O(VE),A
+237,Algorithm,DP,hard,Floyd-Warshall complexity?,O(n³),O(n²),O(n log n),O(n?),A
+238,Algorithm,DP,hard,Bellman-Ford complexity?,O(VE),O(V²),O(E log V),None,A
+239,Algorithm,String,hard,KMP complexity?,O(n+m),O(n²),O(log n),O(1),A
+240,Algorithm,Complexity,hard,Which is asymptotically fastest?,O(log n),O(n),O(n²),O(n³),A
+241,Cloud Computing,Basics,easy,Cloud computing means?,Using Internet for computing services,Offline computing,Local servers only,Manual computing,A
+242,Cloud Computing,Basics,easy,Main characteristic of cloud computing?,On-demand self-service,Manual configuration,Hardware-based,Static services,A
+243,Cloud Computing,Basics,easy,Which is not a service model?,IaaS,PaaS,CaaS,SaaS,C
+244,Cloud Computing,Basics,easy,Which company introduced AWS?,Amazon,Google,Microsoft,IBM,A
+245,Cloud Computing,Basics,easy,Example of SaaS?,Gmail,AWS EC2,Azure VM,Kubernetes,A
+246,Cloud Computing,Basics,easy,Cloud allows?,Resource pooling,Limited access,No virtualization,Manual scaling,A
+247,Cloud Computing,Basics,easy,Which deployment model is shared by public?,Public Cloud,Private Cloud,Hybrid Cloud,Community Cloud,A
+248,Cloud Computing,Basics,easy,Full form of IaaS?,Infrastructure as a Service,Internet as a System,Information as a Source,None,A
+249,Cloud Computing,Basics,easy,Platform as a Service provides?,Runtime environment,Physical hardware,Software only,Data only,A
+250,Cloud Computing,Basics,easy,Which service offers virtual machines?,IaaS,SaaS,PaaS,None,A
+251,Cloud Computing,Basics,easy,Key enabler of cloud computing?,Virtualization,Blockchain,DNS,Cookies,A
+252,Cloud Computing,Basics,easy,Which layer interacts with users?,SaaS,PaaS,IaaS,Hardware,A
+253,Cloud Computing,Basics,easy,Which is not a cloud provider?,AWS,Google Cloud,Windows,Azure,C
+254,Cloud Computing,Basics,easy,Cloud computing uses?,Internet,LAN,Intranet,VPN only,A
+255,Cloud Computing,Basics,easy,Which is example of IaaS?,Amazon EC2,Gmail,Dropbox,Zoom,A
+256,Cloud Computing,Architecture,moderate_1,NIST defines how many essential characteristics?,5,4,3,6,A
+257,Cloud Computing,Architecture,moderate_1,Key feature of elasticity?,Scale up/down resources,Fixed capacity,Only increase,None,A
+258,Cloud Computing,Architecture,moderate_1,Resource pooling means?,Shared resources,Dedicated server,Manual allocation,None,A
+259,Cloud Computing,Architecture,moderate_1,Measured service means?,Usage-based billing,Flat rate,Subscription,Manual metering,A
+260,Cloud Computing,Architecture,moderate_1,Rapid elasticity provides?,Dynamic resource scaling,Manual scaling,Security,Backup,A
+261,Cloud Computing,Virtualization,moderate_1,Virtualization allows?,Multiple OS on same hardware,One OS per hardware,No sharing,None,A
+262,Cloud Computing,Virtualization,moderate_1,Hypervisor is also called?,VMM,VM,VMU,VMS,A
+263,Cloud Computing,Virtualization,moderate_1,Type-1 hypervisor runs on?,Bare metal,Host OS,VM,Cloud only,A
+264,Cloud Computing,Virtualization,moderate_1,VMware is example of?,Type-1 hypervisor,Type-2 hypervisor,Container,None,B
+265,Cloud Computing,Virtualization,moderate_1,Containerization uses?,Docker,Hyper-V,BIOS,RAID,A
+266,Cloud Computing,Storage,moderate_2,Cloud storage stores data in?,Virtualized servers,Local drives,Floppy disks,Pen drives,A
+267,Cloud Computing,Storage,moderate_2,Amazon S3 provides?,Object storage,Block storage,File storage,None,A
+268,Cloud Computing,Storage,moderate_2,Google Drive is example of?,SaaS,IaaS,PaaS,None,A
+269,Cloud Computing,Storage,moderate_2,Redundancy ensures?,Data availability,Data deletion,Low performance,None,A
+270,Cloud Computing,Networking,moderate_2,Which protocol used in cloud data transfer?,HTTP/HTTPS,SMTP,FTP only,UDP only,A
+271,Cloud Computing,Security,moderate_2,Cloud security includes?,Authentication,Encryption,Access control,All,D
+272,Cloud Computing,Security,moderate_2,Multi-tenancy means?,Shared resources among users,Dedicated server,Local system,None,A
+273,Cloud Computing,Security,moderate_2,Data encryption ensures?,Confidentiality,Availability,Speed,None,A
+274,Cloud Computing,Security,moderate_2,VPN provides?,Secure channel,Storage,Virtualization,None,A
+275,Cloud Computing,Security,moderate_2,Compliance ensures?,Legal standards,Cost reduction,Redundancy,None,A
+276,Cloud Computing,Cloud Providers,hard,Azure developed by?,Microsoft,Google,IBM,Oracle,A
+277,Cloud Computing,Cloud Providers,hard,GCP stands for?,Google Cloud Platform,General Cloud Process,Global Compute Platform,None,A
+278,Cloud Computing,Cloud Providers,hard,AWS EC2 offers?,Virtual servers,Object storage,Queues,DNS,A
+279,Cloud Computing,Cloud Providers,hard,AWS S3 stores?,Objects,Files,Blocks,Tables,A
+280,Cloud Computing,Cloud Providers,hard,CloudWatch used for?,Monitoring AWS resources,Backup,Networking,None,A
+281,Cloud Computing,Management,hard,SLA stands for?,Service Level Agreement,Secure Layer Access,Standard Licensing API,None,A
+282,Cloud Computing,Management,hard,Orchestration means?,Automating cloud tasks,Manual scheduling,Backup,Encryption,A
+283,Cloud Computing,Management,hard,Auto-scaling helps in?,Dynamic resource allocation,Manual start,Stopping VM,None,A
+284,Cloud Computing,Management,hard,Billing in cloud is based on?,Usage,Fixed cost,Device type,None,A
+285,Cloud Computing,Management,hard,Which model provides max control?,IaaS,SaaS,PaaS,None,A
+286,Cloud Computing,Trends,hard,Edge computing means?,Processing near data source,Centralized data,Manual processing,None,A
+287,Cloud Computing,Trends,hard,Serverless computing means?,Run code without managing servers,Run on physical servers,Manual scaling,None,A
+288,Cloud Computing,Trends,hard,Kubernetes used for?,Container orchestration,VM management,Security,Storage,A
+289,Cloud Computing,Trends,hard,Function-as-a-Service is part of?,Serverless model,IaaS,PaaS,SaaS,A
+290,Cloud Computing,Trends,hard,Which company offers Lambda?,Amazon,Google,IBM,Microsoft,A
+291,Cloud Computing,Security,hard,IAM stands for?,Identity and Access Management,Internet Access Module,Internal Admin Manager,None,A
+292,Cloud Computing,Security,hard,Encryption converts data to?,Unreadable form,Readable text,Numbers,None,A
+293,Cloud Computing,Security,hard,Backup ensures?,Data recovery,Data deletion,Encryption,None,A
+294,Cloud Computing,Security,hard,Risk management identifies?,Threats and vulnerabilities,Servers,Billing,None,A
+295,Cloud Computing,Compliance,hard,GDPR relates to?,Data protection,Cloud storage,Computing speed,None,A
+296,Cloud Computing,Virtualization,hard,KVM is a?,Type-1 hypervisor,Type-2 hypervisor,Container,None,A
+297,Cloud Computing,Performance,hard,Load balancing helps?,Distribute workload,Reduce redundancy,Encrypt data,None,A
+298,Cloud Computing,Performance,hard,CDN stands for?,Content Delivery Network,Cloud Data Node,Central Data Network,None,A
+299,Cloud Computing,Trends,hard,Cloud bursting means?,Using public cloud during peak,Data backup,Encryption,None,A
+300,Cloud Computing,Security,hard,Main security challenge in cloud?,Data privacy,Data entry,Low cost,None,A
+301, CN      , Introduction      , easy       , Computer Network is a collection of?                       , Hardware only               , Connected devices               , Independent programs        , Databases                 , B       
+302, CN      , Introduction      , easy       , Which of the following is not a type of network?           , LAN                         , MAN                             , CAN                         , SAN                       , C       
+303, CN      , Introduction      , easy       , Which device connects different networks?                  , Switch                      , Router                          , Hub                         , Repeater                  , B       
+304, CN      , Network Models    , easy       , The OSI model has how many layers?                         ,5,6,7,8, C       
+305, CN      , Network Models    , easy       , Which layer of OSI model handles end-to-end communication? , Transport                   , Network                         , Session                     , Data Link                 , A       
+306, CN      , Network Models    , easy       , Which layer is responsible for routing?                    , Physical                    , Network                         , Transport                   , Session                   , B       
+307, CN      , Physical Layer    , easy       , The physical layer deals with?                             , Data packets                , Signals and media               , Frames                      , Routing                   , B       
+308, CN      , Physical Layer    , easy       , Which topology has a single central cable?                 , Star                        , Ring                            , Bus                         , Mesh                      , C       
+309, CN      , Data Link Layer   , easy       , Which layer performs error detection?                      , Physical                    , Network                         , Data Link                   , Transport                 , C       
+310, CN      , Data Link Layer   , easy       , CRC stands for?                                            , Cyclic Redundancy Check     , Code Redundancy Control         , Channel Rate Code           , Cyclic Rate Check         , A       
+311, CN      , Network Layer     , easy       , IP address belongs to which layer?                         , Network                     , Transport                       , Application                 , Physical                  , A       
+312, CN      , Transport Layer   , easy       , TCP is a?                                                  , Connectionless protocol     , Connection-oriented protocol    , Stateless protocol          , Simple protocol           , B       
+313, CN      , Transport Layer   , easy       , UDP is used for?                                           , Reliable transfer           , Unreliable fast transfer        , Error-free transfer         , File transfer             , B       
+314, CN      , Application Layer , easy       , Which protocol is used to transfer web pages?              , FTP                         , SMTP                            , HTTP                        , SNMP                      , C       
+315, CN      , Application Layer , easy       , Which application uses SMTP?                               , File transfer               , Email                           , Web browsing                , Remote login              , B       
+316, CN      , Network Models    , moderate_1 , TCP/IP model has how many layers?                          ,4,5,6,7, A       
+317, CN      , Network Models    , moderate_1 , Which OSI layer provides data encryption?                  , Application                 , Presentation                    , Session                     , Transport                 , B       
+318, CN      , Network Models    , moderate_1 , The session layer is responsible for?                      , Data transfer               , Session management              , Error control               , Routing                   , B       
+319, CN      , Data Link Layer   , moderate_1 , Flow control is used to?                                   , Manage congestion           , Match sender and receiver speed , Detect errors               , Synchronize devices       , B       
+320, CN      , Data Link Layer   , moderate_1 , Stop and Wait is a type of?                                , Error control               , Flow control                    , ARQ                         , Access method             , B       
+321, CN      , Network Layer     , moderate_1 , Which of the following is not a routing algorithm?         , Distance vector             , Link state                      , Flooding                    , HTTP                      , D       
+322, CN      , Network Layer     , moderate_1 , Which protocol provides logical addressing?                , IP                          , ARP                             , RARP                        , ICMP                      , A       
+323, CN      , Transport Layer   , moderate_1 , Which of the following is not a TCP feature?               , Flow control                , Error control                   , Congestion control          , Stateless communication   , D       
+324, CN      , Transport Layer   , moderate_1 , Which field ensures data integrity in TCP segment?         , Checksum                    , Sequence number                 , Window size                 , Port                      , A       
+325, CN      , Application Layer , moderate_1 , DNS is used for?                                           , IP address resolution       , File transfer                   , Encryption                  , Packet switching          , A       
+326, CN      , Application Layer , moderate_1 , FTP stands for?                                            , File Transfer Protocol      , Fast Transfer Process           , File Tracking Protocol      , Frame Transfer Protocol   , A       
+327, CN      , Network Layer     , moderate_1 , ICMP is mainly used for?                                   , Error reporting             , File transfer                   , Routing                     , Security                  , A       
+328, CN      , Security          , moderate_1 , Firewall works on which layer?                             , Physical                    , Network                         , Transport                   , Application               , B       
+329, CN      , Network Layer     , moderate_1 , Which address uniquely identifies a host in a network?     , Port number                 , MAC address                     , IP address                  , Host name                 , C       
+330, CN      , Physical Layer    , moderate_1 , Bandwidth refers to?                                       , Data storage                , Signal frequency range          , Power of signal             , Frame size                , B       
+331, CN      , Network Layer     , moderate_2 , The size of IPv4 address is?                               , 32 bits                     , 48 bits                         , 64 bits                     , 128 bits                  , A       
+332, CN      , Network Layer     , moderate_2 , Which of the following is not a class of IPv4 address?     , A                           , B                               , E                           , F                         , D       
+333, CN      , Network Layer     , moderate_2 , Default mask for Class C IP address is?                    , 255.0.0.0                   , 255.255.0.0                     , 255.255.255.0               , 255.255.255.255           , C       
+334, CN      , Network Layer     , moderate_2 , Routing is performed by?                                   , Bridge                      , Switch                          , Router                      , Repeater                  , C       
+335, CN      , Transport Layer   , moderate_2 , Port number in TCP/IP identifies?                          , Host                        , Application                     , Device                      , Process                   , B       
+336, CN      , Application Layer , moderate_2 , SNMP is used for?                                          , Network management          , Mail transfer                   , Web transfer                , File access               , A       
+337, CN      , Application Layer , moderate_2 , Which layer ensures dialog control?                        , Transport                   , Session                         , Presentation                , Network                   , B       
+338, CN      , Application Layer , moderate_2 , HTTP operates over?                                        , UDP                         , TCP                             , IP                          , ICMP                      , B       
+339, CN      , Application Layer , moderate_2 , Telnet is used for?                                        , Email                       , File transfer                   , Remote login                , Encryption                , C       
+340, CN      , Transport Layer   , moderate_2 , Flow control in TCP is done using?                         , Window size                 , Sequence number                 , Timeout                     , Port                      , A       
+341, CN      , Network Layer     , hard       , The protocol used for mapping IP to MAC is?                , DNS                         , ARP                             , RARP                        , ICMP                      , B       
+342, CN      , Network Layer     , hard       , ICMP echo request is used in?                              , FTP                         , Ping                            , Telnet                      , SMTP                      , B       
+343, CN      , Network Layer     , hard       , Fragmentation occurs at which layer?                       , Transport                   , Network                         , Data link                   , Physical                  , B       
+344, CN      , Network Layer     , hard       , What does TTL in IP header represent?                      , Transmission Time Limit     , Time To Live                    , Transmission Traffic Length , Transport Layer Limit     , B       
+345, CN      , Network Layer     , hard       , Routing table is maintained by?                            , Router                      , Switch                          , Hub                         , Gateway                   , A       
+346, CN      , Network Layer     , hard       , Which algorithm is used in distance vector routing?        , Dijkstra                    , Bellman-Ford                    , Kruskal                     , Prim                      , B       
+347, CN      , Transport Layer   , hard       , TCP congestion control uses?                               , Slow start                  , Fast open                       , Window reset                , Dynamic ports             , A       
+348, CN      , Transport Layer   , hard       , Which field in TCP ensures reliable delivery?              , Sequence number             , Header length                   , Flags                       , Checksum                  , A       
+349, CN      , Application Layer , hard       , HTTPS uses which port number by default?                   ,80,21,443,25, C       
+350, CN      , Application Layer , hard       , Which application protocol uses port 25?                   , HTTP                        , SMTP                            , FTP                         , DNS                       , B       
+351, CN      , Security          , hard       , Which protocol provides secure data transfer?              , HTTP                        , HTTPS                           , FTP                         , SNMP                      , B       
+352, CN      , Security          , hard       , SSL works between which layers?                            , Application and Transport   , Transport and Network           , Data link and Physical      , Network and Physical      , A       
+353, CN      , Network Layer     , hard       , IPv6 address size is?                                      , 32 bits                     , 64 bits                         , 128 bits                    , 256 bits                  , C       
+354, CN      , Network Layer     , hard       , Loopback address in IPv4 is?                               , 127.0.0.1                   , 192.168.0.1                     , 0.0.0.0                     , 255.255.255.255           , A       
+355, CN      , Application Layer , hard       , Which protocol uses port 53?                               , DNS                         , SMTP                            , FTP                         , HTTP                      , A       
+356, CN      , Network Layer     , hard       , NAT stands for?                                            , Network Address Translation , Node Allocation Table           , Network Access Type         , New Addressing Technique  , A       
+357, CN      , Transport Layer   , hard       , UDP is best suited for?                                    , File transfer               , Video streaming                 , Email                       , Database                  , B       
+358, CN      , Application Layer , hard       , POP3 and IMAP are used for?                                , Sending emails              , Receiving emails                , File sharing                , Encryption                , B       
+359, CN      , Network Layer     , hard       , Default gateway connects?                                  , Same network devices        , Different networks              , IP to MAC                   , Applications              , B       
+360, CN      , Security          , hard       , VPN stands for?                                            , Virtual Private Network     , Verified Protected Network      , Virtual Packet Node         , Variable Protocol Network , A       
+361,Cloud Computing,Basics,easy,Cloud computing means?,Using Internet for computing services,Offline computing,Local servers only,Manual computing,A
+362,Cloud Computing,Basics,easy,Main characteristic of cloud computing?,On-demand self-service,Manual configuration,Hardware-based,Static services,A
+363,Cloud Computing,Basics,easy,Which is not a service model?,IaaS,PaaS,CaaS,SaaS,C
+364,Cloud Computing,Basics,easy,Which company introduced AWS?,Amazon,Google,Microsoft,IBM,A
+365,Cloud Computing,Basics,easy,Example of SaaS?,Gmail,AWS EC2,Azure VM,Kubernetes,A
+366,Cloud Computing,Basics,easy,Cloud allows?,Resource pooling,Limited access,No virtualization,Manual scaling,A
+367,Cloud Computing,Basics,easy,Which deployment model is shared by public?,Public Cloud,Private Cloud,Hybrid Cloud,Community Cloud,A
+368,Cloud Computing,Basics,easy,Full form of IaaS?,Infrastructure as a Service,Internet as a System,Information as a Source,None,A
+369,Cloud Computing,Basics,easy,Platform as a Service provides?,Runtime environment,Physical hardware,Software only,Data only,A
+370,Cloud Computing,Basics,easy,Which service offers virtual machines?,IaaS,SaaS,PaaS,None,A
+371,Cloud Computing,Basics,easy,Key enabler of cloud computing?,Virtualization,Blockchain,DNS,Cookies,A
+372,Cloud Computing,Basics,easy,Which layer interacts with users?,SaaS,PaaS,IaaS,Hardware,A
+373,Cloud Computing,Basics,easy,Which is not a cloud provider?,AWS,Google Cloud,Windows,Azure,C
+374,Cloud Computing,Basics,easy,Cloud computing uses?,Internet,LAN,Intranet,VPN only,A
+375,Cloud Computing,Basics,easy,Which is example of IaaS?,Amazon EC2,Gmail,Dropbox,Zoom,A
+376,Cloud Computing,Architecture,moderate_1,NIST defines how many essential characteristics?,5,4,3,6,A
+377,Cloud Computing,Architecture,moderate_1,Key feature of elasticity?,Scale up/down resources,Fixed capacity,Only increase,None,A
+378,Cloud Computing,Architecture,moderate_1,Resource pooling means?,Shared resources,Dedicated server,Manual allocation,None,A
+379,Cloud Computing,Architecture,moderate_1,Measured service means?,Usage-based billing,Flat rate,Subscription,Manual metering,A
+380,Cloud Computing,Architecture,moderate_1,Rapid elasticity provides?,Dynamic resource scaling,Manual scaling,Security,Backup,A
+381,Cloud Computing,Virtualization,moderate_1,Virtualization allows?,Multiple OS on same hardware,One OS per hardware,No sharing,None,A
+382,Cloud Computing,Virtualization,moderate_1,Hypervisor is also called?,VMM,VM,VMU,VMS,A
+383,Cloud Computing,Virtualization,moderate_1,Type-1 hypervisor runs on?,Bare metal,Host OS,VM,Cloud only,A
+384,Cloud Computing,Virtualization,moderate_1,VMware is example of?,Type-1 hypervisor,Type-2 hypervisor,Container,None,B
+385,Cloud Computing,Virtualization,moderate_1,Containerization uses?,Docker,Hyper-V,BIOS,RAID,A
+386,Cloud Computing,Storage,moderate_2,Cloud storage stores data in?,Virtualized servers,Local drives,Floppy disks,Pen drives,A
+387,Cloud Computing,Storage,moderate_2,Amazon S3 provides?,Object storage,Block storage,File storage,None,A
+388,Cloud Computing,Storage,moderate_2,Google Drive is example of?,SaaS,IaaS,PaaS,None,A
+389,Cloud Computing,Storage,moderate_2,Redundancy ensures?,Data availability,Data deletion,Low performance,None,A
+390,Cloud Computing,Networking,moderate_2,Which protocol used in cloud data transfer?,HTTP/HTTPS,SMTP,FTP only,UDP only,A
+391,Cloud Computing,Security,moderate_2,Cloud security includes?,Authentication,Encryption,Access control,All,D
+392,Cloud Computing,Security,moderate_2,Multi-tenancy means?,Shared resources among users,Dedicated server,Local system,None,A
+393,Cloud Computing,Security,moderate_2,Data encryption ensures?,Confidentiality,Availability,Speed,None,A
+394,Cloud Computing,Security,moderate_2,VPN provides?,Secure channel,Storage,Virtualization,None,A
+395,Cloud Computing,Security,moderate_2,Compliance ensures?,Legal standards,Cost reduction,Redundancy,None,A
+396,Cloud Computing,Cloud Providers,hard,Azure developed by?,Microsoft,Google,IBM,Oracle,A
+397,Cloud Computing,Cloud Providers,hard,GCP stands for?,Google Cloud Platform,General Cloud Process,Global Compute Platform,None,A
+398,Cloud Computing,Cloud Providers,hard,AWS EC2 offers?,Virtual servers,Object storage,Queues,DNS,A
+399,Cloud Computing,Cloud Providers,hard,AWS S3 stores?,Objects,Files,Blocks,Tables,A
+400,Cloud Computing,Cloud Providers,hard,CloudWatch used for?,Monitoring AWS resources,Backup,Networking,None,A
+401,Cloud Computing,Management,hard,SLA stands for?,Service Level Agreement,Secure Layer Access,Standard Licensing API,None,A
+402,Cloud Computing,Management,hard,Orchestration means?,Automating cloud tasks,Manual scheduling,Backup,Encryption,A
+403,Cloud Computing,Management,hard,Auto-scaling helps in?,Dynamic resource allocation,Manual start,Stopping VM,None,A
+404,Cloud Computing,Management,hard,Billing in cloud is based on?,Usage,Fixed cost,Device type,None,A
+405,Cloud Computing,Management,hard,Which model provides max control?,IaaS,SaaS,PaaS,None,A
+406,Cloud Computing,Trends,hard,Edge computing means?,Processing near data source,Centralized data,Manual processing,None,A
+407,Cloud Computing,Trends,hard,Serverless computing means?,Run code without managing servers,Run on physical servers,Manual scaling,None,A
+408,Cloud Computing,Trends,hard,Kubernetes used for?,Container orchestration,VM management,Security,Storage,A
+409,Cloud Computing,Trends,hard,Function-as-a-Service is part of?,Serverless model,IaaS,PaaS,SaaS,A
+410,Cloud Computing,Trends,hard,Which company offers Lambda?,Amazon,Google,IBM,Microsoft,A
+411,Cloud Computing,Security,hard,IAM stands for?,Identity and Access Management,Internet Access Module,Internal Admin Manager,None,A
+412,Cloud Computing,Security,hard,Encryption converts data to?,Unreadable form,Readable text,Numbers,None,A
+413,Cloud Computing,Security,hard,Backup ensures?,Data recovery,Data deletion,Encryption,None,A
+414,Cloud Computing,Security,hard,Risk management identifies?,Threats and vulnerabilities,Servers,Billing,None,A
+415,Cloud Computing,Compliance,hard,GDPR relates to?,Data protection,Cloud storage,Computing speed,None,A
+416,Cloud Computing,Virtualization,hard,KVM is a?,Type-1 hypervisor,Type-2 hypervisor,Container,None,A
+417,Cloud Computing,Performance,hard,Load balancing helps?,Distribute workload,Reduce redundancy,Encrypt data,None,A
+418,Cloud Computing,Performance,hard,CDN stands for?,Content Delivery Network,Cloud Data Node,Central Data Network,None,A
+419,Cloud Computing,Trends,hard,Cloud bursting means?,Using public cloud during peak,Data backup,Encryption,None,A
+420,Cloud Computing,Security,hard,Main security challenge in cloud?,Data privacy,Data entry,Low cost,None,A
+421, CSCL    , Introduction     , easy       , Cyber security primarily deals with protection of?     , Physical assets                         , Digital information                      , Legal rights                     , Software licenses                  , B       
+422, CSCL    , Introduction     , easy       , Which of the following is an example of cybercrime?    , Data entry                              , Password cracking                        , File sharing                     , Backup creation                    , B       
+423, CSCL    , Introduction     , easy       , Which is not a goal of cybersecurity?                  , Confidentiality                         , Integrity                                , Availability                     , Affordability                      , D       
+424, CSCL    , Cyber Attacks    , easy       , Phishing is related to?                                , Network attack                          , Email fraud                              , Password encryption              , Hardware failure                   , B       
+425, CSCL    , Cyber Attacks    , easy       , Malware means?                                         , Malfunctioning software                 , Malicious software                       , Management software              , Mobile software                    , B       
+426, CSCL    , Cyber Attacks    , easy       , Ransomware does what?                                  , Steals passwords                        , Encrypts data for ransom                 , Deletes files permanently        , Repairs corrupted files            , B       
+427, CSCL    , Cryptography     , easy       , Encryption is used to ensure?                          , Integrity                               , Confidentiality                          , Availability                     , Redundancy                         , B       
+428, CSCL    , Cryptography     , easy       , Which is an example of symmetric encryption?           , RSA                                     , AES                                      , DSA                              , ECC                                , B       
+429, CSCL    , Cryptography     , easy       , Which is an asymmetric algorithm?                      , AES                                     , DES                                      , RSA                              , Blowfish                           , C       
+430, CSCL    , Authentication   , easy       , Authentication verifies?                               , Data accuracy                           , User identity                            , System security                  , Network bandwidth                  , B       
+431, CSCL    , Authentication   , easy       , Which of the following is a biometric method?          , Password                                , OTP                                      , Fingerprint                      , PIN                                , C       
+432, CSCL    , Cyber Law        , easy       , The Indian IT Act was passed in which year?            ,1998,2000,2002,2005, B       
+433, CSCL    , Cyber Law        , easy       , The full form of ITA is?                               , Internet Technology Act                 , Information Technology Act               , International Trade Act          , Internet Transfer Act              , B       
+434, CSCL    , Cyber Law        , easy       , The main objective of the IT Act is?                   , Data storage                            , E-commerce regulation                    , Electronic governance & security , Encryption development             , C       
+435, CSCL    , Cyber Law        , easy       , Section 66 of IT Act deals with?                       , Email spam                              , Hacking offenses                         , Cyber terrorism                  , Data theft                         , B       
+436, CSCL    , Cyber Attacks    , moderate_1 , Denial of Service (DoS) attack affects?                , Memory                                  , Availability                             , Integrity                        , Confidentiality                    , B       
+437, CSCL    , Cyber Attacks    , moderate_1 , Trojan Horse hides within?                             , Network packet                          , Legitimate program                       , BIOS chip                        , Browser extension                  , B       
+438, CSCL    , Cyber Attacks    , moderate_1 , Spyware is used to?                                    , Encrypt data                            , Monitor user activity                    , Prevent viruses                  , Speed up devices                   , B       
+439, CSCL    , Network Security , moderate_1 , Firewall works at which layer?                         , Physical                                , Network                                  , Application                      , Transport                          , B       
+440, CSCL    , Network Security , moderate_1 , IDS stands for?                                        , Intrusion Detection System              , Internet Defense Software                , Information Data System          , Internal Detection Source          , A       
+441, CSCL    , Network Security , moderate_1 , VPN ensures?                                           , Confidentiality of communication        , Faster speed                             , Cheaper internet                 , Anonymous storage                  , A       
+442, CSCL    , Authentication   , moderate_1 , Two-factor authentication increases?                   , Data redundancy                         , Access speed                             , Security                         , Connectivity                       , C       
+443, CSCL    , Authentication   , moderate_1 , Digital signatures are used for?                       , Integrity & authentication              , Encryption only                          , Decryption                       , File compression                   , A       
+444, CSCL    , Cryptography     , moderate_1 , Hash functions provide?                                , Integrity                               , Confidentiality                          , Non-repudiation                  , Access control                     , A       
+445, CSCL    , Cryptography     , moderate_1 , SHA stands for?                                        , Secure Hash Algorithm                   , Secure Hardware Access                   , System Hashing Architecture      , Safe Hardware Algorithm            , A       
+446, CSCL    , Cyber Law        , moderate_1 , Section 67 of IT Act deals with?                       , Hacking                                 , Publishing obscene material              , Identity theft                   , E-commerce                         , B       
+447, CSCL    , Cyber Law        , moderate_1 , Section 43 of IT Act deals with?                       , Unauthorized access                     , Cyber terrorism                          , Privacy                          , Copyright                          , A       
+448, CSCL    , Cyber Law        , moderate_1 , Digital signatures in India are certified by?          , NASSCOM                                 , NIC                                      , Certifying Authorities           , RBI                                , C       
+449, CSCL    , Cyber Law        , moderate_1 , The adjudicating officer handles?                      , Civil offenses                          , Criminal cases                           , Hacking trials                   , User complaints                    , A       
+450, CSCL    , Cyber Law        , moderate_1 , Cyber Appellate Tribunal (CAT) was established under?  , IT Act 2000                             , IPC 1860                                 , IT Rules 2011                    , Data Privacy Act                   , A       
+451, CSCL    , Network Security , moderate_2 , Firewall can be?                                       , Hardware only                           , Software only                            , Both hardware and software       , None                               , C       
+452, CSCL    , Network Security , moderate_2 , Proxy servers are used to?                             , Block websites                          , Improve performance and filter traffic   , Encrypt all packets              , Store passwords                    , B       
+453, CSCL    , Cryptography     , moderate_2 , Public key encryption uses how many keys?              ,1,2,3,4, B       
+454, CSCL    , Cryptography     , moderate_2 , Which algorithm uses public and private keys?          , AES                                     , DES                                      , RSA                              , MD5                                , C       
+455, CSCL    , Cryptography     , moderate_2 , Digital signature ensures?                             , Confidentiality                         , Non-repudiation                          , Redundancy                       , Speed                              , B       
+456, CSCL    , Cryptography     , moderate_2 , SSL stands for?                                        , Secure Socket Layer                     , Security Service Link                    , Simple Socket Layer              , Safe Secure Line                   , A       
+457, CSCL    , Cryptography     , moderate_2 , HTTPS uses which protocol for encryption?              , SSH                                     , SSL/TLS                                  , FTP                              , ARP                                , B       
+458, CSCL    , Cyber Law        , moderate_2 , Section 66C of IT Act deals with?                      , Obscene material                        , Identity theft                           , Email spam                       , Ransomware                         , B       
+459, CSCL    , Cyber Law        , moderate_2 , Section 66F of IT Act deals with?                      , Data theft                              , Cyber terrorism                          , E-mail fraud                     , Defamation                         , B       
+460, CSCL    , Cyber Law        , moderate_2 , Cybercrime investigation in India is handled by?       , RBI                                     , CERT-In                                  , NIA                              , TRAI                               , B       
+461, CSCL    , Cyber Law        , hard       , CERT-In stands for?                                    , Central Emergency Response Team         , Computer Emergency Response Team         , Cyber Electronic Reporting Team  , Certified Encryption Response Team , B       
+462, CSCL    , Cyber Law        , hard       , Digital Evidence is admissible under which section?    , 65A                                     , 67B                                      ,69,70, A       
+463, CSCL    , Cyber Law        , hard       , Which section provides punishment for cyber terrorism? , 66F                                     ,65,67,69, A       
+464, CSCL    , Cyber Law        , hard       , Which act provides legal recognition for e-documents?  , IT Act 2000                             , E-Gov Act                                , Cyber Law 2002                   , Privacy Act                        , A       
+465, CSCL    , Cryptography     , hard       , RSA algorithm is based on?                             , Prime factorization                     , XOR logic                                , Matrix operations                , Hash chaining                      , A       
+466, CSCL    , Cryptography     , hard       , AES uses block size of?                                , 64 bits                                 , 128 bits                                 , 256 bits                         , 512 bits                           , B       
+467, CSCL    , Network Security , hard       , Intrusion Prevention System (IPS) is used for?         , Attack detection and blocking           , Only detection                           , Encryption                       , Monitoring only                    , A       
+468, CSCL    , Network Security , hard       , Honeypot is used for?                                  , Attracting hackers                      , Encrypting data                          , Speeding up system               , Data recovery                      , A       
+469, CSCL    , Authentication   , hard       , Biometrics ensures?                                    , Confidentiality                         , Non-repudiation                          , User authentication              , Data encryption                    , C       
+470, CSCL    , Cryptography     , hard       , MD5 generates output of?                               , 64 bits                                 , 128 bits                                 , 256 bits                         , 512 bits                           , B       
+471, CSCL    , Network Security , hard       , Zero Trust Model means?                                , Always trust internal users             , Verify everything before access          , Block all connections            , Encrypt all traffic                , B       
+472, CSCL    , Cyber Attacks    , hard       , SQL Injection targets?                                 , Database layer                          , Network layer                            , Application layer                , Physical layer                     , C       
+473, CSCL    , Cyber Attacks    , hard       , Man-in-the-middle attack compromises?                  , Integrity                               , Confidentiality                          , Availability                     , All                                , D       
+474, CSCL    , Cyber Attacks    , hard       , Botnet is a network of?                                , Servers                                 , Infected computers                       , Routers                          , Firewalls                          , B       
+475, CSCL    , Cyber Law        , hard       , Cyber defamation is punishable under?                  , IPC 499                                 , ITA 66D                                  , ITA 66F                          , IPC 420                            , A       
+476, CSCL    , Cyber Law        , hard       , IT Act 2008 amendment included?                        , Data protection                         , Digital signatures                       , Cyber terrorism                  , All                                , D       
+477, CSCL    , Cyber Law        , hard       , Section 69 of IT Act allows?                           , Decryption and monitoring by government , Internet shutdown                        , Blocking social media            , Data retention                     , A       
+478, CSCL    , Cyber Law        , hard       , Indian Cyber Appellate Tribunal merged with?           , TDSAT                                   , NIA                                      , TRAI                             , CERT-In                            , A       
+479, CSCL    , Cyber Forensics  , hard       , Cyber forensics is mainly used for?                    , Investigating cybercrimes               , Encrypting data                          , Testing hardware                 , Improving bandwidth                , A       
+480, CSCL    , Emerging Trends  , hard       , Zero-day exploit refers to?                            , Known vulnerability                     , Newly discovered unpatched vulnerability , Network delay                    , Botnet attack                      , B       
+481,Data Structures,Arrays,easy,What is an array?,Collection of variables of same type,Collection of functions,Group of structures,Group of loops,A
+482,Data Structures,Arrays,easy,Index of first element in array is?,0,1,-1,Depends,A
+483,Data Structures,Arrays,easy,Which operator is used to access array elements?,(),[],{},.,B
+484,Data Structures,Linked Lists,easy,Linked list elements are connected using?,Pointers,Indexes,Stacks,Queues,A
+485,Data Structures,Linked Lists,easy,First node in linked list is called?,Tail,Head,Body,None,B
+486,Data Structures,Stacks,easy,Stack follows which principle?,LIFO,FIFO,LILO,FILO,A
+487,Data Structures,Queues,easy,Queue follows which principle?,LIFO,FIFO,FILO,None,B
+488,Data Structures,Queues,easy,Front of queue is used for?,Insertion,Deletion,Display,Sorting,B
+489,Data Structures,Trees,easy,Tree is a type of?,Linear DS,Non-linear DS,Array,Linked list,B
+490,Data Structures,Trees,easy,Root node has?,Parent,No parent,Two parents,None,B
+491,Data Structures,Sorting,easy,Which sorting is simplest?,Bubble sort,Quick sort,Merge sort,Heap sort,A
+492,Data Structures,Sorting,easy,Bubble sort compares?,Adjacent elements,Random elements,Alternate elements,End elements,A
+493,Data Structures,Searching,easy,Which search works on sorted data?,Linear,Binary,Sequential,Tree,B
+494,Data Structures,Searching,easy,Linear search time complexity is?,O(n),O(log n),O(1),O(n^2),A
+495,Data Structures,Arrays,easy,Which stores elements in continuous memory?,Linked list,Array,Tree,Stack,B
+496,Data Structures,Arrays,moderate_1,What is size of int arr[10];,10 bytes,20 bytes,Depends on system,40 bytes,C
+497,Data Structures,Arrays,moderate_1,Which of the following is dynamic?,Array,Linked list,Queue,Stack,B
+498,Data Structures,Linked Lists,moderate_1,Which node points to null?,First,Last,Middle,All,B
+499,Data Structures,Linked Lists,moderate_1,Advantage of linked list over array?,Fixed size,Dynamic size,Random access,Less memory,B
+500,Data Structures,Stacks,moderate_1,Which operation removes top element?,push(),pop(),top(),peek(),B
+501,Data Structures,Stacks,moderate_1,Stack overflow means?,Too many pushes,Too many pops,Empty stack,Invalid data,A
+502,Data Structures,Queues,moderate_1,Circular queue removes which problem?,Underflow,Overflow,Wastage of space,Deadlock,C
+503,Data Structures,Queues,moderate_1,Double-ended queue is also called?,Circular queue,Deque,Priority queue,Simple queue,B
+504,Data Structures,Trees,moderate_1,Binary tree means node can have max?,1 child,2 children,3 children,Any number,B
+505,Data Structures,Trees,moderate_1,Full binary tree has?,All leaves same level,Every node has 0 or 2 children,Complete nodes,Sorted order,B
+506,Data Structures,Sorting,moderate_1,Which sorting uses divide and conquer?,Bubble,Insertion,Quick,Selection,C
+507,Data Structures,Sorting,moderate_1,Best case of insertion sort?,Sorted array,Reverse array,Random array,All same,A
+508,Data Structures,Searching,moderate_1,Binary search requires data to be?,Sorted,Unsorted,Partial,All same,A
+509,Data Structures,Searching,moderate_1,What is worst case of binary search?,O(1),O(n),O(log n),O(n log n),C
+510,Data Structures,Stacks,moderate_1,Which converts infix to postfix?,Stack,Queue,Tree,Array,A
+511,Data Structures,Arrays,moderate_2,"In array arr[5], valid index range?",1â€“5,0â€“4,0â€“5,1â€“4,B
+512,Data Structures,Arrays,moderate_2,Access time of array element is?,O(n),O(1),O(log n),O(n^2),B
+513,Data Structures,Linked Lists,moderate_2,To traverse linked list we need?,For loop,Pointer,Array index,Stack,B
+514,Data Structures,Linked Lists,moderate_2,Which operation is not efficient in array?,Access,Search,Insertion in middle,Traversal,C
+515,Data Structures,Stacks,moderate_2,Which data structure used for recursion?,Queue,Array,Stack,Tree,C
+516,Data Structures,Stacks,moderate_2,Postfix expression evaluation uses?,Stack,Queue,Array,Tree,A
+517,Data Structures,Queues,moderate_2,Priority queue serves?,Highest priority first,Lowest priority first,FIFO,Random,A
+518,Data Structures,Queues,moderate_2,Queue can be implemented using?,Array,Linked list,Both,None,C
+519,Data Structures,Trees,moderate_2,Height of tree means?,Longest path from root,Shortest path,Number of nodes,Number of leaves,A
+520,Data Structures,Trees,moderate_2,Inorder of binary tree gives?,Prefix,Postfix,Sorted order,None,C
+521,Data Structures,Sorting,moderate_2,Merge sort complexity?,O(n log n),O(n^2),O(log n),O(n),A
+522,Data Structures,Sorting,moderate_2,Heap sort uses which structure?,Array,Stack,Heap,Tree,C
+523,Data Structures,Searching,moderate_2,Binary search is faster than linear because?,Random,Divide and conquer,Parallel search,All,B
+524,Data Structures,Searching,moderate_2,What happens if binary search data unsorted?,Correct output,Error,Wrong result,No effect,C
+525,Data Structures,Linked Lists,moderate_2,Which linked list allows traversal both ways?,Singly,Doubly,Circular,Hybrid,B
+526,Data Structures,Arrays,hard,Time complexity of merging two sorted arrays?,O(n),O(n+m),O(log n),O(n^2),B
+527,Data Structures,Arrays,hard,Which searching gives O(1) in ideal case?,Linear,Binary,Hashing,Tree search,C
+528,Data Structures,Linked Lists,hard,Deleting a node in doubly list needs?,1 pointer change,2 pointer changes,3 pointer changes,None,B
+529,Data Structures,Linked Lists,hard,Circular linked list used in?,Stacks,Queues,Both,None,C
+530,Data Structures,Stacks,hard,Expression tree evaluation uses?,Stack,Queue,Array,Tree,A
+531,Data Structures,Stacks,hard,Which notation doesnâ€™t need parenthesis?,Infix,Postfix,Prefix,Both B and C,D
+532,Data Structures,Queues,hard,Which queue used in CPU scheduling?,Circular,Priority,Double ended,Simple,B
+533,Data Structures,Queues,hard,Deadlock in queues happens when?,All processes waiting,One process executes,Stack full,None,A
+534,Data Structures,Trees,hard,AVL tree is?,Height balanced tree,Full tree,Binary search tree,Complete tree,A
+535,Data Structures,Trees,hard,Which traversal used for expression tree?,Inorder,Preorder,Postorder,None,C
+536,Data Structures,Sorting,hard,Quick sort worst case?,O(n^2),O(n log n),O(n),O(log n),A
+537,Data Structures,Sorting,hard,Radix sort works on?,Digits,Strings,Numbers,All,D
+538,Data Structures,Searching,hard,Hash collision handled by?,Chaining,Sorting,Merging,None,A
+539,Data Structures,Searching,hard,Which tree gives O(log n) for search?,AVL,Binary,B-tree,Both A and C,D
+540,Data Structures,Arrays,hard,Which structure used to implement matrix efficiently?,Array of arrays,Linked list,Stack,Tree,A
+541, DBMS    , Introduction        , easy       , DBMS stands for?                                            , Data Base Management System            , Data Basic Management System   , Database Mainframe System , Data Backup Management System , A       
+542, DBMS    , Introduction        , easy       , Which of the following is not a DBMS?                       , MySQL                                  , Oracle                         , Linux                     , PostgreSQL                    , C       
+543, DBMS    , Introduction        , easy       , The software responsible for managing a database is called? , Compiler                               , DBMS                           , Assembler                 , Interpreter                   , B       
+544, DBMS    , Data Models         , easy       ," Which model uses entities, attributes, and relationships?   ", Relational model                       , Hierarchical model             , ER model                  , Network model                 , C       
+545, DBMS    , Keys                , easy       , Which key uniquely identifies a record in a table?          , Foreign key                            , Primary key                    , Candidate key             , Super key                     , B       
+546, DBMS    , Normalization       , easy       , Normalization is used to?                                   , Reduce redundancy                      , Increase redundancy            , Reduce dependency         , Improve indexing              , A       
+547, DBMS    , SQL                 , easy       , Which SQL command is used to retrieve data?                 , INSERT                                 , UPDATE                         , SELECT                    , DELETE                        , C       
+548, DBMS    , SQL                 , easy       , Which clause is used to filter rows?                        , GROUP BY                               , WHERE                          , HAVING                    , ORDER BY                      , B       
+549, DBMS    , Joins               , easy       , Which join returns matching rows from both tables?          , Left Join                              , Right Join                     , Inner Join                , Full Join                     , C       
+550, DBMS    , SQL                 , easy       , Which symbol is used for pattern matching in SQL?           , %                                      , @                              , #                         , &                             , A       
+551, DBMS    , Aggregate Functions , easy       , Which function returns total number of rows?                , SUM()                                  , COUNT()                        , AVG()                     , MAX()                         , B       
+552, DBMS    , Normalization       , easy       , 1NF eliminates?                                             , Duplicate rows                         , Repeating groups               , Transitive dependency     , Partial dependency            , B       
+553, DBMS    , Transactions        , easy       , A transaction is a?                                         , Program                                , Logical unit of work           , Command                   , Database                      , B       
+554, DBMS    , Concurrency         , easy       , Lost update problem occurs in?                              , Concurrency control                    , Recovery                       , Normalization             , Indexing                      , A       
+555, DBMS    , Indexing            , easy       , Indexing improves?                                          , Data security                          , Query performance              , Normalization             , Redundancy                    , B       
+556, DBMS    , Keys                , moderate_1 , A super key is?                                             , Minimal key                            , Subset of candidate key        , Superset of candidate key , Primary key                   , C       
+557, DBMS    , Keys                , moderate_1 , Foreign key is used to?                                     , Uniquely identify record               , Maintain referential integrity , Speed up search           , Reduce redundancy             , B       
+558, DBMS    , Normalization       , moderate_1 , 2NF removes?                                                , Partial dependency                     , Transitive dependency          , Redundant data            , Repeating groups              , A       
+559, DBMS    , Normalization       , moderate_1 , 3NF removes?                                                , Partial dependency                     , Transitive dependency          , Repetition                , Anomalies                     , B       
+560, DBMS    , ER Model            , moderate_1 , ER diagram is used to?                                      , Design database                        , Store data                     , Backup data               , Test database                 , A       
+561, DBMS    , ER Model            , moderate_1 , Relationship between student and course is?                 , One to One                             , One to Many                    , Many to Many              , None                          , C       
+562, DBMS    , Joins               , moderate_1 , Left join returns?                                          , All rows from left table               , All rows from right table      , Only matched rows         , None                          , A       
+563, DBMS    , SQL                 , moderate_1 , Which SQL command removes all rows but keeps structure?     , DELETE                                 , DROP                           , TRUNCATE                  , REMOVE                        , C       
+564, DBMS    , SQL                 , moderate_1 , Which statement is used to modify table structure?          , ALTER                                  , UPDATE                         , MODIFY                    , CHANGE                        , A       
+565, DBMS    , Aggregate Functions , moderate_1 , AVG() returns?                                              , Sum                                    , Count                          , Average                   , Maximum                       , C       
+566, DBMS    , Transactions        , moderate_1 , Which property ensures data consistency?                    , Atomicity                              , Consistency                    , Isolation                 , Durability                    , B       
+567, DBMS    , Transactions        , moderate_1 , Dirty read happens when?                                    , Data read before commit                , Data read after commit         , Data deleted              , None                          , A       
+568, DBMS    , Concurrency         , moderate_1 , Which protocol avoids deadlock in concurrency?              , Wait-die                               , Timeout                        , Mutual exclusion          , Polling                       , A       
+569, DBMS    , Recovery            , moderate_1 , Before-image and after-image are used in?                   , Backup                                 , Recovery                       , Logging                   , Deadlock                      , B       
+570, DBMS    , Indexing            , moderate_1 , B-tree is used for?                                         , Searching                              , Sorting                        , Joining                   , Normalization                 , A       
+571, DBMS    , SQL                 , moderate_2 , Output of: SELECT COUNT(*) FROM student WHERE age>20;       , Count of students age>20               , Total rows                     , Sum of age                , All students                  , A       
+572, DBMS    , SQL                 , moderate_2 , Which SQL keyword sorts results?                            , SORT                                   , ORDER                          , BY                        , ORDER BY                      , D       
+573, DBMS    , Joins               , moderate_2 , Full outer join returns?                                    , Matched rows only                      , All rows from both tables      , Only left rows            , Only right rows               , B       
+574, DBMS    , SQL                 , moderate_2 , Which command removes table structure?                      , DELETE                                 , TRUNCATE                       , DROP                      , REMOVE                        , C       
+575, DBMS    , SQL                 , moderate_2 , Which of these is DCL command?                              , GRANT                                  , SELECT                         , INSERT                    , DELETE                        , A       
+576, DBMS    , SQL                 , moderate_2 , To find total salary department-wise we use?                , GROUP BY                               , ORDER BY                       , HAVING                    , DISTINCT                      , A       
+577, DBMS    , Transactions        , moderate_2 , ACID property 'I' stands for?                               , Information                            , Isolation                      , Integrity                 , Independent                   , B       
+578, DBMS    , Transactions        , moderate_2 ," If a transaction fails, system uses?                        ", Commit                                 , Rollback                       , Redo                      , Undo                          , B       
+579, DBMS    , Transactions        , moderate_2 , Which ensures transaction completion?                       , Commit                                 , Abort                          , Savepoint                 , Restore                       , A       
+580, DBMS    , Concurrency         , moderate_2 , Two phase locking prevents?                                 , Starvation                             , Deadlock                       , Inconsistency             , Redundancy                    , C       
+581, DBMS    , Recovery            , hard       , Checkpoint in recovery means?                               , Temporary backup                       , Permanent save point           , Log entry                 , Error mark                    , B       
+582, DBMS    , Recovery            , hard       , Which recovery method uses log files?                       , Rollback                               , Forward recovery               , Backward recovery         , All                           , D       
+583, DBMS    , Concurrency         , hard       , Timestamp ordering avoids?                                  , Deadlock                               , Starvation                     , Redundancy                , Locking                       , A       
+584, DBMS    , Transactions        , hard       , Cascading rollback happens due to?                          , Uncommitted transaction                , Deadlock                       , Concurrency               , Locking                       , A       
+585, DBMS    , Normalization       , hard       , BCNF removes?                                               , Partial dependency                     , Transitive dependency          , All anomalies             , Redundant tuples              , C       
+586, DBMS    , ER Model            , hard       , Weak entity depends on?                                     , Strong entity                          , Another weak entity            , Attributes                , Keys                          , A       
+587, DBMS    , SQL                 , hard       , Subquery inside another query is called?                    , Nested query                           , Inline query                   , Join query                , Outer query                   , A       
+588, DBMS    , SQL                 , hard       , Clause used with GROUP BY to filter groups?                 , HAVING                                 , WHERE                          , ORDER BY                  , DISTINCT                      , A       
+589, DBMS    , Keys                , hard       , Composite key is formed by?                                 , One attribute                          , Two or more attributes         , Primary key               , Candidate key                 , B       
+590, DBMS    , Indexing            , hard       , Clustered index is created on?                              , Primary key                            , Foreign key                    , Candidate key             , All columns                   , A       
+591, DBMS    , Transactions        , hard       , Phantom read occurs when?                                   , New rows inserted by other transaction , Deleted rows remain            , Old data read             , None                          , A       
+592, DBMS    , Concurrency         , hard       , Deadlock prevention ensures?                                , No circular wait                       , Hold and wait                  , Starvation                , Multiple locks                , A       
+593, DBMS    , Recovery            , hard       , ARIES algorithm is used for?                                , Scheduling                             , Recovery                       , Indexing                  , Normalization                 , B       
+594, DBMS    , SQL                 , hard       , Keyword removes duplicate rows?                             , UNIQUE                                 , DISTINCT                       , DIFFERENT                 , CLEAR                         , B       
+595, DBMS    , Joins               , hard       , Natural join joins tables using?                            , All common columns                     , Primary key only               , Foreign key only          , Row id                        , A       
+596, DBMS    , SQL                 , hard       , SELECT MAX(salary) FROM emp; returns?                       , Highest salary                         , Lowest salary                  , Average salary            , Sum of salary                 , A       
+597, DBMS    , SQL                 , hard       , Query to find employees not in dept 10?                     , WHERE dept!=10                         , WHERE dept<>10                 , WHERE dept NOT 10         , WHERE dept NO 10              , B       
+598, DBMS    , Transactions        , hard       , Durability ensures?                                         , Changes permanent after commit         , Rollback after crash           , Temporary commit          , None                          , A       
+599, DBMS    , Indexing            , hard       , Hash indexing uses?                                         , B-tree                                 , Hash table                     , Array                     , Binary tree                   , B       
+600, DBMS    , Recovery            , hard       , Redo operation means?                                       , Reapply changes                        , Undo changes                   , Delete changes            , None                          , A       
+601,DCN,Transmission,easy,Which layer is responsible for physical transmission of data?,Network,Transport,Physical,Data Link,C
+602,DCN,Topologies,easy,Star topology connects all devices to a single?,Hub,Switch,Router,Bridge,A
+603,DCN,Topologies,easy,Which topology has a single backbone cable?,Bus,Star,Mesh,Ring,A
+604,DCN,OSI Model,easy,How many layers are in the OSI model?,5,6,7,8,C
+605,DCN,Network Devices,easy,Which device connects different networks?,Router,Switch,Hub,Repeater,A
+606,DCN,Protocols,easy,HTTP works on which layer?,Transport,Application,Session,Network,B
+607,DCN,Switching,easy,Which switching uses physical path?,Packet,Circuit,Message,Virtual,B
+608,DCN,Transmission,easy,Which signal type has continuous values?,Analog,Digital,Binary,Discrete,A
+609,DCN,Transmission,easy,Bandwidth is measured in?,Bits,Bytes,bps,Hz,D
+610,DCN,Protocols,easy,FTP is used for?,Mail transfer,File transfer,Chat,Web browsing,B
+611,DCN,Network Devices,easy,Repeater works on which layer?,Physical,Data Link,Network,Transport,A
+612,DCN,Transmission,easy,Which medium uses light for transmission?,Coaxial,Fiber optic,UTP,Microwave,B
+613,DCN,Topologies,easy,Which topology offers high reliability?,Star,Mesh,Ring,Bus,B
+614,DCN,OSI Model,easy,Transport layer ensures?,Routing,Error control,End-to-end delivery,Encoding,C
+615,DCN,Switching,easy,Packet switching divides message into?,Blocks,Packets,Frames,Segments,B
+616,DCN,OSI Model,moderate_1,Which layer is responsible for encryption?,Application,Session,Presentation,Network,C
+617,DCN,Transmission,moderate_1,Propagation delay depends on?,Distance only,Distance and medium,Medium only,Device speed,B
+618,DCN,Protocols,moderate_1,TCP is a ___ protocol,Connectionless,Connection-oriented,Routing,Security,B
+619,DCN,Network Devices,moderate_1,Bridge operates on layer?,1,2,3,4,B
+620,DCN,Switching,moderate_1,Virtual circuit is used in?,Packet switching,Circuit switching,Message switching,Datagram switching,A
+621,DCN,Topologies,moderate_1,Main advantage of ring topology?,Simple,Less cable,Easy fault isolation,High speed,C
+622,DCN,Transmission,moderate_1,Modulation converts digital to?,Analog,Digital,Binary,Noise,A
+623,DCN,Protocols,moderate_1,SMTP is used for?,File transfer,Mail transfer,Web transfer,Video streaming,B
+624,DCN,Transmission,moderate_1,Attenuation means?,Increase in signal,Loss of signal strength,Distortion,Amplification,B
+625,DCN,Network Devices,moderate_1,Hub is a ___ device?,Layer1,Layer2,Layer3,Layer4,A
+626,DCN,Switching,moderate_1,Store-and-forward is feature of?,Circuit,Packet,Message,Optical,B
+627,DCN,Topologies,moderate_1,Mesh topology requires ___ links for n nodes?,n-1,n(n-1)/2,n+1,2n,B
+628,DCN,Protocols,moderate_1,UDP is ___?,Reliable,Unreliable,Connection-oriented,Slow,B
+629,DCN,Transmission,moderate_1,Data rate is measured in?,Bytes per sec,Bits per sec,Hz,Ohms,B
+630,DCN,OSI Model,moderate_1,Session layer provides?,Synchronization,Reliability,Routing,Addressing,A
+631,DCN,IP Addressing,moderate_2,An IPv4 address has how many bits?,16,32,64,128,B
+632,DCN,IP Addressing,moderate_2,The default subnet mask for Class C is?,255.0.0.0,255.255.0.0,255.255.255.0,255.255.255.255,C
+633,DCN,IP Addressing,moderate_2,Private IP address range of Class A starts with?,10.x.x.x,172.x.x.x,192.x.x.x,169.x.x.x,A
+634,DCN,Routing,moderate_2,RIP uses which metric for path selection?,Bandwidth,Hop count,Delay,Load,B
+635,DCN,Routing,moderate_2,OSPF stands for?,Open System Path Forwarding,Open Shortest Path First,Optimal System Path Function,Open Source Path Format,B
+636,DCN,Routing,moderate_2,BGP is a ___ routing protocol?,Distance vector,Link state,Path vector,Static,C
+637,DCN,Error Detection,moderate_2,CRC is mainly used for?,Encryption,Error detection,Compression,Flow control,B
+638,DCN,Error Detection,moderate_2,Parity bit detects?,Single bit error,Multiple errors,Burst errors,None,A
+639,DCN,Flow Control,moderate_2,Stop-and-Wait protocol is used for?,Error correction,Flow control,Routing,Segmentation,B
+640,DCN,Flow Control,moderate_2,Sliding window is used to improve?,Error rate,Throughput,Delay,Routing,B
+641,DCN,Protocols,moderate_2,ARP maps?,IP to MAC,MAC to IP,Port to IP,Name to IP,A
+642,DCN,Protocols,moderate_2,ICMP is used for?,Error reporting,Routing,Address mapping,Security,A
+643,DCN,Protocols,moderate_2,DNS translates?,Name to IP,IP to name,Port to IP,Domain to MAC,A
+644,DCN,Protocols,moderate_2,DHCP provides?,Domain name,IP address dynamically,MAC address,Port number,B
+645,DCN,Protocols,moderate_2,Which protocol sends email?,HTTP,FTP,SMTP,SNMP,C
+646,DCN,TCP/IP,hard,TCP ensures?,Connectionless transfer,Error-free delivery,Packet dropping,Routing,B
+647,DCN,TCP/IP,hard,UDP provides?,Reliable service,Connection-oriented,Unreliable service,Flow control,C
+648,DCN,TCP/IP,hard,Port number size in TCP header is?,8 bits,16 bits,32 bits,64 bits,B
+649,DCN,IPv6,hard,IPv6 address length is?,32 bits,64 bits,128 bits,256 bits,C
+650,DCN,IPv6,hard,IPv6 has how many hexadecimal groups?,4,6,8,16,C
+651,DCN,Error Detection,hard,Checksum is used in?,IP header,Data Link layer,Transport layer,Application layer,C
+652,DCN,Routing,hard,Default route in IP routing table is represented as?,0.0.0.0,255.255.255.255,127.0.0.1,1.1.1.1,A
+653,DCN,Routing,hard,Routing table stores?,Port numbers,MAC addresses,Destination networks,Applications,C
+654,DCN,Switching,hard,Virtual circuit is used in?,Datagram network,Connection-oriented packet switching,Broadcast network,Bus topology,B
+655,DCN,Flow Control,hard,Congestion control in TCP uses?,Slow start,Fast close,Handshake,ACK wait,A
+656,DCN,Protocols,hard,Telnet is used for?,Remote login,File transfer,Email,Encryption,A
+657,DCN,Transmission,hard,Nyquist theorem relates to?,Sampling rate,Noise,Amplitude,Phase,A
+658,DCN,Transmission,hard,Shannon theorem deals with?,Channel capacity,Bandwidth,Signal loss,Frequency,A
+659,DCN,Network Devices,hard,Firewall works on which layers?,Network and Transport,Physical,Data Link,Presentation,A
+660,DCN,OSI Model,hard,"At receiver, data decapsulation starts from?",Physical layer,Application layer,Network layer,Session layer,B
+661,DMS,Set Theory,easy,A set is?,Ordered list,Well-defined collection of objects,Random collection,None,B
+662,DMS,Set Theory,easy,Number of subsets of a set with n elements is?,n,2?,n²,n!,B
+663,DMS,Set Theory,easy,The complement of universal set is?,?,U,A,A',A
+664,DMS,Set Theory,easy,Intersection of disjoint sets is?,A,B,?,U,C
+665,DMS,Logic,easy,A proposition that is always true is called?,Contradiction,Contingency,Tautology,Paradox,C
+666,DMS,Logic,easy,Negation of (P ? Q) is?,¬P ? ¬Q,¬P ? ¬Q,P ? Q,P ? Q,B
+667,DMS,Logic,easy,Contrapositive of (P ? Q) is?,(¬P ? Q),(¬Q ? ¬P),(P ? ¬Q),(Q ? P),B
+668,DMS,Relations,easy,A relation R on set A is reflexive if?,aRa for all a?A,aRb for some b,a?b,None,A
+669,DMS,Functions,easy,A bijective function is?,One-to-one only,Onto only,One-to-one and onto,None,C
+670,DMS,Combinatorics,easy,Number of permutations of n objects taken r at a time?,n!,nPr = n!/(n?r)!,nCr = n!/(r!(n?r)!),n²,B
+671,DMS,Combinatorics,easy,"Number of subsets of {a,b,c} is?",3,6,8,9,C
+672,DMS,Graph Theory,easy,Degree of isolated vertex is?,0,1,n,Undefined,A
+673,DMS,Graph Theory,easy,A tree is a graph with?,No edges,No cycles,Multiple components,Weighted edges,B
+674,DMS,Logic,easy,Logical AND is represented by?,?,?,?,¬,B
+675,DMS,Boolean Algebra,easy,Boolean variables take values?,0 or 1,1 or 2,True or False only,None,A
+676,DMS,Logic,moderate_1,(P ? Q)’ = ?,P’ ? Q’,P ? Q,P ? Q,P’ ? Q,A
+677,DMS,Logic,moderate_1,Distributive law in logic is?,P ? (Q ? R) = (P ? Q) ? (P ? R),P ? (Q ? R) = P ? Q ? R,P ? Q = Q ? P,None,A
+678,DMS,Relations,moderate_1,A symmetric relation satisfies?,aRb ? bRa,aRb ? aRa,bRa ? cRc,None,A
+679,DMS,Relations,moderate_1,A transitive relation means?,aRb & bRc ? aRc,aRb ? bRa,a?b,None,A
+680,DMS,Functions,moderate_1,A surjective function covers?,Some elements,All codomain elements,Only domain,None,B
+681,DMS,Combinatorics,moderate_1,Permutations of word “BOOK”?,12,24,6,48,A
+682,DMS,Combinatorics,moderate_1,Pigeonhole principle states?,More pigeons than holes ? at least one shared,Equal number always unique,Random placement,None,A
+683,DMS,Induction,moderate_1,Mathematical induction is used to prove?,Finite statements,Infinite sequence statements,Random facts,None,B
+684,DMS,Induction,moderate_1,Base step in induction proves?,For n=k,For n=1,For all n,For n+1,B
+685,DMS,Induction,moderate_1,"If f(n)=2f(n?1), then f(n) grows?",Linearly,Exponentially,Constantly,Randomly,B
+686,DMS,Graph Theory,moderate_1,Euler’s formula for planar graph:,V?E+F=2,E?V+F=1,V+E=F,None,A
+687,DMS,Graph Theory,moderate_1,A connected acyclic graph is?,Path,Tree,Cycle,Network,B
+688,DMS,Boolean Algebra,moderate_1,De Morgan’s law: (A+B)’=?,A’B’,A+B,AB,A’+B’,A
+689,DMS,Boolean Algebra,moderate_1,Complement law: A + A’=?,0,1,A,A’,B
+690,DMS,Boolean Algebra,moderate_1,Idempotent law: A·A=?,A,1,0,A’,A
+691,DMS,Graph Theory,moderate_2,"In a simple graph, max edges = ?",n²,n(n?1)/2,n+1,n,B
+692,DMS,Graph Theory,moderate_2,Complete graph is denoted by?,K?,G?,T?,C?,A
+693,DMS,Graph Theory,moderate_2,A graph with no vertices of odd degree has?,Euler circuit,Hamiltonian path,Cut vertex,None,A
+694,DMS,Graph Theory,moderate_2,Adjacency matrix stores?,Edge connections,Vertex colors,Degrees,Paths,A
+695,DMS,Lattice Theory,moderate_2,A lattice is?,Partially ordered set where every pair has sup & inf,Graph,Function,Ring,A
+696,DMS,Lattice Theory,moderate_2,Boolean algebra is a special case of?,Lattice,Function,Graph,Matrix,A
+697,DMS,Algebraic Structures,moderate_2,A group must have?,"Closure, associativity, identity, inverse",Reflexivity,Symmetry,Transitivity,A
+698,DMS,Algebraic Structures,moderate_2,Identity element in addition is?,1,0,?1,None,B
+699,DMS,Algebraic Structures,moderate_2,Commutative group is also called?,Abelian group,Finite group,Subgroup,Null group,A
+700,DMS,Algebraic Structures,moderate_2,Ring has?,"Two operations (+,×)",Only addition,Only multiplication,Division,A
+701,DMS,Algebraic Structures,hard,Monoid is a semigroup with?,Identity,Inverse,Closure,Commutativity,A
+702,DMS,Algebraic Structures,hard,Homomorphism preserves?,Structure,Order,Elements,Values,A
+703,DMS,Algebraic Structures,hard,Isomorphism means?,One-to-one correspondence preserving structure,Random mapping,Inverse relation,None,A
+704,DMS,Graph Theory,hard,Hamiltonian cycle visits?,All edges once,All vertices once,Some vertices,None,B
+705,DMS,Graph Theory,hard,Directed graph is called?,Digraph,Path,Network,Tree,A
+706,DMS,Graph Theory,hard,Spanning tree connects?,All vertices without cycle,Only edges,Only loops,None,A
+707,DMS,Lattice Theory,hard,Distributive lattice satisfies?,a?(b?c) = (a?b)?(a?c),a?b = a?c,a=b,None,A
+708,DMS,Lattice Theory,hard,Complemented lattice means?,Each element has complement,Only top element,No complements,None,A
+709,DMS,Boolean Algebra,hard,Duality principle states?,Replace +?· and 0?1,A?B,P?Q,None,A
+710,DMS,Boolean Algebra,hard,Universal bound law: A+1=?,1,0,A,A’,A
+711,DMS,Induction,hard,Proving P(n) ? P(n+1) shows?,Step of induction,Contradiction,Base case,Tautology,A
+712,DMS,Induction,hard,Fibonacci sequence follows?,Linear recurrence,Non-linear,Random,Exponential,A
+713,DMS,Algebraic Structures,hard,Identity matrix in group theory acts as?,Identity element,Inverse,Null element,None,A
+714,DMS,Combinatorics,hard,"Binomial coefficient C(n,0)=?",0,n,1,n!,C
+715,DMS,Combinatorics,hard,Principle of inclusion-exclusion counts?,Union of overlapping sets,Disjoint sets,Only intersection,None,A
+716,DMS,Graph Theory,hard,DFS uses which data structure?,Stack,Queue,Array,List,A
+717,DMS,Graph Theory,hard,BFS uses which data structure?,Stack,Queue,Tree,Heap,B
+718,DMS,Logic,hard,Predicate logic includes?,Quantifiers,Propositions only,Variables only,None,A
+719,DMS,Logic,hard,?x P(x) means?,For some x,For all x,For one x,For no x,B
+720,DMS,Logic,hard,?x P(x) means?,For some x exists,For all x,Always false,None,A
+721,DSMP,Number Systems,easy,Which number system uses only 0 and 1?,Binary,Decimal,Octal,Hexadecimal,A
+722,DSMP,Number Systems,easy,Base of hexadecimal system is?,8,10,16,2,C
+723,DSMP,Number Systems,easy,How many bits are in a nibble?,2,4,8,16,B
+724,DSMP,Number Systems,easy,(1010)_2 is equal to which decimal number?,9,10,11,12,B
+725,DSMP,Logic Gates,easy,Which gate gives output 1 only if all inputs are 1?,OR,AND,NOT,NOR,B
+726,DSMP,Logic Gates,easy,Which logic gate inverts the input?,AND,OR,NOT,XOR,C
+727,DSMP,Logic Gates,easy,Symbol '+' is used for which gate?,AND,OR,NOR,XOR,B
+728,DSMP,Flip-Flops,easy,Which flip-flop stores 1 bit of data?,RS,D,JK,All,D
+729,DSMP,Flip-Flops,easy,Which flip-flop has a toggle state?,SR,JK,D,T,D
+730,DSMP,8085 Architecture,easy,8085 is how many bit microprocessor?,4,8,16,32,B
+731,DSMP,8085 Architecture,easy,What is the clock frequency of 8085?,1 MHz,3 MHz,6 MHz,8 MHz,C
+732,DSMP,Instructions,easy,"Instruction MOV A,B does what?",Move A to B,Move B to A,"Add A,B",Store A in memory,B
+733,DSMP,Instructions,easy,Opcode size in 8085 is?,4 bits,8 bits,16 bits,32 bits,B
+734,DSMP,Interfacing,easy,Which signal controls data flow in 8085?,RD and WR,ALE,RESET,CLK,A
+735,DSMP,Interfacing,easy,Which device converts analog to digital?,ADC,DAC,MUX,DEMUX,A
+736,DSMP,Number Systems,moderate_1,(25)_10 = ? in binary,11001,10101,10011,11111,B
+737,DSMP,Number Systems,moderate_1,(1111)_2 = ? in hexadecimal,F,E,D,C,A
+738,DSMP,Logic Gates,moderate_1,Which gate has output 0 when inputs are equal?,AND,OR,XOR,XNOR,C
+739,DSMP,Logic Gates,moderate_1,What is Boolean expression of OR gate?,A.B,A+B,A'B',AB',B
+740,DSMP,Flip-Flops,moderate_1,JK flip-flop is similar to RS except?,Reset condition,Toggle capability,Set condition,Clock type,B
+741,DSMP,Flip-Flops,moderate_1,Which flip-flop avoids invalid state?,RS,JK,D,None,C
+742,DSMP,8085 Architecture,moderate_1,How many address lines in 8085?,8,16,20,32,B
+743,DSMP,8085 Architecture,moderate_1,How many general-purpose registers in 8085?,4,6,8,10,B
+744,DSMP,Instructions,moderate_1,Which instruction adds B to accumulator?,ADD B,"MOV B,A",ADI B,SUB B,A
+745,DSMP,Instructions,moderate_1,How many flags in 8085?,3,5,8,10,B
+746,DSMP,Interfacing,moderate_1,Which port connects external devices?,Serial port,Parallel port,USB,LAN,B
+747,DSMP,Interfacing,moderate_1,Which device converts digital to analog?,ADC,DAC,MUX,Encoder,B
+748,DSMP,Number Systems,moderate_1,(A)_16 = ? in decimal,9,10,11,12,B
+749,DSMP,Logic Gates,moderate_1,Which gate gives complement of AND?,OR,NOR,NAND,XOR,C
+750,DSMP,8085 Architecture,moderate_1,Which register stores temporary data?,Accumulator,PC,SP,IR,A
+751,DSMP,Number Systems,moderate_2,(1001)_2 = ? in octal,9,10,11,12,A
+752,DSMP,Number Systems,moderate_2,(45)_8 = ? in decimal,37,38,40,45,A
+753,DSMP,Logic Gates,moderate_2,Universal gates are?,"AND, OR","NAND, NOR","XOR, XNOR","AND, XOR",B
+754,DSMP,Logic Gates,moderate_2,Which gate output is 1 only when inputs differ?,AND,NOR,XOR,XNOR,C
+755,DSMP,Flip-Flops,moderate_2,Race around condition occurs in which flip-flop?,D,SR,JK,T,C
+756,DSMP,Flip-Flops,moderate_2,Master-Slave flip-flop removes?,Setup time,Race around,Clock pulse,Invalid state,B
+757,DSMP,8085 Architecture,moderate_2,8085 has how many pins?,30,40,42,20,B
+758,DSMP,8085 Architecture,moderate_2,Stack grows in which direction?,Upward,Downward,Random,Fixed,B
+759,DSMP,Instructions,moderate_2,IN instruction is used for?,Input port,Output port,Memory,Accumulator,A
+760,DSMP,Instructions,moderate_2,What does CMA instruction do?,Complements accumulator,Clears accumulator,Adds carry,None,A
+761,DSMP,Interfacing,moderate_2,Interrupt signal allows?,Normal execution,Temporary stop,Reset CPU,None,B
+762,DSMP,Interfacing,moderate_2,DMA stands for?,Direct Memory Access,Dynamic Memory Array,Data Memory Access,None,A
+763,DSMP,Number Systems,moderate_2,Gray code is used to?,Reduce error,Speed conversion,Compress data,Binary add,A
+764,DSMP,Logic Gates,moderate_2,"Output of NAND gate with inputs 1,1 is?",1,0,Invalid,Undefined,B
+765,DSMP,8085 Architecture,moderate_2,Which register pair forms 16-bit address?,B-C,H-L,D-E,All,D
+766,DSMP,Number Systems,hard,(101101)_2 = ? in hexadecimal,2D,2B,33,2C,B
+767,DSMP,Number Systems,hard,What is 2â€™s complement of (1010)_2?,101,110,1011,110,B
+768,DSMP,Logic Gates,hard,How many input combinations for 3-input gate?,4,6,8,16,C
+769,DSMP,Logic Gates,hard,Output of NOR is same as?,NOT(AND),NOT(OR),AND,XOR,B
+770,DSMP,Flip-Flops,hard,Which flip-flop uses a single D input?,D,RS,JK,T,A
+771,DSMP,Flip-Flops,hard,Propagation delay affects?,Speed of operation,Logic function,Power supply,Fan-out,A
+772,DSMP,8085 Architecture,hard,What is role of accumulator?,Stores operands,Stores results,Temporary register,All,D
+773,DSMP,8085 Architecture,hard,Address bus of 8085 is?,8-bit,16-bit,32-bit,64-bit,B
+774,DSMP,Instructions,hard,What is the function of NOP?,Stops CPU,No operation,New operation,None,B
+775,DSMP,Instructions,hard,HL pair refers to?,High-Low register pair,Heap List,Hold Link,Half Line,A
+776,DSMP,Interfacing,hard,What is memory mapped I/O?,Uses same address for memory and I/O,Separate address,No address,None,A
+777,DSMP,Interfacing,hard,What is polling?,CPU checks device status,Device checks CPU,Parallel data transfer,None,A
+778,DSMP,8085 Architecture,hard,Program counter holds?,Next instruction address,Opcode,Data,Flag,A
+779,DSMP,Number Systems,hard,Which base uses digits 0â€“7?,Octal,Binary,Decimal,Hexadecimal,A
+780,DSMP,Logic Gates,hard,DeMorganâ€™s theorem converts?,AND to OR,OR to AND,Both,None,C
+781,IoT,Introduction,easy,IoT stands for?,Internet of Tools,Internet of Things,Interconnected Technology,Intelligent Objects,B
+782,IoT,Introduction,easy,Main goal of IoT is to?,Connect people only,Connect devices and share data,Store big data,Build hardware,B
+783,IoT,Introduction,easy,IoT devices are connected through?,Internet,Cloud only,Bluetooth only,USB,A
+784,IoT,Introduction,easy,Smart devices are also known as?,Sensors,Actuators,Things,Nodes,D
+785,IoT,Architecture,easy,IoT system generally has how many layers?,2,3,4,5,B
+786,IoT,Architecture,easy,The perception layer handles?,Data sensing,Communication,Data processing,Cloud storage,A
+787,IoT,Architecture,easy,Application layer is responsible for?,User interface and services,Data sensing,Routing,Security,A
+788,IoT,Communication,easy,IoT uses which type of communication?,Machine to Machine,Human to Machine,Human to Human,Manual,A
+789,IoT,Communication,easy,Which protocol is commonly used in IoT?,HTTP,MQTT,POP3,FTP,B
+790,IoT,Devices,easy,Example of IoT device?,Refrigerator,Desktop PC,Server,Printer,A
+791,IoT,Devices,easy,Actuator performs?,Data collection,Action based on signal,Storage,Network routing,B
+792,IoT,Devices,easy,Raspberry Pi is a?,Microcontroller,Single-board computer,Sensor,Router,B
+793,IoT,Devices,easy,Arduino is mainly used for?,Programming microcontrollers,Networking,Cloud computing,Data storage,A
+794,IoT,Communication,easy,ZigBee is used for?,High power communication,Low power wireless communication,Cloud computing,Data encryption,B
+795,IoT,Communication,easy,Bluetooth is used for?,Long-range communication,Short-range communication,Cloud connection,Data encryption,B
+796,IoT,Protocols,moderate_1,MQTT stands for?,Message Queue Telemetry Transport,Machine Quality Transfer Tool,Message Query Transfer Type,None,A
+797,IoT,Protocols,moderate_1,CoAP works on which protocol?,TCP,UDP,FTP,SMTP,B
+798,IoT,Protocols,moderate_1,HTTP is?,Request-response protocol,Real-time protocol,Event-driven protocol,Wireless protocol,A
+799,IoT,Protocols,moderate_1,Which protocol is lightweight for constrained devices?,MQTT,HTTP,FTP,TCP,A
+800,IoT,Protocols,moderate_1,IoT Gateway is used for?,Connecting sensors to network,Encrypting data,Displaying output,Data backup,A
+801,IoT,Devices,moderate_1,RFID stands for?,Radio Frequency Identification,Rapid File Integration Device,Remote Function Identifier,Random Frequency Input Device,A
+802,IoT,Devices,moderate_1,NFC stands for?,Near Field Communication,Network File Control,Node Frequency Connector,Net Flow Channel,A
+803,IoT,Devices,moderate_1,Sensor converts?,Electrical signal to data,Physical quantity to electrical signal,Data to sound,None,B
+804,IoT,Devices,moderate_1,Example of actuator?,Motor,Thermometer,Sensor,Raspberry Pi,A
+805,IoT,Devices,moderate_1,IoT Node means?,Device connected in IoT network,Data packet,Storage module,None,A
+806,IoT,Platforms,moderate_1,IoT platform provides?,Device management and data analytics,Only sensors,Hardware design,OS only,A
+807,IoT,Platforms,moderate_1,Popular IoT cloud platform?,AWS IoT,Windows Server,Hadoop,Jenkins,A
+808,IoT,Platforms,moderate_1,Azure IoT Hub is developed by?,Google,Amazon,Microsoft,IBM,C
+809,IoT,Platforms,moderate_1,Google Cloud IoT Core supports?,Device connection & data collection,Hardware only,Wi-Fi only,None,A
+810,IoT,Platforms,moderate_1,IBM Watson IoT focuses on?,Analytics and AI,Hardware,OS security,Browser design,A
+811,IoT,Security,moderate_2,IoT security ensures?,"Confidentiality, integrity, availability",Connectivity only,Data loss,Fast processing,A
+812,IoT,Security,moderate_2,Main security issue in IoT?,Weak authentication,Strong encryption,Open access,Redundancy,A
+813,IoT,Security,moderate_2,Encryption provides?,Confidentiality,Integrity,Availability,Speed,A
+814,IoT,Security,moderate_2,Which layer is most vulnerable in IoT?,Perception,Application,Network,All layers,D
+815,IoT,Security,moderate_2,Privacy attack occurs when?,Unauthorized access to personal data,Data loss,Device restart,None,A
+816,IoT,Cloud,moderate_2,Cloud computing provides?,Remote data storage & processing,Hardware interface,Device configuration,Local computation,A
+817,IoT,Cloud,moderate_2,Fog computing performs processing?,Near data source,At cloud,At user end,None,A
+818,IoT,Cloud,moderate_2,Edge computing focuses on?,Processing at network edge,Cloud only,Server center,None,A
+819,IoT,Cloud,moderate_2,Advantage of edge computing?,Reduces latency,Increases delay,Increases cost,Decreases performance,A
+820,IoT,Cloud,moderate_2,Cloud in IoT helps in?,Data storage & analytics,Only communication,Sensing,Routing,A
+821,IoT,Applications,hard,Smart city uses IoT for?,Waste management & traffic control,Data mining,Cryptography,Banking,A
+822,IoT,Applications,hard,Smart agriculture monitors?,Soil and weather,Traffic,Server load,None,A
+823,IoT,Applications,hard,e-Health IoT system monitors?,Patient health remotely,Office attendance,Website traffic,Network packets,A
+824,IoT,Applications,hard,Smart grid optimizes?,Energy distribution,Traffic,Security,Data flow,A
+825,IoT,Applications,hard,IoT in transportation helps?,Vehicle tracking,Food delivery,Banking,Education,A
+826,IoT,Analytics,hard,Data analytics in IoT is used to?,Gain insights from sensor data,Compress files,Encrypt communication,Build hardware,A
+827,IoT,Analytics,hard,Real-time analytics is needed for?,Decision making,Long storage,Manual control,None,A
+828,IoT,Analytics,hard,Predictive maintenance in IoT uses?,ML algorithms,Only cloud,Manual logs,Hardware testing,A
+829,IoT,Devices,hard,IoT devices mostly run on?,Embedded OS,Windows,Linux only,None,A
+830,IoT,Devices,hard,Example of embedded OS?,FreeRTOS,Ubuntu,Windows 10,Fedora,A
+831,IoT,Trends,hard,AIoT stands for?,Artificial Intelligence of Things,Automated Internet of Tech,Augmented IoT,Advanced Intelligent Thing,A
+832,IoT,Trends,hard,Digital twin in IoT means?,Virtual replica of physical system,Hardware duplication,Cloud backup,None,A
+833,IoT,Trends,hard,LPWAN stands for?,Low Power Wide Area Network,Long Protocol Wireless Access Node,Light Power WAN,Local Power Wireless Access,A
+834,IoT,Trends,hard,6LoWPAN is used for?,IPv6 over low-power networks,IPv4 routing,Ethernet communication,Cloud connection,A
+835,IoT,Trends,hard,Which is a low power protocol?,ZigBee,HTTP,FTP,SMTP,A
+836,IoT,Security,hard,Blockchain in IoT helps in?,Secure data transactions,Energy saving,Reduce latency,None,A
+837,IoT,Security,hard,IDS in IoT stands for?,Intrusion Detection System,Internet Data Source,Integrated Device Setup,None,A
+838,IoT,Challenges,hard,Major challenge in IoT?,Interoperability,Overpower,High cost,Simplicity,A
+839,IoT,Challenges,hard,Data management in IoT is complex due to?,Large data volume,Small datasets,Manual processing,None,A
+840,IoT,Future,hard,Future IoT will rely more on?,AI and Edge Computing,Only sensors,Only hardware,None,A
+841,Java,Basics,easy,Java was developed by?,James Gosling,Dennis Ritchie,Bjarne Stroustrup,Guido van Rossum,A
+842,Java,Basics,easy,Java is a?,Compiled language,Interpreted language,Both compiled and interpreted,Assembled language,C
+843,Java,Basics,easy,JVM stands for?,Java Virtual Machine,Java Variable Method,Java Version Manager,None,A
+844,Java,Basics,easy,Which extension is used for Java source file?,.class,.java,.jar,.exe,B
+845,Java,Basics,easy,Bytecode is executed by?,JDK,JRE,JVM,Compiler,C
+846,Java,Basics,easy,Which keyword defines a class?,class,struct,define,module,A
+847,Java,Basics,easy,Which keyword is used to inherit a class?,this,import,extends,implements,C
+848,Java,Basics,easy,Default value of int variable is?,0,null,undefined,garbage,A
+849,Java,Basics,easy,Which operator is used for comparison?,=,==,===,!=,B
+850,Java,Basics,easy,Which is not a Java primitive type?,int,float,boolean,string,D
+851,Java,Basics,easy,Which method is entry point of Java program?,main(),start(),run(),init(),A
+852,Java,Basics,easy,Java supports?,Multiple inheritance via classes,Multiple inheritance via interfaces,No inheritance,None,B
+853,Java,Basics,easy,Constructor name is same as?,File name,Class name,Object name,None,B
+854,Java,Basics,easy,Which access modifier makes member visible everywhere?,private,public,protected,default,B
+855,Java,Basics,easy,Which keyword prevents inheritance?,abstract,static,final,transient,C
+856,Java,OOP,moderate_1,Polymorphism means?,Many forms,One form,No forms,Dynamic typing,A
+857,Java,OOP,moderate_1,Method overloading is?,"Same name, different parameters","Same name, same parameters",Different names,None,A
+858,Java,OOP,moderate_1,Method overriding is?,Redefining inherited method,Hiding private members,Using static methods,None,A
+859,Java,OOP,moderate_1,Abstract class cannot?,Have abstract methods,Be instantiated,Have constructors,Have fields,B
+860,Java,OOP,moderate_1,Interface methods are by default?,Private,Public & abstract,Static,Final,B
+861,Java,OOP,moderate_1,Package in Java is used for?,Grouping classes,Compiling code,Memory allocation,Exception handling,A
+862,Java,OOP,moderate_1,this keyword refers to?,Current object,Parent object,Static method,None,A
+863,Java,OOP,moderate_1,super keyword refers to?,Current object,Parent class object,Child class,None,B
+864,Java,Exception,moderate_1,try block is followed by?,finally,throw,catch or finally,None,C
+865,Java,Exception,moderate_1,Checked exceptions are checked at?,Compile time,Runtime,Both,None,A
+866,Java,Exception,moderate_1,Which keyword is used to manually throw exception?,throw,throws,catch,final,A
+867,Java,Exception,moderate_1,finally block executes?,Always,Never,Only on exception,None,A
+868,Java,Exception,moderate_1,Exception base class?,Throwable,Exception,RuntimeException,Error,A
+869,Java,Exception,moderate_1,NullPointerException occurs when?,Access null object,Divide by zero,Invalid cast,None,A
+870,Java,OOP,moderate_1,Static methods belong to?,Class,Object,Package,Thread,A
+871,Java,Thread,moderate_2,Thread in Java created using?,Thread class or Runnable,Runnable only,Process class,None,A
+872,Java,Thread,moderate_2,run() method belongs to?,Thread class,Object class,Runnable interface,A & C,D
+873,Java,Thread,moderate_2,start() method is used to?,Begin thread execution,Define thread,Stop thread,None,A
+874,Java,Thread,moderate_2,Thread priority range is?,0–5,1–10,1–5,0–10,B
+875,Java,Thread,moderate_2,sleep() belongs to?,Thread,Object,Process,None,A
+876,Java,Collection,moderate_2,Collection root interface?,List,Set,Collection,Map,C
+877,Java,Collection,moderate_2,Which is synchronized?,Vector,ArrayList,HashSet,LinkedList,A
+878,Java,Collection,moderate_2,HashMap stores data as?,Key-value pairs,Keys only,Values only,None,A
+879,Java,Collection,moderate_2,Set allows?,Duplicates,Unique elements,Both,None,B
+880,Java,Collection,moderate_2,Iterator used for?,Traversing collection,Sorting,Filtering,None,A
+881,Java,File Handling,hard,Which class reads file line by line?,BufferedReader,FileInputStream,FileWriter,Scanner,A
+882,Java,File Handling,hard,Which package handles file I/O?,java.io,java.util,java.file,java.sys,A
+883,Java,Exception,hard,IOException belongs to?,Checked exception,Runtime exception,Error,None,A
+884,Java,GUI,hard,JFrame belongs to?,Swing,AWT,JavaFX,None,A
+885,Java,GUI,hard,To close JFrame use?,setDefaultCloseOperation(),exit(),close(),stop(),A
+886,Java,GUI,hard,JLabel and JButton belong to?,Swing,AWT,JavaFX,Applet,A
+887,Java,GUI,hard,Layout manager example?,BorderLayout,LinearLayout,Box,None,A
+888,Java,Multithreading,hard,Synchronization prevents?,Race conditions,Compilation,Errors,None,A
+889,Java,Multithreading,hard,join() method ensures?,One thread waits for another,Thread stops,Both run parallel,None,A
+890,Java,Memory,hard,Garbage collection removes?,Unreferenced objects,Files,Threads,Packages,A
+891,Java,JDBC,hard,JDBC stands for?,Java Database Connectivity,Java Data Compiler,Java Dynamic Connection,None,A
+892,Java,JDBC,hard,Which package for JDBC?,java.sql,java.db,java.io,java.connect,A
+893,Java,JDBC,hard,DriverManager class is used for?,Registering JDBC drivers,Managing threads,Handling files,None,A
+894,Java,JDBC,hard,executeQuery() returns?,ResultSet,int,boolean,None,A
+895,Java,JDBC,hard,executeUpdate() used for?,"Insert, Update, Delete",Select,View,None,A
+896,Java,JDBC,hard,Connection interface used for?,Establishing DB connection,Executing queries,Closing JVM,None,A
+897,Java,Advanced,hard,Serializable interface used for?,Object persistence,Thread control,GUI,None,A
+898,Java,Advanced,hard,transient keyword means?,Do not serialize field,Final variable,Constant,None,A
+899,Java,Advanced,hard,Reflection API used for?,Inspecting classes and methods,Compiling code,Exception handling,None,A
+900,Java,Advanced,hard,JAR file contains?,Compiled classes and metadata,Only source code,Executables,Threads,A
+901,Maths,Set Theory,easy,A set is a?,Collection of random objects,Well-defined collection of objects,Unordered list,Tuple,B
+902,Maths,Set Theory,easy,The number of subsets of a set with n elements is?,n,2n,n²,n!,B
+903,Maths,Set Theory,easy,The union of sets A and B contains?,Only common elements,All elements of A or B,Only elements of A,None,B
+904,Maths,Logic,easy,A statement that is always true is called?,Contradiction,Tautology,Contingency,Paradox,B
+905,Maths,Logic,easy,Negation of (A ? B) is?,¬A ? ¬B,¬A ? ¬B,A ? B,None,B
+906,Maths,Relations,easy,A relation R on set A is reflexive if?,"aRb for all a,b",aRa for all a,"aRb for some a,b",None,B
+907,Maths,Relations,easy,A function is a special case of relation where?,Every input has one output,Many outputs possible,One-to-many mapping,None,A
+908,Maths,Functions,easy,f(x)=x² is an example of?,Linear function,Quadratic function,Exponential,Constant,B
+909,Maths,Combinatorics,easy,Number of permutations of n objects is?,n,n²,n!,2n,C
+910,Maths,Combinatorics,easy,Combination formula is?,n!/(n?r)!,n!/(r!(n?r)!),n!/r!,r!/n!,B
+911,Maths,Probability,easy,Probability of sure event is?,0,1,½,Undefined,B
+912,Maths,Probability,easy,"If P(A)=0, event A is?",Impossible,Certain,Equal,Complementary,A
+913,Maths,Statistics,easy,"Mean of numbers 2,4,6,8 is?",5,6,4,7,A
+914,Maths,Matrices,easy,Identity matrix has?,All zeros,Diagonal ones,Random entries,All ones,B
+915,Maths,Graph Theory,easy,Degree of isolated vertex is?,0,1,2,n,A
+916,Maths,Set Theory,moderate_1,The intersection of disjoint sets is?,A,B,Null set,Universal set,C
+917,Maths,Logic,moderate_1,(A ? B) is logically equivalent to?,(¬A ? B),(A ? B),(¬A ? B),(A ? B),A
+918,Maths,Logic,moderate_1,Contrapositive of (A ? B) is?,(A ? ¬B),(¬B ? ¬A),(¬A ? B),(B ? A),B
+919,Maths,Relations,moderate_1,Transitive relation means?,aRb & bRc ? aRc,aRb ? bRa,aRa for all a,None,A
+920,Maths,Functions,moderate_1,One-to-one function is called?,Surjective,Injective,Bijective,Partial,B
+921,Maths,Functions,moderate_1,Function with every element of codomain mapped is?,Injective,Surjective,Bijective,Partial,B
+922,Maths,Combinatorics,moderate_1,Number of subsets of a 3-element set is?,3,6,8,9,C
+923,Maths,Combinatorics,moderate_1,How many 3-letter words from ABCD (no repetition)?,24,12,6,8,A
+924,Maths,Probability,moderate_1,Sum of probabilities of all outcomes is?,0,1,n,Infinity,B
+925,Maths,Probability,moderate_1,"If P(A)=0.4 and P(B)=0.3, P(A?B)=? (A,B independent)",0.12,0.58,0.7,0.5,B
+926,Maths,Graph Theory,moderate_1,Euler’s formula for connected planar graphs is?,V+E=F,V?E+F=2,V+F=E,E?V+F=2,B
+927,Maths,Graph Theory,moderate_1,A tree with n vertices has how many edges?,n,n?1,n+1,2n,B
+928,Maths,Boolean Algebra,moderate_1,The complement of (A+B)’ is?,A·B,A+B,A’+B’,A’B’,A
+929,Maths,Boolean Algebra,moderate_1,(A·1) = ?,1,0,A,A’,C
+930,Maths,Matrices,moderate_1,Determinant of identity matrix is?,0,1,n,?1,B
+931,Maths,Probability,moderate_2,Bayes’ theorem is used for?,Independent events,Conditional probability,Counting,Normalization,B
+932,Maths,Statistics,moderate_2,Standard deviation measures?,Mean,Spread,Median,Probability,B
+933,Maths,Statistics,moderate_2,Mode is?,Most frequent value,Middle value,Average,Sum,A
+934,Maths,Combinatorics,moderate_2,Number of diagonals in an n-sided polygon =?,n(n?3)/2,n(n?2)/2,n²/2,n+3,A
+935,Maths,Graph Theory,moderate_2,Complete graph with n vertices has how many edges?,n(n?1)/2,n²,n,2n,A
+936,Maths,Graph Theory,moderate_2,A graph with no cycles is called?,Simple,Complete,Tree,Null,C
+937,Maths,Relations,moderate_2,Equivalence relation is?,"Reflexive, symmetric, transitive",Antisymmetric only,Symmetric only,Transitive only,A
+938,Maths,Functions,moderate_2,Inverse function exists only if function is?,Injective,Surjective,Bijective,None,C
+939,Maths,Logic,moderate_2,XOR operation outputs true if?,Both true,One true,Both false,Both same,B
+940,Maths,Boolean Algebra,moderate_2,De Morgan’s Law: (A·B)’ = ?,A’+B’,A’B’,A+B,AB,A
+941,Maths,Calculus,hard,Derivative of x² is?,2x,x,x²,1/x,A
+942,Maths,Calculus,hard,Integral of sin(x) dx = ?,?cos(x),cos(x),sin(x),tan(x),A
+943,Maths,Calculus,hard,Derivative of e? is?,e?,1,0,x,A
+944,Maths,Calculus,hard,"If f(x)=x³, f’(x)=?",3x²,x³,2x,3x,A
+945,Maths,Probability,hard,Expected value of a fair die = ?,2,3.5,4,6,B
+946,Maths,Probability,hard,"For independent A,B, P(A?B)=?",P(A)+P(B),P(A)×P(B),P(A)/P(B),P(A)?P(B),B
+947,Maths,Graph Theory,hard,Hamiltonian cycle visits?,Every edge once,Every vertex once,Repeats vertices,None,B
+948,Maths,Graph Theory,hard,Bipartite graph means?,Vertices can be divided into two disjoint sets,Graph with loops,Directed graph,Weighted graph,A
+949,Maths,Graph Theory,hard,Adjacency matrix represents?,Vertex-edge relation,Vertex-vertex connections,Edge weights only,None,B
+950,Maths,Graph Theory,hard,Dijkstra’s algorithm finds?,Shortest path,Longest path,MST,None,A
+951,Maths,Matrices,hard,A matrix multiplied by its inverse gives?,Identity matrix,Null matrix,Zero matrix,Transpose,A
+952,Maths,Matrices,hard,Determinant is used to find?,Rank,Inverse,Order,Nullity,B
+953,Maths,Boolean Algebra,hard,Logic gates implement?,Boolean expressions,Algebraic equations,Recurrence relations,None,A
+954,Maths,Boolean Algebra,hard,NAND is equivalent to?,(A·B)’,(A+B)’,(A+B),(A·B),A
+955,Maths,Logic,hard,Predicate logic extends propositional logic by adding?,Variables and quantifiers,Graphs,Operators,Sets,A
+956,Maths,Logic,hard,Existential quantifier means?,For all,There exists,None,If then,B
+957,Maths,Relations,hard,Partial order relation is?,"Reflexive, antisymmetric, transitive",Symmetric only,Transitive only,Antisymmetric only,A
+958,Maths,Combinatorics,hard,Binomial theorem expands (a+b)? using?,Permutations,Combinations,Factorials,Determinants,B
+959,Maths,Graph Theory,hard,Minimum Spanning Tree covers?,All vertices with minimum total edge weight,All edges,All cycles,None,A
+960,Maths,Graph Theory,hard,Kruskal’s algorithm is used for?,Minimum spanning tree,Shortest path,DFS traversal,Maximum flow,A
+961,ML,Introduction,easy,Machine Learning is a subset of?,Artificial Intelligence,Database Systems,Operating Systems,Data Structures,A
+962,ML,Introduction,easy,ML enables systems to?,Store data,Learn from data,Hardcode responses,Replace databases,B
+963,ML,Introduction,easy,Which of the following is not a type of ML?,Supervised,Unsupervised,Reinforcement,Reactive,D
+964,ML,Introduction,easy,Training data is used to?,Evaluate model,Teach the model,Visualize data,Deploy model,B
+965,ML,Supervised Learning,easy,Supervised learning involves?,Labeled data,Unlabeled data,Reinforcement,None,A
+966,ML,Unsupervised Learning,easy,Clustering is a type of?,Supervised learning,Unsupervised learning,Reinforcement learning,None,B
+967,ML,Supervised Learning,easy,Regression predicts?,Categories,Continuous values,Clusters,Relations,B
+968,ML,Supervised Learning,easy,Classification predicts?,Continuous output,Discrete labels,Features,Algorithms,B
+969,ML,Introduction,easy,Overfitting occurs when?,Model learns training data too well,Model performs well on all data,Model is undertrained,Model ignores features,A
+970,ML,Model Evaluation,easy,Which metric is used for classification accuracy?,MSE,RMSE,Accuracy score,R²,C
+971,ML,Data Preprocessing,easy,Removing missing values is part of?,Model tuning,Data preprocessing,Feature scaling,Model testing,B
+972,ML,Feature Engineering,easy,Feature scaling is done to?,Make features comparable,Increase dataset size,Encode labels,None,A
+973,ML,Supervised Learning,easy,Example of supervised algorithm?,K-Means,Decision Tree,PCA,Autoencoder,B
+974,ML,Unsupervised Learning,easy,K-Means aims to?,Classify data,Cluster data,Label data,Predict output,B
+975,ML,Introduction,easy,ML model generalization refers to?,Fitting test data,Performing well on unseen data,Overfitting data,Feature selection,B
+976,ML,Algorithms,moderate_1,Linear Regression assumes relationship between variables is?,Linear,Non-linear,Random,Complex,A
+977,ML,Algorithms,moderate_1,Logistic Regression is used for?,Regression problems,Classification problems,Clustering,Reinforcement,B
+978,ML,Algorithms,moderate_1,Decision Tree splits data using?,Entropy or Gini index,Random value,Distance measure,Correlation,A
+979,ML,Algorithms,moderate_1,Naive Bayes is based on?,Bayes Theorem,Decision boundary,Gradient descent,Information gain,A
+980,ML,Algorithms,moderate_1,KNN algorithm works on?,Distance metric,Probability,Entropy,Clusters,A
+981,ML,Algorithms,moderate_1,SVM finds?,Nearest neighbor,Hyperplane separating classes,Probability density,Centroid,B
+982,ML,Evaluation,moderate_1,Confusion matrix shows?,Data distribution,Prediction results,Feature correlation,Model hyperparameters,B
+983,ML,Evaluation,moderate_1,Precision measures?,True positives among predicted positives,False negatives,True negatives,Recall rate,A
+984,ML,Evaluation,moderate_1,Recall is also known as?,Sensitivity,Specificity,Accuracy,Precision,A
+985,ML,Evaluation,moderate_1,F1 Score is the?,Sum of precision and recall,Product of precision and recall,Harmonic mean of precision and recall,None,C
+986,ML,Feature Engineering,moderate_1,Dimensionality reduction is used to?,Reduce number of features,Increase accuracy,Remove missing data,Encode labels,A
+987,ML,Feature Engineering,moderate_1,PCA stands for?,Principal Component Analysis,Primary Clustering Algorithm,Partial Classification Approach,Probability Component Analyzer,A
+988,ML,Model Evaluation,moderate_1,Cross-validation helps to?,Measure model performance,Split labels,Train multiple models,Increase overfitting,A
+989,ML,Model Training,moderate_1,Hyperparameters are?,Learned parameters,Tunable settings for training,Random variables,Testing data,B
+990,ML,Data Preprocessing,moderate_1,Encoding categorical variables means?,Converting text to numeric,Deleting rows,Normalizing values,Adding noise,A
+991,ML,Overfitting,moderate_2,Regularization helps to?,Reduce overfitting,Increase overfitting,Improve accuracy always,Add features,A
+992,ML,Regularization,moderate_2,L1 regularization is also called?,Ridge,Lasso,ElasticNet,None,B
+993,ML,Regularization,moderate_2,L2 regularization is also called?,Ridge,Lasso,Dropout,Logistic,A
+994,ML,Optimization,moderate_2,Gradient Descent is used for?,Minimizing loss function,Maximizing accuracy,Feature scaling,Data cleaning,A
+995,ML,Optimization,moderate_2,Learning rate controls?,Size of weight updates,Number of layers,Model accuracy,Batch size,A
+996,ML,Optimization,moderate_2,Epoch refers to?,One pass over training data,One feature iteration,One model,One variable,A
+997,ML,Model Evaluation,moderate_2,A good model should have?,High bias,High variance,"Low bias, low variance",High complexity,C
+998,ML,Algorithms,moderate_2,Ensemble learning combines?,Multiple models,Single model,Training data only,Feature scaling,A
+999,ML,Ensemble Learning,moderate_2,Random Forest is an example of?,Bagging,Boosting,Regression,Clustering,A
+1000,ML,Ensemble Learning,moderate_2,AdaBoost focuses on?,Misclassified instances,Correct predictions,Random samples,All data equally,A
+1001,ML,Neural Networks,hard,Neuron in ANN performs?,Linear transformation,Non-linear transformation using activation,Gradient check,Feature normalization,B
+1002,ML,Neural Networks,hard,Activation function introduces?,Non-linearity,Linearity,Regularization,Bias,A
+1003,ML,Neural Networks,hard,Common activation function?,ReLU,Mean,Covariance,Gradient,A
+1004,ML,Neural Networks,hard,Backpropagation updates?,Weights,Layers,Activation,Bias only,A
+1005,ML,Neural Networks,hard,CNNs are mainly used for?,Image data,Text data,Time series,Audio,A
+1006,ML,Neural Networks,hard,RNNs are mainly used for?,Sequential data,Static images,Structured data,Graphs,A
+1007,ML,Neural Networks,hard,Deep learning differs from ML by?,Using neural networks with multiple layers,Using less data,No optimization,Symbolic computation,A
+1008,ML,Algorithms,hard,Gradient boosting combines models?,Sequentially,In parallel,Randomly,With dropout,A
+1009,ML,Algorithms,hard,Support Vector Machines use?,Kernel functions,Trees,Distance only,Gradient only,A
+1010,ML,Ethics,hard,Bias in ML models occurs due to?,Skewed training data,Large data,Good preprocessing,Feature scaling,A
+1011,ML,Ethics,hard,Fairness in ML aims to?,Ensure equal performance for all groups,Reduce accuracy,Increase complexity,Randomize labels,A
+1012,ML,Ethics,hard,Model interpretability helps to?,Understand decisions made by model,Reduce size,Remove bias,Increase speed,A
+1013,ML,Limitations,hard,ML model may fail when?,Data is biased,Data is clean,Features are normalized,Model is simple,A
+1014,ML,Limitations,hard,The curse of dimensionality refers to?,Too many features degrading performance,Lack of labels,Missing values,Noisy data,A
+1015,ML,Applications,hard,Recommendation systems use?,Collaborative filtering,Random forests,Logistic regression,None,A
+1016,ML,Applications,hard,Sentiment analysis is an application of?,NLP,Image processing,Time series,Audio processing,A
+1017,ML,Applications,hard,Spam filtering uses?,Classification,Regression,Clustering,Dimensionality reduction,A
+1018,ML,Applications,hard,Credit scoring is example of?,Classification,Clustering,Reinforcement,Regression,A
+1019,ML,Ethics,hard,Adversarial attacks target?,Neural networks,Decision trees,Linear regression,PCA,A
+1020,ML,Emerging Trends,hard,Federated Learning focuses on?,Training across multiple devices without sharing data,Centralized training,Cloud storage,Unsupervised labeling,A
+1021,OOP,OOP Basics,easy,Which feature of OOP binds data and functions together?,Inheritance,Encapsulation,Abstraction,Polymorphism,B
+1022,OOP,Inheritance,easy,Which type of inheritance allows a class to inherit from more than one base class?,Single,Multiple,Multilevel,Hierarchical,B
+1023,OOP,Polymorphism,easy,Which keyword is used to define a virtual function in C++?,virtual,override,abstract,friend,A
+1024,OOP,OOP Basics,easy,Which of the following is not a feature of OOP?,Encapsulation,Inheritance,Compilation,Polymorphism,C
+1025,OOP,Encapsulation,easy,Data hiding is achieved using which OOP feature?,Polymorphism,Encapsulation,Inheritance,Abstraction,B
+1026,OOP,Abstraction,easy,Which concept hides implementation details from users?,Encapsulation,Polymorphism,Abstraction,Inheritance,C
+1027,OOP,Constructor,easy,Which function is automatically called when an object is created?,Destructor,Constructor,Virtual,Inline,B
+1028,OOP,Destructor,easy,Which function is automatically called when an object is destroyed?,Constructor,Virtual,Destructor,Static,C
+1029,OOP,OOP Basics,easy,Which of these represents a blueprint for objects?,Function,Class,Variable,Loop,B
+1030,OOP,Access Specifier,easy,Which access specifier allows access from anywhere?,Private,Protected,Public,Static,C
+1031,OOP,File Handling,easy,Which class is used to write data to files in C++?,ifstream,ofstream,fstream,istream,B
+1032,OOP,Function Overloading,easy,Function overloading is an example of?,Encapsulation,Polymorphism,Abstraction,Inheritance,B
+1033,OOP,Static,easy,Static members are shared by?,One object,All objects,Derived class only,Base class only,B
+1034,OOP,Friend Function,easy,Friend functions can access?,Private and protected members,Public members only,Static members only,None,A
+1035,OOP,Templates,easy,Templates in C++ are used for?,Inheritance,Generic programming,Overloading,Encapsulation,B
+1036,OOP,Inheritance,moderate_1,Which inheritance type can lead to diamond problem?,Single,Multiple,Hierarchical,Multilevel,B
+1037,OOP,Polymorphism,moderate_1,Runtime polymorphism is achieved using?,Virtual functions,Function overloading,Templates,Friend functions,A
+1038,OOP,Abstraction,moderate_1,Abstract classes contain?,Only concrete methods,At least one pure virtual function,Only data members,Constructors,B
+1039,OOP,Encapsulation,moderate_1,Encapsulation helps in achieving?,Reusability,Security,Inheritance,Efficiency,B
+1040,OOP,OOP Basics,moderate_1,An object is an instance of?,Function,Class,Operator,Template,B
+1041,OOP,Constructor,moderate_1,Default constructor takes how many arguments?,Zero,One,Two,Variable,A
+1042,OOP,Constructor,moderate_1,Constructors cannot be?,Overloaded,Private,Virtual,Public,C
+1043,OOP,Destructor,moderate_1,Destructors cannot have?,Arguments,Return type,Both,None,C
+1044,OOP,Access Specifier,moderate_1,Private members of a class are accessible to?,All objects,Friend functions,Derived class,None,B
+1045,OOP,Operator Overloading,moderate_1,Which operator cannot be overloaded?,+,=,::,[],C
+1046,OOP,Exception Handling,moderate_1,Which keyword is used to handle exceptions?,throw,try,catch,All,D
+1047,OOP,File Handling,moderate_1,Which function is used to read a single character from file?,get(),getline(),read(),scan(),A
+1048,OOP,Templates,moderate_1,Template function allows?,Multiple data types,Only int type,One data type,No data type,A
+1049,OOP,Static,moderate_1,Static data members are initialized outside class using?,object name,class name and scope resolution,constructor,main(),B
+1050,OOP,Friend Function,moderate_1,Friend function is declared using keyword?,public,friend,virtual,protected,B
+1051,OOP,Polymorphism,moderate_2,Virtual functions are resolved at?,Compile time,Runtime,Both,Link time,B
+1052,OOP,Inheritance,moderate_2,"In multiple inheritance, ambiguity is resolved using?",Scope resolution,Casting,Templates,Friend function,A
+1053,OOP,Templates,moderate_2,Which keyword is used to define a template?,template,generic,typedef,typename,A
+1054,OOP,OOP Basics,moderate_2,Dynamic binding is also known as?,Early binding,Late binding,Static binding,Method overloading,B
+1055,OOP,Constructor,moderate_2,"If no constructor is defined, compiler provides?",Default constructor,Copy constructor,Parameterized constructor,None,A
+1056,OOP,Constructor,moderate_2,Copy constructor takes argument as?,By value,By reference,By pointer,By address,B
+1057,OOP,Destructor,moderate_2,Destructors are called in which order?,Random,Top-down,Reverse of creation,Alphabetical,C
+1058,OOP,Exception Handling,moderate_2,What happens if exception is not caught?,Program terminates,Skips error,Ignores,Continues,A
+1059,OOP,OOP Basics,moderate_2,Binding of data and function into single unit is called?,Abstraction,Encapsulation,Inheritance,Overloading,B
+1060,OOP,Abstraction,moderate_2,Abstract class can have?,Only abstract methods,Pure virtual and concrete methods,Only static members,Only constructors,B
+1061,OOP,File Handling,moderate_2,Which function moves file pointer to beginning?,seekp(),seekg(),clear(),rewind(),B
+1062,OOP,Templates,moderate_2,Function templates help in?,Overloading,Generic operations,Encapsulation,Data hiding,B
+1063,OOP,Polymorphism,hard,Pure virtual function is declared with value?,0,1,-1,None,A
+1064,OOP,Inheritance,hard,Which access specifier is used for private inheritance?,private,protected,public,friend,A
+1065,OOP,Constructor,hard,Which constructor is called during object copy?,Default,Copy,Parameterized,None,B
+1066,OOP,Operator Overloading,hard,Operator overloading provides?,Abstraction,Polymorphism,Encapsulation,Inheritance,B
+1067,OOP,Exception Handling,hard,Throwing an exception transfers control to?,try,catch,throw,exit,B
+1068,OOP,Polymorphism,hard,Virtual destructor ensures?,Proper cleanup in inheritance,Faster execution,Static binding,None,A
+1069,OOP,Static,hard,Static function cannot access?,Static data,Non-static members,Public members,Private data,B
+1070,OOP,Inheritance,hard,Virtual base class solves?,Constructor problem,Diamond problem,Destructor problem,Polymorphism,B
+1071,OOP,File Handling,hard,EOF stands for?,End of Field,End of File,Error on File,Exit on Function,B
+1072,OOP,Abstraction,hard,Interface contains?,All abstract methods,One method,Data members,Constructors,A
+1073,OOP,Templates,hard,Which of the following supports generic programming?,Macros,Templates,Functions,Objects,B
+1074,OOP,Constructor,hard,Which constructor gets called for object copy in same class?,Copy,Default,Static,Virtual,A
+1075,OOP,Destructor,hard,Destructor cannot be?,Overloaded,Default,Virtual,Inline,A
+1076,OOP,Friend Function,hard,Friend class can access?,Private and protected,Only public,Only static,None,A
+1077,OOP,Exception Handling,hard,Which keyword is used to generate an exception?,throw,try,catch,finally,A
+1078,OOP,OOP Basics,hard,OOP improves?,Code complexity,Code reusability,Execution time,Memory usage,B
+1079,OOP,Polymorphism,hard,Virtual keyword is used for?,Static binding,Dynamic binding,Overloading,Inheritance,B
+1080,OOP,OOP Basics,hard,Main advantage of OOP is?,Faster I/O,Better modularity,Less RAM usage,Fewer lines of code,B
+1081,OS,Introduction,easy,Which of the following is not an operating system?,Windows,Linux,Oracle,Unix,C
+1082,OS,Introduction,easy,Which of the following is the core of an operating system?,Kernel,Process,Thread,Command,A
+1083,OS,Process Management,easy,Which process state comes after 'New'?,Waiting,Running,Ready,Terminated,C
+1084,OS,Process Management,easy,PCB stands for?,Process Control Block,Program Control Block,Process Communication Block,Process Code Block,A
+1085,OS,CPU Scheduling,easy,Which of the following is non-preemptive scheduling?,Round Robin,FCFS,SJF,Priority,B
+1086,OS,CPU Scheduling,easy,Time quantum is used in which algorithm?,FCFS,SJF,Round Robin,Priority,C
+1087,OS,Deadlock,easy,Which of the following is not a necessary condition for deadlock?,Hold and Wait,Preemption,Circular Wait,Mutual Exclusion,B
+1088,OS,Memory Management,easy,Paging is a method of?,Fragmentation,Memory management,CPU scheduling,Deadlock handling,B
+1089,OS,Memory Management,easy,Page table is used for?,Scheduling,Address translation,Process synchronization,Deadlock,B
+1090,OS,File Management,easy,Which command is used to view file content in Linux?,cat,ls,mkdir,pwd,A
+1091,OS,Disk Scheduling,easy,Which disk scheduling algorithm is also called elevator algorithm?,FCFS,SSTF,SCAN,LOOK,C
+1092,OS,Synchronization,easy,Semaphore is used to solve?,Paging,Synchronization,Deadlock,Swapping,B
+1093,OS,Interprocess Communication,easy,Which mechanism allows process to communicate with each other?,Threading,IPC,Paging,Deadlock,B
+1094,OS,Virtual Memory,easy,Virtual memory is implemented using?,Main memory,Secondary memory,Cache memory,Registers,B
+1095,OS,File Management,easy,File allocation method that uses linked list of disk blocks is?,Contiguous,Linked,Indexed,Sequential,B
+1096,OS,CPU Scheduling,moderate_1,Which algorithm gives minimum average waiting time for given set of processes?,FCFS,SJF,Priority,Round Robin,B
+1097,OS,CPU Scheduling,moderate_1,"In Round Robin, if time quantum is too large, it behaves like?",FCFS,SJF,Priority,Multilevel,A
+1098,OS,CPU Scheduling,moderate_1,Priority scheduling can lead to?,Starvation,Deadlock,Paging,Fragmentation,A
+1099,OS,Memory Management,moderate_1,Internal fragmentation occurs in?,Paging,Segmentation,Fixed partitioning,Variable partitioning,C
+1100,OS,Memory Management,moderate_1,External fragmentation occurs in?,Paging,Segmentation,Fixed partitioning,Dynamic partitioning,D
+1101,OS,Deadlock,moderate_1,Banker's algorithm is used for?,Scheduling,Deadlock avoidance,Paging,Synchronization,B
+1102,OS,Deadlock,moderate_1,Which of the following is a deadlock prevention method?,Hold and Wait,Circular wait,Resource preemption,Mutual exclusion,C
+1103,OS,Virtual Memory,moderate_1,Which algorithm has minimum number of page faults?,FIFO,LRU,Optimal,Clock,C
+1104,OS,Virtual Memory,moderate_1,Thrashing occurs when?,CPU utilization is high,CPU utilization is low,Memory is large,None,B
+1105,OS,File Management,moderate_1,Which file allocation method suffers from external fragmentation?,Linked,Indexed,Contiguous,All,C
+1106,OS,Disk Scheduling,moderate_1,Which disk scheduling algorithm gives best performance?,FCFS,SSTF,SCAN,LOOK,B
+1107,OS,Interprocess Communication,moderate_1,Shared memory and message passing are methods of?,Synchronization,Communication,Paging,Segmentation,B
+1108,OS,Synchronization,moderate_1,Critical section is a part of?,Process,Memory,File,Disk,A
+1109,OS,Synchronization,moderate_1,Mutex is used for?,Deadlock,Mutual exclusion,Scheduling,Paging,B
+1110,OS,Process Management,moderate_1,Process that finishes execution but still in process table is?,Zombie,Orphan,Deadlock,Blocked,A
+1111,OS,CPU Scheduling,moderate_2,Turnaround time = ?,Waiting + Response,Execution + Waiting,Response + Burst,Arrival + Waiting,B
+1112,OS,CPU Scheduling,moderate_2,"If 3 processes have burst times 4, 3, 5 in FCFS, average waiting time is?",3,4,5,6,A
+1113,OS,Deadlock,moderate_2,Circular wait condition implies?,One process waiting another,Chain of processes waiting for each other,One resource blocked,CPU waiting for I/O,B
+1114,OS,Deadlock,moderate_2,Which condition must be broken to avoid deadlock?,Mutual exclusion,Hold and wait,No preemption,Circular wait,D
+1115,OS,Memory Management,moderate_2,Page fault occurs when?,Page is not in memory,Page is in memory,Page loaded,None,A
+1116,OS,Virtual Memory,moderate_2,Demand paging is related to?,Swapping,Memory allocation,Virtual memory,File system,C
+1117,OS,Virtual Memory,moderate_2,Effective access time depends on?,Hit ratio,Miss ratio,Page fault rate,All,D
+1118,OS,Synchronization,moderate_2,Race condition occurs when?,Two processes share data,Two processes in deadlock,Multiple processes modify shared data,Memory full,C
+1119,OS,Disk Scheduling,moderate_2,"If head is at 53 and requests are [98,37,122,14,124,65,67], using SSTF next move is to?",37,65,67,98,B
+1120,OS,Disk Scheduling,moderate_2,LOOK algorithm moves?,To end always,To nearest request then reverse,To middle,To highest only,B
+1121,OS,Memory Management,hard,Beladyâ€™s anomaly occurs in?,FIFO,LRU,Optimal,Clock,A
+1122,OS,Virtual Memory,hard,Working set model is used for?,Deadlock detection,Thrashing control,Scheduling,Paging,B
+1123,OS,Deadlock,hard,Resource allocation graph with cycle implies?,Deadlock,No deadlock,Possible deadlock,Safe state,C
+1124,OS,CPU Scheduling,hard,Which scheduler selects process for execution?,Long-term,Short-term,Medium-term,Dispatcher,B
+1125,OS,CPU Scheduling,hard,Context switch time depends on?,Process size,CPU speed,Memory size,All,D
+1126,OS,Memory Management,hard,Best fit algorithm suffers from?,Internal fragmentation,External fragmentation,Thrashing,Deadlock,B
+1127,OS,File Management,hard,Indexed allocation uses?,Index block,Directory block,Sequential block,Free block,A
+1128,OS,Synchronization,hard,Producer-consumer problem uses?,Mutex,Semaphore,Monitor,All,D
+1129,OS,Deadlock,hard,Safe sequence in Bankerâ€™s algorithm means?,No deadlock,Possible deadlock,Unsafe state,None,A
+1130,OS,Virtual Memory,hard,Page replacement algorithm decides?,Which page to remove,Which page to load,How many frames,None,A
+1131,OS,Memory Management,hard,Paging avoids?,Internal fragmentation,External fragmentation,Thrashing,Deadlock,B
+1132,OS,Process Management,hard,Context switch saves?,Registers and PC,Only PC,Only registers,None,A
+1133,OS,Process Management,hard,Zombie process means?,Finished but not removed,Running,Blocked,Ready,A
+1134,OS,Synchronization,hard,Binary semaphore value range?,0 to 1,1 to n,-1 to 1,0 to n,A
+1135,OS,CPU Scheduling,hard,Gantt chart is used to represent?,Process sequence,Memory allocation,Page table,File system,A
+1136,OS,Virtual Memory,hard,Page fault rate increases with?,More frames,Less frames,Equal frames,None,B
+1137,OS,File Management,hard,Directory structure in Linux is?,Single level,Tree,Graph,Flat,B
+1138,OS,Synchronization,hard,Deadlock and starvation can be prevented using?,Semaphore,Scheduler,Monitor,All,D
+1139,OS,Disk Scheduling,hard,Disk scheduling aims to?,Minimize seek time,Increase seek time,Reduce throughput,None,A
+1140,OS,Virtual Memory,hard,When a process tries to access page not in memory it causes?,Thrashing,Page fault,Deadlock,Swapping,B
+1141,WebTech,HTML,easy,HTML stands for?,HyperText Markup Language,HighText Machine Language,HyperTabular Markup Language,None,A
+1142,WebTech,HTML,easy,HTML is used to?,Create dynamic pages,Structure a webpage,Style content,Store data,B
+1143,WebTech,HTML,easy,HTML documents are saved with extension?,.htm or .html,.txt,.doc,.css,A
+1144,WebTech,HTML,easy,The <head> tag contains?,Main content,Metadata and links,Title only,Body,B
+1145,WebTech,HTML,easy,The <br> tag is used for?,Line break,Bold text,Horizontal line,Paragraph,A
+1146,WebTech,HTML,easy,Anchor tag is used for?,Images,Links,Tables,Lists,B
+1147,WebTech,HTML,easy,<img> tag requires which attribute?,src,href,link,alt,A
+1148,WebTech,HTML,easy,Which tag is used to create a table row?,<tr>,<td>,<th>,<table>,A
+1149,WebTech,HTML,easy,Ordered list uses?,<ol>,<ul>,<li>,<list>,A
+1150,WebTech,HTML,easy,Form elements are enclosed in?,<form> tag,<input>,<fieldset>,<body>,A
+1151,WebTech,HTML,easy,"<input type=""password""> is used for?",Numeric input,Hidden text,Password field,Date,C
+1152,WebTech,HTML,easy,HTML5 introduced which tag?,<footer>,<center>,<marquee>,<font>,A
+1153,WebTech,CSS,easy,CSS stands for?,Cascading Style Sheets,Color Style Syntax,Creative Styling Sheet,None,A
+1154,WebTech,CSS,easy,Inline CSS is written using?,style attribute,tag,External file,None,A
+1155,WebTech,CSS,easy,External CSS file extension is?,.css,.html,.js,.scss,A
+1156,WebTech,CSS,moderate_1,CSS is used for?,Structure,Styling,Data storage,Server scripting,B
+1157,WebTech,CSS,moderate_1,Property to change text color?,color,font,text,bgcolor,A
+1158,WebTech,CSS,moderate_1,Property to set background color?,bg,background-color,color-bg,back,B
+1159,WebTech,CSS,moderate_1,ID selector in CSS starts with?,#,.,@,*,A
+1160,WebTech,CSS,moderate_1,Class selector in CSS starts with?,.,#,%,@,A
+1161,WebTech,CSS,moderate_1,Box model includes?,"Margin, Border, Padding, Content",Text only,Image only,Colors,A
+1162,WebTech,CSS,moderate_1,Property to align text center?,text-align,text-position,align-text,center-text,A
+1163,WebTech,CSS,moderate_1,Flexbox is used for?,Layout alignment,Color styling,Animations,Fonts,A
+1164,WebTech,CSS,moderate_1,CSS Grid is used for?,2D layouts,1D layouts,Images,Background,A
+1165,WebTech,CSS,moderate_1,Responsive design uses?,Media queries,Inline styles,Static sizes,JavaScript,A
+1166,WebTech,JavaScript,moderate_1,JavaScript is a?,Scripting language,Markup language,Styling tool,Database,A
+1167,WebTech,JavaScript,moderate_1,JavaScript runs on?,Browser,Server only,Compiler,Database,A
+1168,WebTech,JavaScript,moderate_1,Which symbol is used for comments in JS?,//,#,/* */,Both A and C,D
+1169,WebTech,JavaScript,moderate_1,"var, let, const are used to?",Define variables,Create loops,Call functions,Define arrays,A
+1170,WebTech,JavaScript,moderate_1,typeof(5) returns?,number,string,integer,None,A
+1171,WebTech,JavaScript,moderate_2,Function in JS is declared using?,function keyword,func,declare,def,A
+1172,WebTech,JavaScript,moderate_2,Arrow functions introduced in?,ES6,ES5,HTML5,ES7,A
+1173,WebTech,JavaScript,moderate_2,DOM stands for?,Document Object Model,Data Object Module,Document Oriented Model,None,A
+1174,WebTech,JavaScript,moderate_2,document.getElementById() returns?,HTML element,Style,Event,Array,A
+1175,WebTech,JavaScript,moderate_2,InnerHTML is used to?,Modify element content,Change CSS,Load images,None,A
+1176,WebTech,JavaScript,moderate_2,addEventListener() is used for?,Handling events,Styling,Animation,Storage,A
+1177,WebTech,JavaScript,moderate_2,setTimeout() executes after?,Specific time delay,Immediately,Random delay,Loop,A
+1178,WebTech,JavaScript,moderate_2,JSON stands for?,JavaScript Object Notation,Java Syntax Object Name,Just Simple Object Name,None,A
+1179,WebTech,JavaScript,moderate_2,Which is used to store key-value pairs locally?,localStorage,cookies,cache,session,A
+1180,WebTech,JavaScript,moderate_2,Which converts JSON to object?,JSON.parse(),JSON.stringify(),eval(),toJSON(),A
+1181,WebTech,HTML,hard,HTML5 supports which API?,Geolocation API,Storage API,Canvas API,All,D
+1182,WebTech,HTML,hard,Semantic elements include?,",",",",",",",",B
+1183,WebTech,HTML,hard,Which tag defines a navigation bar?,,,,,A
+1184,WebTech,CSS,hard,CSS3 introduced?,Transitions & Animations,Tables,Frames,Center tag,A
+1185,WebTech,CSS,hard,Pseudo-class example?,:hover,.hover,#hover,hover(),A
+1186,WebTech,CSS,hard,Z-index is used for?,Stacking order,Font color,Margin,Alignment,A
+1187,WebTech,CSS,hard,Keyframes are used for?,Animation,Borders,Alignment,Fonts,A
+1188,WebTech,CSS,hard,Transform property is used for?,"Rotate, scale, skew",Color,Font,Image,A
+1189,WebTech,CSS,hard,Media query syntax starts with?,@media,media(),.media,if(media),A
+1190,WebTech,JavaScript,hard,Callback function is?,Function passed as argument,Return value,Object,Method,A
+1191,WebTech,JavaScript,hard,Promise handles?,Asynchronous operations,Loops,DOM,CSS,A
+1192,WebTech,JavaScript,hard,Async/Await is used for?,Handling asynchronous code,CSS styling,DOM parsing,Form submission,A
+1193,WebTech,JavaScript,hard,fetch() API is used for?,Data fetching via HTTP,Storing data,Parsing JSON,None,A
+1194,WebTech,JavaScript,hard,Event bubbling means?,Event propagates from child to parent,Parent to child,Loops,None,A
+1195,WebTech,JavaScript,hard,Closure in JS means?,Function with preserved scope,Class,Loop,Module,A
+1196,WebTech,JavaScript,hard,NaN means?,Not a Number,Null and None,Negative Number,None,A
+1197,WebTech,JavaScript,hard,typeof(null) returns?,object,null,undefined,string,A
+1198,WebTech,Web Storage,hard,sessionStorage stores data?,Per session,Permanently,In cookies,Cloud,A
+1199,WebTech,Web Storage,hard,localStorage data persists?,Until deleted,Until tab closed,For session,Temporarily,A
+1200,WebTech,Browser,hard,console.log() is used for?,Debugging output,HTML printing,CSS styling,None,A
