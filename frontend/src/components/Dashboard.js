@@ -8,6 +8,7 @@ import {
 } from 'recharts';
 import StreakCalendar from './StreakCalendar';
 import '../App.css';
+import { DEFAULT_SUBJECT_IMAGE, getSubjectImage } from '../utils/subjectImages';
 
 /* ── Inline sub-components ─────────────────────────────── */
 
@@ -57,36 +58,37 @@ const ScoreTrendChart = ({ trend }) => {
 };
 
 /* ── Icons for existing platform subjects ───────────────── */
+// eslint-disable-next-line no-unused-vars
 const ICON_MAP = {
-  'Cloud Computing': 'https://img.icons8.com/fluency/96/cloud.png',
-  'C Programming':   'https://img.icons8.com/fluency/96/c-programming.png',
-  'AT':              'https://img.icons8.com/fluency/96/flow-chart.png',
-  'Python':          'https://img.icons8.com/color/96/python--v1.png',
-  'Algorithm':       'https://img.icons8.com/fluency/96/sorting-arrows.png',
-  'CN':              'https://img.icons8.com/fluency/96/connected.png',
-  'CSCL':            'https://img.icons8.com/fluency/96/classroom.png',
-  'Data Structures': 'https://img.icons8.com/fluency/96/data-sheet.png',
-  'DBMS':            'https://img.icons8.com/fluency/96/database.png',
-  'DCN':             'https://img.icons8.com/fluency/96/satellite.png',
-  'DMS':             'https://img.icons8.com/fluency/96/math.png',
-  'DSMP':            'https://img.icons8.com/fluency/96/combo-chart.png',
-  'IoT':             'https://img.icons8.com/fluency/96/internet-of-things.png',
-  'Java':            'https://img.icons8.com/color/96/java-coffee-cup-logo--v1.png',
-  'Maths':           'https://img.icons8.com/fluency/96/calculator.png',
-  'ML':              'https://img.icons8.com/fluency/96/machine-learning.png',
-  'OOP':             'https://img.icons8.com/fluency/96/object.png',
-  'OS':              'https://img.icons8.com/fluency/96/workstation.png',
-  'WebTech':         'https://img.icons8.com/fluency/96/web.png',
+  'Cloud Computing': <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>,
+  'C Programming':   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>,
+  'AT':              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
+  'Python':          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>,
+  'Algorithm':       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
+  'CN':              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg>,
+  'CSCL':            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
+  'Data Structures': <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>,
+  'DBMS':            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>,
+  'DCN':             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg>,
+  'DMS':             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
+  'DSMP':            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
+  'IoT':             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg>,
+  'Java':            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>,
+  'Maths':           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
+  'ML':              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
+  'OOP':             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
+  'OS':              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
+  'WebTech':         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
   /* ── Icons for coming-soon subjects ── */
-  'JavaScript':         'https://img.icons8.com/color/96/javascript--v1.png',
-  'Android Dev':        'https://img.icons8.com/color/96/android-os.png',
-  'Cyber Security':     'https://img.icons8.com/fluency/96/cyber-security.png',
-  'DevOps':             'https://img.icons8.com/fluency/96/devops.png',
-  'Blockchain':         'https://img.icons8.com/fluency/96/blockchain.png',
-  'Game Development':   'https://img.icons8.com/fluency/96/game-controller.png',
-  'UI/UX Design':       'https://img.icons8.com/fluency/96/design.png',
-  'Software Engineering': 'https://img.icons8.com/fluency/96/source-code.png',
-  'default':            'https://img.icons8.com/fluency/96/book.png',
+  'JavaScript':         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>,
+  'Android Dev':        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
+  'Cyber Security':     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
+  'DevOps':             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
+  'Blockchain':         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
+  'Game Development':   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
+  'UI/UX Design':       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
+  'Software Engineering': <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>,
+  'default':            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
 };
 
 /* Subjects not yet in the exam platform — shown with Coming Soon badge */
@@ -180,7 +182,7 @@ const Dashboard = ({ user }) => {
         {/* ── HERO WELCOME CARD ── */}
         <div className="dash-hero-card">
           <div className="dash-hero-left">
-            <div className="dash-hero-greeting">{t(getGreeting())}, {firstName}! 👋</div>
+            <div className="dash-hero-greeting">{t(getGreeting())}, {firstName}!</div>
             <h1 className="dash-hero-title">
               {streak > 0
                 ? `You're on a ${streak}-day streak. Keep it up!`
@@ -190,29 +192,32 @@ const Dashboard = ({ user }) => {
               <span className={`level-tag level-${level.toLowerCase()}`}>{level}</span>
               {streak > 0 && (
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: 'rgba(255,255,255,0.9)' }}>
-                  <img src="https://img.icons8.com/fluency/24/fire-element.png" alt="fire" style={{ width: '18px', height: '18px' }} />
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>
                   {streak} day streak
                 </span>
               )}
               {dueReviews > 0 && (
                 <span onClick={() => navigate('/practice/Mixed')} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: 'white', background: 'rgba(255,255,255,0.2)', padding: '2px 8px', borderRadius: '4px' }}>
-                  <img src="https://img.icons8.com/fluency/24/box-important--v1.png" alt="review" style={{ width: '16px', height: '16px' }} />
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                   {dueReviews} Reviews Due
                 </span>
               )}
             </div>
           </div>
-          <div className="dash-hero-right" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <button className="btn btn-primary" onClick={() => navigate('/challenges')} style={{ width: '100%', background: 'var(--orange-400)', color: 'white', border: 'none', boxShadow: 'var(--shadow-md)' }}>
-              🔥 Daily Challenge
+          <div className="dash-hero-right" style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%', maxWidth: '240px' }}>
+            <button className="btn btn-primary" onClick={() => navigate('/subjects')} style={{ width: '100%', background: 'var(--orange-400)', color: 'white', border: 'none', boxShadow: 'var(--shadow-md)', padding: '12px 14px', fontSize: '14px', minWidth: '0' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ verticalAlign: 'middle' }}><path d="M9 17l-4-4 4-4"></path><path d="M15 7l4 4-4 4"></path></svg>
+                Test
+              </span>
             </button>
-            <button className="btn btn-white" onClick={() => navigate('/subjects')} style={{ width: '100%' }}>
-              <img src="/logo.png" alt="" style={{ width: '18px', height: '18px', objectFit: 'contain', marginRight: '6px' }} />
-              Browse Subjects
+            <button className="btn btn-white" onClick={() => navigate('/explain')} style={{ width: '100%', padding: '12px 14px', fontSize: '14px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ verticalAlign: 'middle' }}><path d="M12 20h9"></path><path d="M12 4h9"></path><path d="M4 9h16"></path><path d="M4 15h16"></path></svg>
+              Test Yourself
             </button>
-            <button className="btn btn-white" onClick={() => navigate('/resume')} style={{ width: '100%' }}>
-              <img src="https://img.icons8.com/fluency/24/resume.png" alt="" style={{ width: '18px', height: '18px', objectFit: 'contain', marginRight: '6px' }} />
-              Resume AI
+            <button className="btn btn-white" onClick={() => navigate('/project')} style={{ width: '100%', padding: '12px 14px', fontSize: '14px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ verticalAlign: 'middle' }}><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 10h18"></path></svg>
+              Mini Code Practice
             </button>
           </div>
           {/* decorative circles */}
@@ -223,16 +228,15 @@ const Dashboard = ({ user }) => {
         {/* ── STATS ROW ── */}
         <div className="stats-row" style={{ marginTop: '24px' }}>
           {[
-            { label: t('Tests Taken'),  value: stats.completed_tests || 0, icon: 'https://img.icons8.com/fluency/96/test-passed.png', sub: 'total' },
-            { label: t('Average Score'),    value: stats.avg_score || 0,       icon: 'https://img.icons8.com/fluency/96/combo-chart.png', sub: 'out of 100' },
-            { label: 'Best Score',   value: stats.best_score || 0,      icon: 'https://img.icons8.com/fluency/96/trophy.png',      sub: 'personal best' },
-            { label: 'Accuracy',     value: `${stats.avg_accuracy || 0}%`, icon: 'https://img.icons8.com/fluency/96/target.png', sub: 'avg accuracy' },
-            { label: 'Day Streak',   value: streak,                     icon: 'https://img.icons8.com/fluency/96/fire-element.png', sub: maxStreak > 0 ? `Best: ${maxStreak}d` : '—' },
+            { label: t('Tests Taken'),  value: stats.completed_tests || 0, icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>, sub: 'total' },
+            { label: t('Average Score'),    value: stats.avg_score || 0,       icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>, sub: 'out of 100' },
+            { label: 'Best Score',   value: stats.best_score || 0,      icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path></svg>,      sub: 'personal best' },
+            { label: 'Accuracy',     value: `${stats.avg_accuracy || 0}%`, icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>, sub: 'avg accuracy' },
+            { label: 'Day Streak',   value: streak,                     icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>, sub: maxStreak > 0 ? `Best: ${maxStreak}d` : '—' },
           ].map(s => (
             <div className="stat-card" key={s.label}>
-              <div className="stat-icon">
-                <img src={s.icon} alt={s.label} style={{ width: '38px', height: '38px', objectFit: 'contain' }}
-                  onError={(e) => { e.target.style.display = 'none'; }} />
+              <div className="stat-icon" style={{ color: 'var(--orange-500)', display: 'flex', justifyContent: 'center', marginBottom: '12px' }}>
+                {s.icon}
               </div>
               <div className="stat-value">{s.value}</div>
               <div className="stat-label">{s.label}</div>
@@ -246,9 +250,7 @@ const Dashboard = ({ user }) => {
           <div className="dash-section-head" style={{ marginBottom: '14px', alignItems: 'flex-start' }}>
             <div>
               <h2 style={{ margin: 0 }}>
-                <img src="https://img.icons8.com/fluency/24/calendar.png" alt=""
-                  style={{ width: '20px', height: '20px', verticalAlign: 'middle', marginRight: '8px' }}
-                  onError={(e) => { e.target.style.display = 'none'; }} />
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign: 'middle', marginRight: '8px', color: 'var(--orange-500)'}}><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                 Study Streak Calendar
               </h2>
               <p style={{ color: 'var(--text-muted)', fontSize: '12px', margin: '4px 0 0' }}>
@@ -285,8 +287,7 @@ const Dashboard = ({ user }) => {
                   <div className="card">
                     <div className="dash-section-head" style={{ marginBottom: '18px' }}>
                       <h2 style={{ margin: 0 }}>
-                        <img src="https://img.icons8.com/fluency/24/books.png" alt=""
-                          style={{ width: '20px', height: '20px', verticalAlign: 'middle', marginRight: '8px' }} />
+                        
                         Popular Subjects
                       </h2>
                       <button className="btn btn-secondary" style={{ padding: '6px 16px', fontSize: '12px' }}
@@ -295,9 +296,9 @@ const Dashboard = ({ user }) => {
                     <div className="quick-subject-grid">
                       {POPULAR_SUBJECTS.map(subj => (
                         <div key={subj} className="quick-subject-card" onClick={() => navigate('/subjects')}>
-                          <img src={ICON_MAP[subj] || ICON_MAP.default} alt={subj}
+                          <img src={getSubjectImage(subj)} alt={subj}
                             className="quick-subject-img"
-                            onError={(e) => { e.target.src = ICON_MAP.default; }} />
+                            onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = DEFAULT_SUBJECT_IMAGE; }} />
                           <span className="quick-subject-name">{subj}</span>
                         </div>
                       ))}
@@ -313,9 +314,7 @@ const Dashboard = ({ user }) => {
                   <div className="dash-section-head" style={{ marginBottom: '4px' }}>
                     <div>
                       <h2 style={{ margin: 0 }}>
-                        <img src="https://img.icons8.com/fluency/24/star.png" alt=""
-                          style={{ width: '20px', height: '20px', verticalAlign: 'middle', marginRight: '8px' }}
-                          onError={(e) => { e.target.style.display = 'none'; }} />
+                        
                         Subjects For You
                       </h2>
                       <p style={{ color: 'var(--text-muted)', fontSize: '12px', margin: '4px 0 0' }}>
@@ -373,10 +372,10 @@ const Dashboard = ({ user }) => {
                                   }}>SOON</span>
                                 )}
                                 <img
-                                  src={ICON_MAP[subj] || ICON_MAP.default}
+                                  src={getSubjectImage(subj)}
                                   alt={subj}
                                   className="quick-subject-img"
-                                  onError={(e) => { e.target.src = ICON_MAP.default; }}
+                                  onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = DEFAULT_SUBJECT_IMAGE; }}
                                 />
                                 <span className="quick-subject-name">{subj}</span>
                               </div>
@@ -395,7 +394,7 @@ const Dashboard = ({ user }) => {
               <div className="card">
                 <div className="dash-section-head">
                   <h2 style={{ margin: 0 }}>
-                    <img src="https://img.icons8.com/fluency/24/combo-chart.png" alt="" style={{ width: '20px', height: '20px', verticalAlign: 'middle', marginRight: '8px' }} />
+                    
                     Score Trend
                   </h2>
                   <span className="chart-subtitle">Last {trend.length} tests</span>
@@ -409,7 +408,7 @@ const Dashboard = ({ user }) => {
               <div className="card">
                 <div className="dash-section-head">
                   <h2 style={{ margin: 0 }}>
-                    <img src="https://img.icons8.com/fluency/24/trophy.png" alt="" style={{ width: '20px', height: '20px', verticalAlign: 'middle', marginRight: '8px' }} />
+                    
                     Achievements
                   </h2>
                   <span className="badge-count">{badges.length} earned</span>
@@ -433,7 +432,7 @@ const Dashboard = ({ user }) => {
             {Object.keys(subject_best).length > 0 && (
               <div className="card">
                 <h2 style={{ marginBottom: '8px' }}>
-                  <img src="https://img.icons8.com/fluency/24/graduation-cap.png" alt="" style={{ width: '20px', height: '20px', verticalAlign: 'middle', marginRight: '8px' }} />
+                  
                   Subject Mastery
                 </h2>
                 <ResponsiveContainer width="100%" height={220}>
@@ -453,7 +452,7 @@ const Dashboard = ({ user }) => {
             <div className="card">
               <div className="dash-section-head" style={{ marginBottom: '14px' }}>
                 <h2 style={{ margin: 0 }}>
-                  <img src="https://img.icons8.com/fluency/24/test-passed.png" alt="" style={{ width: '20px', height: '20px', verticalAlign: 'middle', marginRight: '8px' }} />
+                  
                   Recent Tests
                 </h2>
                 <button className="btn btn-secondary" style={{ padding: '5px 12px', fontSize: '11px' }}
@@ -471,10 +470,10 @@ const Dashboard = ({ user }) => {
                   {test_history.slice(0, 5).map(t => (
                     <div key={t.test_id} className="recent-test-row" onClick={() => t.status === 'completed' && navigate(`/results/${t.test_id}`)}>
                       <img
-                        src={ICON_MAP[t.subject] || ICON_MAP.default}
+                        src={getSubjectImage(t.subject)}
                         alt={t.subject}
-                        style={{ width: '36px', height: '36px', objectFit: 'contain', flexShrink: 0 }}
-                        onError={(e) => { e.target.src = ICON_MAP.default; }}
+                        style={{ width: '42px', height: '42px', objectFit: 'contain', borderRadius: '8px', padding: '6px', background: 'white', flexShrink: 0 }}
+                        onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = DEFAULT_SUBJECT_IMAGE; }}
                       />
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{ fontWeight: 700, fontSize: '13px', marginBottom: '2px' }}>{t.subject}</div>
@@ -497,7 +496,7 @@ const Dashboard = ({ user }) => {
             {/* Profile Quick View */}
             <div className="card">
               <h2 style={{ marginBottom: '16px' }}>
-                <img src="https://img.icons8.com/fluency/24/user.png" alt="" style={{ width: '20px', height: '20px', verticalAlign: 'middle', marginRight: '8px' }} />
+                
                 Profile
               </h2>
               <div className="profile-mini">

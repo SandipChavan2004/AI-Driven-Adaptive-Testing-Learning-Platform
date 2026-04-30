@@ -33,6 +33,9 @@ if env_path.exists():
     print(f"JWT_SECRET_KEY: {'SET' if jwt_key else 'NOT SET'}")
     print(f"YOUTUBE_API_KEY: {'SET' if youtube_key else 'NOT SET'}")
     
+    openai_key = os.getenv('OPENAI_API_KEY')
+    print(f"OPENAI_API_KEY: {'SET' if openai_key else 'NOT SET'}")
+    
     # Now test connection
     if mongo_uri:
         print("\n" + "="*50)
@@ -51,6 +54,22 @@ if env_path.exists():
     else:
         print("\n[ERROR] MONGO_URI is not set in .env file")
         print("Please add: MONGO_URI=your_connection_string")
+    
+    # Test OpenAI API
+    if openai_key:
+        print("\n" + "="*50)
+        print("Testing OpenAI API connection...")
+        try:
+            from openai import OpenAI
+            client = OpenAI(api_key=openai_key)
+            # Simple test: list models
+            models = client.models.list()
+            print("[SUCCESS] OpenAI API connection successful!")
+            print(f"Available models: {len(models.data)} models")
+        except Exception as e:
+            print(f"[FAILED] OpenAI API error: {e}")
+    else:
+        print("\n[INFO] OPENAI_API_KEY not set - AI features disabled")
 else:
     print("\n[ERROR] .env file not found!")
     print("Please create a .env file in the backend folder with:")

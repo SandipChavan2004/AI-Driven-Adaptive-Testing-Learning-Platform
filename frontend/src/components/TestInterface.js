@@ -36,7 +36,6 @@ const TestInterface = ({ user }) => {
   const [terminationReason, setTerminationReason] = useState('');
   const [violationToast, setViolationToast]     = useState('');
   const [toastVisible, setToastVisible]         = useState(false);
-  const [proctoringReady, setProctoringReady]   = useState(false);
   
   const [showReflection, setShowReflection] = useState(false);
   const [reflectionText, setReflectionText] = useState('');
@@ -92,7 +91,6 @@ const TestInterface = ({ user }) => {
       setCurrentQuestion(response.data.question);
       setTimeStarted(Date.now());
       setTotalQuestions(response.data.num_questions || 10);
-      setProctoringReady(true);
     } catch (err) {
       console.error('Failed to start test:', err);
       alert('Failed to start test. Please try again.');
@@ -137,23 +135,23 @@ const TestInterface = ({ user }) => {
     // Block right-click
     const onContextMenu = (e) => {
       e.preventDefault();
-      showToast('⚠️ ' + VIOLATION_MESSAGES.contextmenu);
+      showToast('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#F59E0B"}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> Warning: ' + VIOLATION_MESSAGES.contextmenu);
     };
 
     // Block copy / cut / paste
-    const onCopy  = (e) => { e.preventDefault(); showToast('⚠️ ' + VIOLATION_MESSAGES.copy); };
-    const onCut   = (e) => { e.preventDefault(); showToast('⚠️ ' + VIOLATION_MESSAGES.cut); };
-    const onPaste = (e) => { e.preventDefault(); showToast('⚠️ ' + VIOLATION_MESSAGES.paste); };
+    const onCopy  = (e) => { e.preventDefault(); showToast('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#F59E0B"}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> Warning: ' + VIOLATION_MESSAGES.copy); };
+    const onCut   = (e) => { e.preventDefault(); showToast('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#F59E0B"}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> Warning: ' + VIOLATION_MESSAGES.cut); };
+    const onPaste = (e) => { e.preventDefault(); showToast('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#F59E0B"}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> Warning: ' + VIOLATION_MESSAGES.paste); };
 
     // Block keyboard shortcuts
     const onKeyDown = (e) => {
       if (e.ctrlKey && ['c', 'v', 'x', 'a'].includes(e.key.toLowerCase())) {
         e.preventDefault();
-        showToast('⚠️ ' + VIOLATION_MESSAGES.shortcut);
+        showToast('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#F59E0B"}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> Warning: ' + VIOLATION_MESSAGES.shortcut);
       }
       if (e.key === 'PrintScreen') {
         e.preventDefault();
-        showToast('⚠️ ' + VIOLATION_MESSAGES.screenshot);
+        showToast('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#F59E0B"}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> Warning: ' + VIOLATION_MESSAGES.screenshot);
       }
     };
 
@@ -264,7 +262,7 @@ const TestInterface = ({ user }) => {
     return (
       <div className="terminated-overlay">
         <div className="terminated-box">
-          <div className="terminated-icon">🚫</div>
+          <div className="terminated-icon"></div>
           <h1 className="terminated-title">Test Terminated</h1>
           <p className="terminated-subtitle">
             {terminationReason === 'tab_switch'
@@ -272,7 +270,7 @@ const TestInterface = ({ user }) => {
               : 'A proctoring violation was detected.'}
           </p>
           <div className="terminated-rule-box">
-            <h3>❗ Why was my test terminated?</h3>
+            <h3>Why was my test terminated?</h3>
             <ul>
               <li>Switching browser tabs or windows is <strong>strictly prohibited</strong>.</li>
               <li>This is enforced by automated proctoring — just like TCS NQT, AMCAT, and eLitmus exams.</li>
@@ -307,7 +305,7 @@ const TestInterface = ({ user }) => {
     return (
       <div className="terminated-overlay" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: 'var(--bg)', zIndex: 10000 }}>
         <div className="course-card" style={{ padding: '40px', width: '500px', maxWidth: '90%' }}>
-          <h2 style={{ fontSize: '24px', marginBottom: '16px' }}>Test Completed! 🎉</h2>
+          <h2 style={{ fontSize: '24px', marginBottom: '16px' }}>Test Completed! <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginLeft:8, color:"#10B981"}}><path d="M12 2l3 6 6 1-4.5 4.5 1.5 6-6-3.5L6 20l1.5-6L3 9l6-1z"></path></svg></h2>
           <p style={{ color: 'var(--text-muted)', marginBottom: '20px' }}>
             Before you see your results, take a moment to reflect. What topics or specific questions did you find the most difficult? Active reflection increases retention by 30%.
           </p>
@@ -341,9 +339,9 @@ const TestInterface = ({ user }) => {
         <div className="header-content">
           <h1>Adaptive Test: {decodeURIComponent(subject)}</h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-            <div className="proctor-badge">🔒 Proctored Exam</div>
+            <div className="proctor-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:6, color:"#64748B"}}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>Proctored Exam</div>
             <div className={`timer ${timeElapsed > 55 ? 'timer-warning' : ''}`}>
-              ⏱ {formatTime(timeElapsed)}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:6, color:"#64748B"}}><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> {formatTime(timeElapsed)}
             </div>
           </div>
         </div>
@@ -351,7 +349,7 @@ const TestInterface = ({ user }) => {
 
       {/* Proctoring warning banner */}
       <div className="proctor-banner">
-        ⚠️ <strong>Proctored Environment:</strong> Tab switching, copy-paste, right-click, and keyboard shortcuts are disabled.
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#F59E0B"}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg><strong>Proctored Environment:</strong> Tab switching, copy-paste, right-click, and keyboard shortcuts are disabled.
         Any violation will <strong>immediately terminate</strong> your test.
       </div>
 

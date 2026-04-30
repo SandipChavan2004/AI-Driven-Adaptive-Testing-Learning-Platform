@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../App.css';
 
 const Roadmap = ({ user }) => {
-  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [roadmapContent, setRoadmapContent] = useState('');
   const [generating, setGenerating] = useState(false);
-  const navigate = useNavigate();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { fetchDashboard(); }, []);
 
   const fetchDashboard = async () => {
@@ -18,13 +16,12 @@ const Roadmap = ({ user }) => {
       const res = await axios.get('http://localhost:5000/api/user/dashboard', {
         headers: { Authorization: `Bearer ${token}` }
       });
-      setData(res.data);
       // Auto generate roadmap if enough data
       if (res.data.test_history && res.data.test_history.length > 0) {
         generateRoadmap(res.data.test_history);
       } else {
         setGenerating(false);
-        setRoadmapContent('**Welcome to VantageLearn!**\n\nTake your first Adaptive Test in any subject. Once we have a baseline of your strengths and weaknesses, our AI mentor will generate a personalized 4-week study plan just for you.');
+        setRoadmapContent('**Welcome to CodeMentorAI!**\n\nTake your first Adaptive Test in any subject. Once we have a baseline of your strengths and weaknesses, our AI mentor will generate a personalized 4-week study plan just for you.');
         setLoading(false);
       }
     } catch (err) {
@@ -49,7 +46,7 @@ const Roadmap = ({ user }) => {
       setRoadmapContent(res.data.roadmap);
     } catch (err) {
       console.error(err);
-      setRoadmapContent('⚠️ Something went wrong generating your roadmap. Please check your AI connection.');
+      setRoadmapContent('<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#F59E0B"}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> Warning: Something went wrong generating your roadmap. Please check your AI connection.');
     } finally {
       setGenerating(false);
     }
@@ -73,7 +70,7 @@ const Roadmap = ({ user }) => {
       <div style={{ background: 'var(--grad-soft)', padding: '48px 0 36px', borderBottom: '1px solid var(--border)' }}>
         <div className="container" style={{ maxWidth: '900px' }}>
           <h1 style={{ fontSize: '32px', fontWeight: 900, marginBottom: '8px', color: 'var(--orange-600)', display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <img src="https://img.icons8.com/fluency/48/map.png" alt="map" />
+            
             AI Learning Roadmap
           </h1>
           <p style={{ fontSize: '16px', color: 'var(--text-2)', margin: 0 }}>
@@ -86,7 +83,7 @@ const Roadmap = ({ user }) => {
         <div className="card" style={{ minHeight: '500px', position: 'relative' }}>
           {generating ? (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '400px' }}>
-              <img src="https://img.icons8.com/color/96/artificial-intelligence.png" alt="AI" className="pulse-anim" />
+              
               <h2 style={{ marginTop: '20px', color: 'var(--orange-600)' }}>Building your customized roadmap...</h2>
               <p style={{ color: 'var(--text-muted)' }}>We are cross-referencing your weak areas with NPTEL curriculums.</p>
             </div>

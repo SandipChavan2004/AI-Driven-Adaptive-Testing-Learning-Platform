@@ -2,29 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../App.css';
-
-const ICON_MAP = {
-  'Cloud Computing': 'https://img.icons8.com/fluency/96/cloud.png',
-  'C Programming':   'https://img.icons8.com/fluency/96/c-programming.png',
-  'AT':              'https://img.icons8.com/fluency/96/flow-chart.png',
-  'Python':          'https://img.icons8.com/color/96/python--v1.png',
-  'Algorithm':       'https://img.icons8.com/fluency/96/sorting-arrows.png',
-  'CN':              'https://img.icons8.com/fluency/96/connected.png',
-  'CSCL':            'https://img.icons8.com/fluency/96/classroom.png',
-  'Data Structures': 'https://img.icons8.com/fluency/96/data-sheet.png',
-  'DBMS':            'https://img.icons8.com/fluency/96/database.png',
-  'DCN':             'https://img.icons8.com/fluency/96/satellite.png',
-  'DMS':             'https://img.icons8.com/fluency/96/math.png',
-  'DSMP':            'https://img.icons8.com/fluency/96/combo-chart.png',
-  'IoT':             'https://img.icons8.com/fluency/96/internet-of-things.png',
-  'Java':            'https://img.icons8.com/color/96/java-coffee-cup-logo--v1.png',
-  'Maths':           'https://img.icons8.com/fluency/96/calculator.png',
-  'ML':              'https://img.icons8.com/fluency/96/machine-learning.png',
-  'OOP':             'https://img.icons8.com/fluency/96/object.png',
-  'OS':              'https://img.icons8.com/fluency/96/workstation.png',
-  'WebTech':         'https://img.icons8.com/fluency/96/web.png',
-  default:           'https://img.icons8.com/fluency/96/book.png'
-};
+import { DEFAULT_SUBJECT_IMAGE, getSubjectImage } from '../utils/subjectImages';
 
 const MixedTestSetup = () => {
   const [subjects, setSubjects] = useState([]);
@@ -99,9 +77,14 @@ const MixedTestSetup = () => {
                     background: isSelected ? 'var(--orange-500)' : 'transparent',
                     display: 'flex', alignItems: 'center', justifyContent: 'center'
                   }}>
-                    {isSelected && <span style={{ color: 'white', fontSize: '12px', fontWeight: 'bold' }}>✓</span>}
+                    {isSelected && <span style={{ color: 'white', fontSize: '12px', fontWeight: 'bold' }}>+</span>}
                   </div>
-                  <img src={ICON_MAP[s] || ICON_MAP.default} alt={s} style={{ width: '28px', height: '28px' }} />
+                  <img
+                    src={getSubjectImage(s)}
+                    alt={s}
+                    style={{ width: '34px', height: '34px', objectFit: 'contain', borderRadius: '7px', padding: '4px', background: 'white' }}
+                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = DEFAULT_SUBJECT_IMAGE; }}
+                  />
                   <span style={{ fontWeight: isSelected ? 700 : 500, color: 'var(--text)' }}>{s}</span>
                 </div>
               );

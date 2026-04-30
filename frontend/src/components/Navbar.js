@@ -5,16 +5,16 @@ import axios from 'axios';
 import '../App.css';
 
 const NAV_ITEMS = [
-  { to: '/dashboard', label: 'Home',       icon: 'https://img.icons8.com/fluency/24/home.png' },
-  { to: '/subjects',  label: 'Subjects',   icon: 'https://img.icons8.com/fluency/24/books.png' },
-  { to: '/roadmap',   label: 'Study Plan', icon: 'https://img.icons8.com/fluency/24/map.png' },
-  { to: '/leaderboard', label: 'Ranking',  icon: 'https://img.icons8.com/fluency/24/prize.png' },
-  { to: '/dna',       label: 'Learning DNA', icon: 'https://img.icons8.com/color/24/dna-helix.png' },
-  { to: '/resume',    label: 'Resume AI',  icon: 'https://img.icons8.com/fluency/24/resume.png' },
+  { to: '/dashboard', label: 'Home' },
+  { to: '/subjects',  label: 'Subjects' },
+  { to: '/roadmap',   label: 'Study Plan' },
+  { to: '/leaderboard', label: 'Ranking' },
+  { to: '/dna',       label: 'Learning DNA' },
+  { to: '/resume',    label: 'Resume AI' },
 ];
 
 const Navbar = ({ user, onLogout, streak = 0, darkMode, onToggleDark }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [dropOpen, setDropOpen] = useState(false);
   const [notifOpen, setNotifOpen] = useState(false);
   const [mobOpen,  setMobOpen]  = useState(false);
@@ -83,8 +83,6 @@ const Navbar = ({ user, onLogout, streak = 0, darkMode, onToggleDark }) => {
               to={item.to}
               className={({ isActive }) => `navbar-link ${isActive ? 'navbar-link--active' : ''}`}
             >
-              <img src={item.icon} alt="" style={{ width: '16px', height: '16px', objectFit: 'contain' }}
-                onError={(e) => { e.target.style.display = 'none'; }} />
               {t(item.label)}
             </NavLink>
           ))}
@@ -95,26 +93,30 @@ const Navbar = ({ user, onLogout, streak = 0, darkMode, onToggleDark }) => {
           {/* Streak pill */}
           {streak > 0 && (
             <div className="navbar-streak">
-              <img src="https://img.icons8.com/fluency/24/fire-element.png" alt="fire" style={{ width: '16px', height: '16px' }} />
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:4, color:"#EF4444"}}><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>
               <span>{streak}</span>
             </div>
           )}
 
           {/* Dark toggle */}
-          <button className="dark-toggle" onClick={onToggleDark} title={darkMode ? 'Light mode' : 'Dark mode'} aria-label="Toggle Dark Mode">
-            {darkMode ? '☀️' : '🌙'}
+          <button className="dark-toggle mode-toggle" onClick={onToggleDark} title={darkMode ? 'Light mode' : 'Dark mode'} aria-label="Toggle Dark Mode" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            {darkMode ? (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            ) : (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            )}
           </button>
 
           {/* Lang toggle */}
           {/* <button className="dark-toggle" onClick={toggleLang} title="Translate" aria-label="Toggle Language" style={{ fontSize: '16px', marginLeft: '8px', marginRight: '8px' }}>
-            {i18n.language === 'en' ? '🇮🇳' : '🇺🇸'}
+            
           </button> */}
 
           {/* Notifications */}
           <div className="navbar-user" ref={notifRef} style={{ marginRight: '16px' }}>
-            <button className="dark-toggle" aria-label="Notifications" aria-expanded={notifOpen} onClick={() => { setNotifOpen(!notifOpen); if(!notifOpen) fetchNotifications(); }} style={{ position: 'relative' }}>
-              🔔
-              {notifications.some(n => !n.read) && <div style={{ position: 'absolute', top: '0px', right: '0px', width: '8px', height: '8px', borderRadius: '50%', background: 'red' }}></div>}
+            <button className="dark-toggle" aria-label="Notifications" aria-expanded={notifOpen} onClick={() => { setNotifOpen(!notifOpen); if(!notifOpen) fetchNotifications(); }} style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+              {notifications.some(n => !n.read) && <div style={{ position: 'absolute', top: '-2px', right: '-2px', width: '8px', height: '8px', borderRadius: '50%', background: '#EF4444', border: '2px solid var(--surface)' }}></div>}
             </button>
             {notifOpen && (
               <div className="user-dropdown" style={{ width: '300px', right: '-20px', padding: 0 }}>
@@ -154,23 +156,23 @@ const Navbar = ({ user, onLogout, streak = 0, darkMode, onToggleDark }) => {
                 </div>
                 <div className="dropdown-divider" />
                 <button className="dropdown-item" onClick={() => { setDropOpen(false); navigate('/dashboard'); }}>
-                  <img src="https://img.icons8.com/fluency/24/dashboard.png" alt="" style={{ width: '16px' }} /> {t('Dashboard')}
+                  {t('Dashboard')}
                 </button>
                 <button className="dropdown-item" onClick={() => { setDropOpen(false); navigate('/subjects'); }}>
-                  <img src="https://img.icons8.com/fluency/24/books.png" alt="" style={{ width: '16px' }} /> {t('Browse Subjects')}
+                  {t('Browse Subjects')}
                 </button>
                 <button className="dropdown-item" onClick={() => { setDropOpen(false); navigate('/roadmap'); }}>
-                  <img src="https://img.icons8.com/fluency/24/map.png" alt="" style={{ width: '16px' }} /> {t('Study Plan')}
+                  {t('Study Plan')}
                 </button>
                 <button className="dropdown-item" onClick={() => { setDropOpen(false); navigate('/leaderboard'); }}>
-                  <img src="https://img.icons8.com/fluency/24/prize.png" alt="" style={{ width: '16px' }} /> {t('Ranking')}
+                  {t('Ranking')}
                 </button>
                 <button className="dropdown-item" onClick={() => { setDropOpen(false); navigate('/resume'); }}>
-                  <img src="https://img.icons8.com/fluency/24/resume.png" alt="" style={{ width: '16px' }} /> Resume AI
+                  Resume AI
                 </button>
                 <div className="dropdown-divider" />
                 <button className="dropdown-item dropdown-item--danger" onClick={handleLogout}>
-                  <img src="https://img.icons8.com/fluency/24/exit.png" alt="" style={{ width: '16px' }} /> {t('Sign Out')}
+                  {t('Sign Out')}
                 </button>
               </div>
             )}

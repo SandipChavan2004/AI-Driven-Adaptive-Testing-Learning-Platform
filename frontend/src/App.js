@@ -87,6 +87,7 @@ function App() {
           <Route path="/dashboard"  element={withNav(<Dashboard user={user} />)} />
           <Route path="/subjects"   element={withNav(<SubjectSelection user={user} />)} />
           <Route path="/leaderboard" element={withNav(<Leaderboard user={user} />)} />
+          <Route path="/ranking"     element={withNav(<Leaderboard user={user} />)} />
           <Route path="/roadmap"    element={withNav(<Roadmap user={user} />)} />
           <Route path="/test/setup-mixed" element={withNav(<MixedTestSetup />)} />
           <Route path="/explain"    element={withNav(<ExplanationMode user={user} />)} />

@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager, create_access_token, create_refresh_token, jwt_required, get_jwt_identity
-from pymongo import MongoClient
+from pymongo import MongoClient, errors
 from bson import ObjectId
 from datetime import datetime, timedelta, timezone
 import bcrypt
@@ -736,6 +736,23 @@ def terminate_test():
         return jsonify({'error': str(e)}), 500
 
 
+def _search_questions(query):
+    """Search questions by text. Fallback to regex when text index is unavailable."""
+    if not query:
+        return []
+
+    try:
+        return list(questions_collection.find(
+            {'$text': {'$search': query}},
+            {'score': {'$meta': 'textScore'}}
+        ).sort([('score', {'$meta': 'textScore'})]).limit(20))
+    except errors.OperationFailure:
+        # Fallback search when MongoDB text index is not configured
+        return list(questions_collection.find(
+            {'question': {'$regex': re.escape(query), '$options': 'i'}}
+        ).limit(20))
+
+
 @app.route('/api/questions/search', methods=['GET'])
 @jwt_required()
 def search_questions():
@@ -743,12 +760,8 @@ def search_questions():
         q = request.args.get('q', '')
         if not q:
             return jsonify({'results': []}), 200
-            
-        results = list(questions_collection.find(
-            {'$text': {'$search': q}},
-            {'score': {'$meta': 'textScore'}}
-        ).sort([('score', {'$meta': 'textScore'})]).limit(20))
-        
+
+        results = _search_questions(q)
         for r in results:
             r['_id'] = str(r['_id'])
         return jsonify({'results': results}), 200
@@ -1006,8 +1019,9 @@ def get_user_activity():
             return jsonify({'error': 'User not found'}), 404
 
         # Get all completed tests for this user
+        user_id_query = {'$in': [user_id, ObjectId(user_id)]} if ObjectId.is_valid(user_id) else user_id
         tests = list(tests_collection.find(
-            {'user_id': user_id, 'status': 'completed'},
+            {'user_id': user_id_query, 'status': 'completed'},
             {'started_at': 1}
         ))
 
@@ -1042,7 +1056,9 @@ def get_dashboard():
             return jsonify({'error': 'User not found'}), 404
 
         # Fetch last 20 tests sorted newest-first
-        all_tests = list(tests_collection.find({'user_id': user_id}).sort('started_at', -1).limit(20))
+        # Support both string and ObjectId user_id representations
+        user_id_query = {'$in': [user_id, ObjectId(user_id)]} if ObjectId.is_valid(user_id) else user_id
+        all_tests = list(tests_collection.find({'user_id': user_id_query}).sort('started_at', -1).limit(20))
         completed = [t for t in all_tests if t.get('status') == 'completed']
 
         # Build test history response
@@ -1052,7 +1068,7 @@ def get_dashboard():
             ts = test.get('started_at')
             test_history.append({
                 'test_id':          str(test['_id']),
-                'subject':          test['subject'],
+                'subject':          test.get('subject', 'Unknown'),
                 'started_at':       ts.isoformat() if hasattr(ts, 'isoformat') else str(ts),
                 'status':           test.get('status', 'in_progress'),
                 'capability_score': round(analytics.get('capability_score', 0), 1),
@@ -1083,11 +1099,16 @@ def get_dashboard():
             if score > subject_best.get(subj, 0):
                 subject_best[subj] = round(score, 1)
 
+        def _dt_str(t):
+            dt = t.get('completed_at') or t.get('started_at')
+            if not dt:
+                return ""
+            if hasattr(dt, 'isoformat'):
+                return dt.isoformat()
+            return str(dt)
+
         # Score trend: last 10 completed tests in chronological order
-        recent_chrono = sorted(
-            completed[:15],
-            key=lambda t: t.get('completed_at') or t.get('started_at') or datetime.now(timezone.utc)
-        )[-10:]
+        recent_chrono = sorted(completed[:15], key=_dt_str)[-10:]
         trend = []
         for t in recent_chrono:
             ts = t.get('completed_at') or t.get('started_at')
@@ -1103,8 +1124,8 @@ def get_dashboard():
         return jsonify({
             'user': {
                 'id':               str(user['_id']),
-                'name':             user['name'],
-                'email':            user['email'],
+                'name':             user.get('name', 'Learner'),
+                'email':            user.get('email', ''),
                 'interests':        user.get('interests', []),
                 'capability_level': user.get('capability_level', 'Beginner'),
                 'streak':           user.get('streak', 0),
@@ -1117,6 +1138,8 @@ def get_dashboard():
             'trend':        trend,
         }), 200
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
 
@@ -1740,6 +1763,19 @@ def _normalise_resume_analysis(analysis, resume_text):
         merged['recommended_courses'] = _recommended_courses(merged['skill_gaps'], merged['soft_skill_gaps'])
     if not merged.get('learning_path'):
         merged['learning_path'] = fallback['learning_path']
+
+    # Validate resume score
+    if not merged.get('resume_score') or merged['resume_score'] <= 0:
+        merged['resume_score'] = fallback['resume_score']
+
+    # Validate score breakdown
+    if not merged.get('score_breakdown'):
+        merged['score_breakdown'] = fallback['score_breakdown']
+    else:
+        # Check if all values in breakdown are zero
+        bd = merged['score_breakdown']
+        if all(bd.get(k, 0) == 0 for k in ['content', 'skills', 'experience', 'presentation']):
+            merged['score_breakdown'] = fallback['score_breakdown']
 
     return merged
 

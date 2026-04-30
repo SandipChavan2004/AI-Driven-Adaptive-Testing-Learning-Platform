@@ -56,6 +56,97 @@ const Tag = ({ label, color = 'var(--orange-100)', textColor = 'var(--orange-700
   }}>{label}</span>
 );
 
+const Icon = ({ name, size = 22, color = 'currentColor', style = {} }) => {
+  const common = {
+    width: size,
+    height: size,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: color,
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    style: { verticalAlign: 'middle', ...style },
+    'aria-hidden': true,
+  };
+
+  const paths = {
+    resume: (
+      <>
+        <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"></path>
+        <path d="M14 2v5h5"></path>
+        <path d="M9 13h6"></path>
+        <path d="M9 17h4"></path>
+      </>
+    ),
+    upload: (
+      <>
+        <path d="M12 16V4"></path>
+        <path d="M7 9l5-5 5 5"></path>
+        <path d="M5 20h14"></path>
+      </>
+    ),
+    file: (
+      <>
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <path d="M14 2v6h6"></path>
+      </>
+    ),
+    skills: (
+      <>
+        <path d="M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L5.5 20l2-7L2 9h7z"></path>
+      </>
+    ),
+    soft: (
+      <>
+        <path d="M16 11c1.66 0 3-1.34 3-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3z"></path>
+        <path d="M8 11c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3z"></path>
+        <path d="M2 20c0-2.5 2.5-4 6-4"></path>
+        <path d="M22 20c0-2.5-2.5-4-6-4"></path>
+      </>
+    ),
+    gap: (
+      <>
+        <path d="M12 9v4"></path>
+        <path d="M12 17h.01"></path>
+        <path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"></path>
+      </>
+    ),
+    tip: (
+      <>
+        <path d="M9 18h6"></path>
+        <path d="M10 22h4"></path>
+        <path d="M8.5 14.5A6 6 0 1 1 15.5 14c-.8.7-1.5 1.7-1.5 3h-4c0-1.2-.6-2-1.5-2.5z"></path>
+      </>
+    ),
+    role: (
+      <>
+        <rect x="3" y="7" width="18" height="13" rx="2"></rect>
+        <path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path>
+        <path d="M8 13h8"></path>
+      </>
+    ),
+    resources: (
+      <>
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+      </>
+    ),
+    interview: (
+      <>
+        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+        <path d="M12 19v4"></path>
+      </>
+    ),
+    check: (
+      <path d="M20 6 9 17l-5-5"></path>
+    ),
+  };
+
+  return <svg {...common}>{paths[name] || paths.resume}</svg>;
+};
+
 /* ── STAGE 1: Upload ─────────────────────────────────── */
 const UploadStage = ({ onAnalysed }) => {
   const [dragging, setDragging] = useState(false);
@@ -95,7 +186,9 @@ const UploadStage = ({ onAnalysed }) => {
   return (
     <div style={{ maxWidth: 560, margin: '0 auto', padding: '40px 0' }}>
       <div style={{ textAlign: 'center', marginBottom: 36 }}>
-        <div style={{ fontSize: 48, marginBottom: 12 }}>📄</div>
+        <div style={{ marginBottom: 12 }}>
+          <Icon name="resume" size={48} color="var(--orange-600)" />
+        </div>
         <h2 style={{ margin: 0, fontSize: 26, fontWeight: 800 }}>Upload Your Resume</h2>
         <p style={{ color: 'var(--text-muted)', marginTop: 8 }}>
           Our AI will analyse your resume, find skill gaps, suggest learning resources,<br />
@@ -122,7 +215,9 @@ const UploadStage = ({ onAnalysed }) => {
 
         {file ? (
           <>
-            <div style={{ fontSize: 36, marginBottom: 8 }}>✅</div>
+            <div style={{ marginBottom: 8 }}>
+              <Icon name="file" size={40} color="#16a34a" />
+            </div>
             <div style={{ fontWeight: 700, fontSize: 15 }}>{file.name}</div>
             <div style={{ color: 'var(--text-muted)', fontSize: 12, marginTop: 4 }}>
               {(file.size / 1024).toFixed(1)} KB
@@ -134,7 +229,9 @@ const UploadStage = ({ onAnalysed }) => {
           </>
         ) : (
           <>
-            <div style={{ fontSize: 40, marginBottom: 10 }}>📁</div>
+            <div style={{ marginBottom: 10 }}>
+              <Icon name="upload" size={48} color="#F97316" />
+            </div>
             <div style={{ fontWeight: 700, fontSize: 15 }}>Drag & drop your resume here</div>
             <div style={{ color: 'var(--text-muted)', fontSize: 13, marginTop: 4 }}>
               or click to browse · PDF or DOCX · Max 5 MB
@@ -156,7 +253,7 @@ const UploadStage = ({ onAnalysed }) => {
 
       {error && (
         <div style={{ marginTop: 14, background: '#fef2f2', border: '1px solid #fecaca', borderRadius: 10, padding: '10px 16px', color: '#dc2626', fontSize: 13 }}>
-          ⚠️ {error}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#F59E0B"}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> Warning: {error}
         </div>
       )}
 
@@ -171,11 +268,11 @@ const UploadStage = ({ onAnalysed }) => {
           transition: 'all 0.2s', boxShadow: file ? 'var(--shadow-md)' : 'none'
         }}
       >
-        {uploading ? '⏳ Analysing Resume…' : '🚀 Analyse My Resume'}
+        {uploading ? <span>Analysing Resume…</span> : <span><Icon name="upload" size={16} style={{ marginRight: 8 }} />Analyse My Resume</span>}
       </button>
 
       <p style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: 12, marginTop: 16 }}>
-        🔒 Your resume is processed securely and never shared.
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:6, color:"#64748B"}}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> Your resume is processed securely and never shared.
       </p>
     </div>
   );
@@ -192,7 +289,7 @@ const AnalysisStage = ({ analysis, onNext }) => {
       {/* Hero */}
       <div className="dash-hero-card" style={{ marginBottom: 24 }}>
         <div className="dash-hero-left">
-          <div className="dash-hero-greeting">Resume Analysis Complete 🎉</div>
+          <div className="dash-hero-greeting">Resume Analysis Complete <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginLeft:8, color:"#10B981"}}><path d="M12 2l3 6 6 1-4.5 4.5 1.5 6-6-3.5L6 20l1.5-6L3 9l6-1z"></path></svg></div>
           <h1 className="dash-hero-title" style={{ fontSize: 22 }}>{analysis.name || 'Your Resume'}</h1>
           <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: 13, margin: 0 }}>{analysis.summary}</p>
         </div>
@@ -211,13 +308,12 @@ const AnalysisStage = ({ analysis, onNext }) => {
           {/* Skills */}
           <div className="card">
             <h2 style={{ marginBottom: 14 }}>
-              <img src="https://img.icons8.com/fluency/24/lightning-bolt.png" alt=""
-                style={{ width: 20, height: 20, verticalAlign: 'middle', marginRight: 8 }} />
+              <Icon name="skills" size={22} color="#F97316" style={{ marginRight: 8 }} />
               Technical Skills
             </h2>
             {analysis.strong_skills?.length > 0 && (
               <div style={{ marginBottom: 14 }}>
-                <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-muted)', marginBottom: 8 }}>⭐ STRONGEST SKILLS</div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-muted)', marginBottom: 8 }}>STRONGEST SKILLS</div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                   {analysis.strong_skills.map(s => (
                     <Tag key={s} label={s} color="#dcfce7" textColor="#16a34a" border="#bbf7d0" />
@@ -235,8 +331,7 @@ const AnalysisStage = ({ analysis, onNext }) => {
           {/* Soft Skills */}
           <div className="card">
             <h2 style={{ marginBottom: 14 }}>
-              <img src="https://img.icons8.com/fluency/24/conference-call.png" alt=""
-                style={{ width: 20, height: 20, verticalAlign: 'middle', marginRight: 8 }} />
+              <Icon name="soft" size={22} color="#0369a1" style={{ marginRight: 8 }} />
               Soft Skills
             </h2>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
@@ -254,8 +349,7 @@ const AnalysisStage = ({ analysis, onNext }) => {
           {/* Skill Gaps */}
           <div className="card">
             <h2 style={{ marginBottom: 14 }}>
-              <img src="https://img.icons8.com/fluency/24/chart-failed--v1.png" alt=""
-                style={{ width: 20, height: 20, verticalAlign: 'middle', marginRight: 8 }} />
+              <Icon name="gap" size={22} color="#d97706" style={{ marginRight: 8 }} />
               Skill Gaps to Address
             </h2>
             {(analysis.skill_gaps || []).map((gap, i) => {
@@ -282,7 +376,7 @@ const AnalysisStage = ({ analysis, onNext }) => {
 
           {/* Soft Skill Gaps */}
           <div className="card">
-            <h2 style={{ marginBottom: 14 }}>Soft Skill Gaps</h2>
+            <h2 style={{ marginBottom: 14 }}><Icon name="gap" size={22} color="#dc2626" style={{ marginRight: 8 }} />Soft Skill Gaps</h2>
             {(analysis.soft_skill_gaps || []).map((gap, i) => {
               const g = typeof gap === 'string' ? { skill: gap, severity: 'Medium', reason: '' } : gap;
               return (
@@ -308,7 +402,7 @@ const AnalysisStage = ({ analysis, onNext }) => {
           {/* Improvements */}
           {analysis.top_improvements?.length > 0 && (
             <div className="card">
-              <h2 style={{ marginBottom: 14 }}>💡 Top Improvement Tips</h2>
+              <h2 style={{ marginBottom: 14 }}><Icon name="tip" size={24} color="#F59E0B" style={{ marginRight: 8 }} /> Top Improvement Tips</h2>
               {analysis.top_improvements.map((tip, i) => (
                 <div key={i} style={{ display: 'flex', gap: 12, padding: '10px 0', borderBottom: i < analysis.top_improvements.length - 1 ? '1px solid var(--border)' : 'none' }}>
                   <div style={{ minWidth: 24, height: 24, background: 'var(--orange-100)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 800, color: 'var(--orange-700)' }}>{i + 1}</div>
@@ -324,7 +418,7 @@ const AnalysisStage = ({ analysis, onNext }) => {
 
           {/* Score Breakdown */}
           <div className="card">
-            <h2 style={{ marginBottom: 16 }}>📊 Score Breakdown</h2>
+            <h2 style={{ marginBottom: 16 }}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#F97316"}}><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg> Score Breakdown</h2>
             {Object.entries(breakdown).map(([key, val]) => (
               <div key={key} style={{ marginBottom: 14 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, fontWeight: 600, marginBottom: 6 }}>
@@ -339,13 +433,13 @@ const AnalysisStage = ({ analysis, onNext }) => {
           {/* Target Roles */}
           {analysis.target_roles?.length > 0 && (
             <div className="card">
-              <h2 style={{ marginBottom: 14 }}>🎯 Suitable Roles</h2>
+              <h2 style={{ marginBottom: 14 }}><Icon name="role" size={24} color="#F97316" style={{ marginRight: 8 }} /> Suitable Roles</h2>
               {analysis.target_roles.map((role, i) => (
                 <div key={i} style={{
                   display: 'flex', alignItems: 'center', gap: 10, padding: '10px 0',
                   borderBottom: i < analysis.target_roles.length - 1 ? '1px solid var(--border)' : 'none'
                 }}>
-                  <span style={{ fontSize: 18 }}>{'🥇🥈🥉'[i] || '🏅'}</span>
+                  <span style={{ fontSize: 18 }}>{"Rank " + (i+1)}</span>
                   <span style={{ fontWeight: 600, fontSize: 14 }}>{role}</span>
                 </div>
               ))}
@@ -373,7 +467,7 @@ const AnalysisStage = ({ analysis, onNext }) => {
           {/* Education */}
           {analysis.education?.length > 0 && (
             <div className="card">
-              <h2 style={{ marginBottom: 14 }}>🎓 Education</h2>
+              <h2 style={{ marginBottom: 14 }}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#8B5CF6"}}><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg> Education</h2>
               {analysis.education.map((edu, i) => (
                 <div key={i} style={{ padding: '10px 0', borderBottom: i < analysis.education.length - 1 ? '1px solid var(--border)' : 'none' }}>
                   <div style={{ fontWeight: 700, fontSize: 13 }}>{edu.degree}</div>
@@ -386,7 +480,7 @@ const AnalysisStage = ({ analysis, onNext }) => {
           {/* Experience */}
           {analysis.experience?.length > 0 && (
             <div className="card">
-              <h2 style={{ marginBottom: 14 }}>💼 Experience</h2>
+              <h2 style={{ marginBottom: 14 }}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#059669"}}><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg> Experience</h2>
               {analysis.experience.map((exp, i) => (
                 <div key={i} style={{ padding: '10px 0', borderBottom: i < analysis.experience.length - 1 ? '1px solid var(--border)' : 'none' }}>
                   <div style={{ fontWeight: 700, fontSize: 13 }}>{exp.role}</div>
@@ -403,10 +497,10 @@ const AnalysisStage = ({ analysis, onNext }) => {
 
       <div style={{ display: 'flex', gap: 12, marginTop: 8 }}>
         <button className="btn btn-primary" style={{ flex: 1, padding: '14px' }} onClick={() => onNext('resources')}>
-          📚 Get Learning Resources →
+          Get Learning Resources →
         </button>
         <button className="btn btn-secondary" style={{ flex: 1, padding: '14px' }} onClick={() => onNext('interview')}>
-          🎤 Start Mock Interview →
+          Start Mock Interview →
         </button>
       </div>
     </div>
@@ -452,7 +546,7 @@ const ResourcesStage = ({ analysis, onNext }) => {
   return (
     <div>
       <div style={{ marginBottom: 24 }}>
-        <h2 style={{ margin: 0, fontSize: 22, fontWeight: 800 }}>📚 Personalised Learning Resources</h2>
+        <h2 style={{ margin: 0, fontSize: 22, fontWeight: 800 }}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#F97316"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg> Personalised Learning Resources</h2>
         <p style={{ color: 'var(--text-muted)', marginTop: 6 }}>
           Based on your skill gaps — curated resources to help you level up.
         </p>
@@ -461,7 +555,7 @@ const ResourcesStage = ({ analysis, onNext }) => {
       {loading ? (
         <div className="loading" style={{ padding: '60px 0' }}>Finding best resources for you…</div>
       ) : error ? (
-        <div style={{ padding: 20, background: '#fef2f2', borderRadius: 12, color: '#dc2626' }}>⚠️ {error}</div>
+        <div style={{ padding: 20, background: '#fef2f2', borderRadius: 12, color: '#dc2626' }}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#F59E0B"}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> Warning: {error}</div>
       ) : (
         <>
           {/* Skill Gap Pills */}
@@ -524,7 +618,7 @@ const ResourcesStage = ({ analysis, onNext }) => {
                         background: 'rgba(0,0,0,0.2)', opacity: 0, transition: 'opacity 0.2s'
                       }} className="yt-play-overlay">
                         <div style={{ width: 44, height: 44, background: 'red', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                          <span style={{ color: 'white', fontSize: 18, marginLeft: 4 }}>▶</span>
+                          <span style={{ color: 'white', fontSize: 18, marginLeft: 4 }}></span>
                         </div>
                       </div>
                     </div>
@@ -639,7 +733,7 @@ const ResourcesStage = ({ analysis, onNext }) => {
 
       <div style={{ display: 'flex', gap: 12, marginTop: 28 }}>
         <button className="btn btn-primary" style={{ flex: 1, padding: '14px' }} onClick={() => onNext('interview')}>
-          🎤 Start Mock Interview →
+          Start Mock Interview →
         </button>
       </div>
     </div>
@@ -661,7 +755,7 @@ const InterviewStage = () => {
   const [error, setError] = useState('');
   const textRef = useRef();
 
-  const TYPE_ICONS = { Technical: '⚙️', DSA: '🧮', Project: '🏗️', Design: '🏛️', Behavioural: '🤝' };
+  const TYPE_ICONS = { Technical: "T", DSA: "D", Project: "P", Design: "A", Behavioural: "B" };
   const TYPE_COLORS = { Technical: '#6366f1', DSA: '#0891b2', Project: '#16a34a', Design: '#7c3aed', Behavioural: '#d97706' };
 
   const startInterview = async () => {
@@ -721,7 +815,7 @@ const InterviewStage = () => {
   if (phase === 'intro') {
     return (
       <div style={{ maxWidth: 560, margin: '0 auto', padding: '40px 0', textAlign: 'center' }}>
-        <div style={{ fontSize: 64, marginBottom: 20 }}>🎤</div>
+        <div style={{ fontSize: 64, marginBottom: 20 }}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{color:"#F97316"}}><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg></div>
         <h2 style={{ fontSize: 26, fontWeight: 800, margin: '0 0 12px' }}>AI Mock Interview</h2>
         <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: 32 }}>
           You'll answer <strong>5 personalised questions</strong> generated from your resume —
@@ -730,16 +824,16 @@ const InterviewStage = () => {
           At the end, you'll get a hiring verdict.
         </p>
         <div style={{ display: 'flex', gap: 16, marginBottom: 32 }}>
-          {['⚙️ Technical', '🧮 DSA', '🏗️ Projects', '🏛️ Design', '🤝 Behaviour'].map(t => (
+          {["Technical", "DSA", "Projects", "Design", "Behaviour"].map(t => (
             <div key={t} style={{ flex: 1, background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 10, padding: '10px 6px', fontSize: 12, fontWeight: 600, color: 'var(--text-muted)', textAlign: 'center' }}>
               {t}
             </div>
           ))}
         </div>
-        {error && <div style={{ marginBottom: 16, color: '#dc2626', fontSize: 13 }}>⚠️ {error}</div>}
+        {error && <div style={{ marginBottom: 16, color: '#dc2626', fontSize: 13 }}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#F59E0B"}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> Warning: {error}</div>}
         <button className="btn btn-primary" onClick={startInterview}
           disabled={loading} style={{ width: '100%', padding: '14px', fontSize: 15 }}>
-          {loading ? 'Preparing Questions…' : '🚀 Start Interview'}
+          {loading ? 'Preparing Questions…' : <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8}}><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg>Start Interview</span>}
         </button>
       </div>
     );
@@ -748,7 +842,7 @@ const InterviewStage = () => {
   // ── Active Interview ──────────────────────────────────
   if (phase === 'active') {
     const typeColor = TYPE_COLORS[currentQ?.type] || '#F97316';
-    const typeIcon = TYPE_ICONS[currentQ?.type] || '❓';
+    const typeIcon = TYPE_ICONS[currentQ?.type] || "";
     const progressPct = ((qIndex) / totalQ) * 100;
 
     return (
@@ -771,7 +865,7 @@ const InterviewStage = () => {
           </div>
           {currentQ?.hint && !showFeedback && (
             <div style={{ fontSize: 13, color: 'var(--text-muted)', background: 'var(--bg)', borderRadius: 8, padding: '8px 12px', borderLeft: '3px solid var(--border)' }}>
-              💡 Hint: {currentQ.hint}
+              Hint: {currentQ.hint}
             </div>
           )}
         </div>
@@ -798,12 +892,12 @@ const InterviewStage = () => {
               <>
                 <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-muted)', marginBottom: 6 }}>KEY POINTS TO INCLUDE:</div>
                 {feedback.ideal_points.map((pt, i) => (
-                  <div key={i} style={{ fontSize: 13, color: 'var(--text)', marginBottom: 4 }}>✓ {pt}</div>
+                  <div key={i} style={{ fontSize: 13, color: 'var(--text)', marginBottom: 4 }}>{pt}</div>
                 ))}
               </>
             )}
             <div style={{ marginTop: 12, fontSize: 12, color: 'var(--text-muted)' }}>
-              {loading ? '⏳ Loading next question…' : '✅ Moving to next question…'}
+              {loading ? <span>Loading next question…</span> : ' Moving to next question…'}
             </div>
           </div>
         )}
@@ -840,7 +934,7 @@ const InterviewStage = () => {
           </>
         )}
 
-        {error && <div style={{ marginTop: 12, color: '#dc2626', fontSize: 13 }}>⚠️ {error}</div>}
+        {error && <div style={{ marginTop: 12, color: '#dc2626', fontSize: 13 }}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#F59E0B"}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> Warning: {error}</div>}
       </div>
     );
   }
@@ -852,7 +946,7 @@ const InterviewStage = () => {
         {/* Final Score Hero */}
         <div className="dash-hero-card" style={{ marginBottom: 28 }}>
           <div className="dash-hero-left">
-            <div className="dash-hero-greeting">Interview Complete 🎉</div>
+            <div className="dash-hero-greeting">Interview Complete </div>
             <h1 className="dash-hero-title" style={{ fontSize: 22 }}>{summary.hiring_verdict}</h1>
             <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: 13, margin: 0 }}>
               You answered {summary.answered} of {summary.total_questions} questions.
@@ -869,7 +963,7 @@ const InterviewStage = () => {
 
         {/* Per-Question Breakdown */}
         <div className="card" style={{ marginBottom: 20 }}>
-          <h2 style={{ marginBottom: 18 }}>📋 Question-by-Question Breakdown</h2>
+          <h2 style={{ marginBottom: 18 }}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#64748B"}}><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg> Question-by-Question Breakdown</h2>
           {summary.breakdown.map((b, i) => (
             <div key={i} style={{
               padding: '16px 0',
@@ -888,7 +982,7 @@ const InterviewStage = () => {
                   {b.ideal_points?.length > 0 && (
                     <div style={{ marginTop: 8 }}>
                       {b.ideal_points.map((pt, j) => (
-                        <div key={j} style={{ fontSize: 12, color: 'var(--text-muted)' }}>✓ {pt}</div>
+                        <div key={j} style={{ fontSize: 12, color: 'var(--text-muted)' }}>{pt}</div>
                       ))}
                     </div>
                   )}
@@ -909,11 +1003,13 @@ const InterviewStage = () => {
         <div style={{ display: 'flex', gap: 12 }}>
           <button className="btn btn-secondary" style={{ flex: 1, padding: '13px' }}
             onClick={() => window.location.reload()}>
-            📄 Upload New Resume
+            <Icon name="upload" size={17} style={{ marginRight: 8 }} />
+            Upload New Resume
           </button>
           <button className="btn btn-primary" style={{ flex: 1, padding: '13px' }}
             onClick={() => { setPhase('intro'); setAnswer(''); setFeedback(null); setSummary(null); }}>
-            🔄 Retry Interview
+            <Icon name="interview" size={17} style={{ marginRight: 8 }} />
+            Retry Interview
           </button>
         </div>
       </div>
@@ -925,10 +1021,10 @@ const InterviewStage = () => {
 
 /* ── MAIN: ResumeAnalyser ────────────────────────────── */
 const STAGES = [
-  { id: 'upload', label: 'Upload', icon: '📄', step: 1 },
-  { id: 'analysis', label: 'Analysis', icon: '🔍', step: 2 },
-  { id: 'resources', label: 'Resources', icon: '📚', step: 3 },
-  { id: 'interview', label: 'Interview', icon: '🎤', step: 4 },
+  { id: 'upload', label: 'Upload', icon: 'upload', step: 1 },
+  { id: 'analysis', label: 'Analysis', icon: 'skills', step: 2 },
+  { id: 'resources', label: 'Resources', icon: 'resources', step: 3 },
+  { id: 'interview', label: 'Interview', icon: 'interview', step: 4 },
 ];
 
 const ResumeAnalyser = () => {
@@ -953,8 +1049,7 @@ const ResumeAnalyser = () => {
         {/* Page Header */}
         <div style={{ marginBottom: 28 }}>
           <h1 style={{ margin: 0, fontSize: 28, fontWeight: 900 }}>
-            <img src="https://img.icons8.com/fluency/48/resume.png" alt=""
-              style={{ width: 32, height: 32, verticalAlign: 'middle', marginRight: 10 }} />
+            <Icon name="resume" size={30} color="var(--orange-600)" style={{ marginRight: 10 }} />
             Resume AI
           </h1>
           <p style={{ color: 'var(--text-muted)', marginTop: 6 }}>
@@ -986,7 +1081,7 @@ const ResumeAnalyser = () => {
                     fontSize: done ? 18 : 20, color: done || active ? 'white' : 'var(--text)',
                     transition: 'all 0.3s', boxShadow: active ? 'var(--shadow-md)' : 'none'
                   }}>
-                    {done ? '✓' : s.icon}
+                    {done ? <Icon name="check" size={20} color="white" /> : <Icon name={s.icon} size={20} color={done || active ? 'white' : 'var(--text)'} />}
                   </div>
                   <span style={{ fontSize: 11, fontWeight: active ? 800 : 600, color: active ? 'var(--orange-600)' : done ? '#16a34a' : 'var(--text-muted)', whiteSpace: 'nowrap' }}>
                     {s.label}

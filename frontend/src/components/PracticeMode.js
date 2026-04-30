@@ -99,7 +99,7 @@ const PracticeMode = ({ user }) => {
       {/* Header */}
       <div className="header">
         <div className="header-content">
-          <h1>🎯 Practice Mode — {decodedSubject}</h1>
+          <h1> Practice Mode — {decodedSubject}</h1>
           <div style={{ display: 'flex', gap: '14px', alignItems: 'center' }}>
             <span className="proctor-badge" style={{ background: '#28a745' }}>No Time Limit</span>
             <button className="btn btn-secondary" onClick={() => navigate('/subjects')}>← Back</button>
@@ -112,10 +112,10 @@ const PracticeMode = ({ user }) => {
         <div style={{
           display: 'flex', gap: '16px', marginBottom: '20px', flexWrap: 'wrap', alignItems: 'center'
         }}>
-          <div className="practice-stat">✅ Correct: <strong>{stats.correct}</strong></div>
-          <div className="practice-stat">📝 Total:   <strong>{stats.total}</strong></div>
+          <div className="practice-stat"> Correct: <strong>{stats.correct}</strong></div>
+          <div className="practice-stat"> Total:   <strong>{stats.total}</strong></div>
           <div className="practice-stat" style={{ color: accuracy >= 60 ? '#28a745' : '#dc3545' }}>
-            🎯 Accuracy: <strong>{accuracy}%</strong>
+             Accuracy: <strong>{accuracy}%</strong>
           </div>
 
           {/* Difficulty selector */}
@@ -174,7 +174,7 @@ const PracticeMode = ({ user }) => {
                     <span className="option-label">{String.fromCharCode(65 + idx)}</span>
                     {opt}
                     {revealed && idx === question.correct_answer && (
-                      <span style={{ marginLeft: 'auto', color: '#28a745', fontWeight: 700 }}>✓ Correct</span>
+                      <span style={{ marginLeft: 'auto', color: '#28a745', fontWeight: 700 }}>Correct</span>
                     )}
                   </li>
                 );
@@ -185,8 +185,8 @@ const PracticeMode = ({ user }) => {
             {revealed && (
               <div className={`practice-feedback ${feedback}`}>
                 {feedback === 'correct'
-                  ? '🎉 Correct! Well done.'
-                  : `❌ Incorrect. The correct answer is: ${String.fromCharCode(65 + question.correct_answer)}. ${question.options[question.correct_answer]}`}
+                  ? <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginLeft:8, color:"#10B981"}}><path d="M12 2l3 6 6 1-4.5 4.5 1.5 6-6-3.5L6 20l1.5-6L3 9l6-1z"></path></svg> Correct! Well done.</span>
+                  : ` Incorrect. The correct answer is: ${String.fromCharCode(65 + question.correct_answer)}. ${question.options[question.correct_answer]}`}
               </div>
             )}
 
@@ -196,15 +196,15 @@ const PracticeMode = ({ user }) => {
                 className="btn btn-secondary" 
                 style={{ marginTop: '12px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px' }}
                 onClick={getAiExplanation}>
-                <img src="https://img.icons8.com/fluency/24/magic-star.png" alt="AI" style={{ width: '16px' }} />
+                
                 Ask AI for explanation
               </button>
             )}
-            {loadingAi && <div style={{ fontSize: '13px', color: 'var(--orange-500)', marginTop: '12px', fontWeight: 600 }}>✨ AI is thinking...</div>}
+            {loadingAi && <div style={{ fontSize: '13px', color: 'var(--orange-500)', marginTop: '12px', fontWeight: 600 }}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:6, color:"#8B5CF6"}}><path d="M2.7 10.3a2.41 2.41 0 0 0 0 3.41l7.59 7.59a2.41 2.41 0 0 0 3.41 0l7.59-7.59a2.41 2.41 0 0 0 0-3.41L13.7 2.71a2.41 2.41 0 0 0-3.41 0L2.7 10.3z"></path><line x1="2" y1="2" x2="22" y2="22"></line></svg> AI is thinking...</div>}
             {aiExplanation && (
               <div style={{ marginTop: '16px', padding: '16px', borderRadius: '8px', background: 'var(--orange-50)', border: '1px solid var(--border-o)', fontSize: '14px', lineHeight: '1.6' }}>
                 <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--orange-600)', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <img src="https://img.icons8.com/fluency/24/magic-star.png" alt="AI" style={{ width: '16px' }} />
+                  
                   AI Explanation
                 </div>
                 {/* Extremely basic markdown bold parser for aesthetics */}

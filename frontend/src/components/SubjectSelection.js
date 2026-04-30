@@ -3,83 +3,84 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../App.css';
 import useBehaviorTracking from '../utils/useBehaviorTracking';
+import { DEFAULT_SUBJECT_IMAGE, getSubjectImage } from '../utils/subjectImages';
 
 /* ── Subject metadata with Icons8 PNG icons ───────────── */
 const SUBJECT_META = {
   'Cloud Computing':  {
-    icon: 'https://img.icons8.com/fluency/96/cloud.png',
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>,
     category: 'Systems',      desc: 'Virtualization, AWS, Azure & cloud architecture fundamentals.',
   },
   'C Programming':    {
-    icon: 'https://img.icons8.com/fluency/96/c-programming.png',
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>,
     category: 'Programming',  desc: 'Memory, pointers, data types, and systems-level programming.',
   },
-  'AT':               {
-    icon: 'https://img.icons8.com/fluency/96/flow-chart.png',
+  'Automata Theory':               {
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
     category: 'Theory',       desc: 'Automata theory, formal languages, and Turing machines.',
   },
   'Python':           {
-    icon: 'https://img.icons8.com/color/96/python--v1.png',
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>,
     category: 'Programming',  desc: 'OOP, modules, data structures and scripting in Python.',
   },
-  'Algorithm':        {
-    icon: 'https://img.icons8.com/fluency/96/sorting-arrows.png',
+  'Computer Science Concepts':        {
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
     category: 'Core CS',      desc: 'Sorting, searching, dynamic programming and complexity.',
   },
-  'CN':               {
-    icon: 'https://img.icons8.com/fluency/96/connected.png',
+  'Computer Networks':               {
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg>,
     category: 'Networking',   desc: 'TCP/IP, OSI model, routing protocols and subnetting.',
   },
-  'CSCL':             {
-    icon: 'https://img.icons8.com/fluency/96/classroom.png',
+  'Computer science and collaborative learning':             {
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
     category: 'Theory',       desc: 'Computer science and collaborative learning concepts.',
   },
   'Data Structures':  {
-    icon: 'https://img.icons8.com/fluency/96/data-sheet.png',
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>,
     category: 'Core CS',      desc: 'Arrays, trees, graphs, heaps and efficient algorithms.',
   },
-  'DBMS':             {
-    icon: 'https://img.icons8.com/fluency/96/database.png',
+  'Database Management Systems':             {
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>,
     category: 'Databases',    desc: 'SQL, normalization, transactions and query optimization.',
   },
-  'DCN':              {
-    icon: 'https://img.icons8.com/fluency/96/satellite.png',
+  'Data Communication Network':              {
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg>,
     category: 'Networking',   desc: 'Digital communication, modulation and signal encoding.',
   },
   'DMS':              {
-    icon: 'https://img.icons8.com/fluency/96/math.png',
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
     category: 'Mathematics',  desc: 'Sets, relations, graphs, logic and combinatorics.',
   },
   'DSMP':             {
-    icon: 'https://img.icons8.com/fluency/96/combo-chart.png',
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
     category: 'Data Science',  desc: 'Statistics, probability and mathematical foundations of ML.',
   },
   'IoT':              {
-    icon: 'https://img.icons8.com/fluency/96/internet-of-things.png',
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg>,
     category: 'Systems',       desc: 'Sensors, embedded systems, protocols and smart devices.',
   },
   'Java':             {
-    icon: 'https://img.icons8.com/color/96/java-coffee-cup-logo--v1.png',
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>,
     category: 'Programming',   desc: 'OOP, JVM, collections, threading and enterprise Java.',
   },
   'Maths':            {
-    icon: 'https://img.icons8.com/fluency/96/calculator.png',
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
     category: 'Mathematics',   desc: 'Calculus, linear algebra, and numerical methods for CS.',
   },
   'ML':               {
-    icon: 'https://img.icons8.com/fluency/96/machine-learning.png',
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
     category: 'Data Science',  desc: 'Supervised learning, neural networks & model evaluation.',
   },
   'OOP':              {
-    icon: 'https://img.icons8.com/fluency/96/object.png',
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
     category: 'Programming',   desc: 'Inheritance, polymorphism, design patterns and abstraction.',
   },
   'OS':               {
-    icon: 'https://img.icons8.com/fluency/96/workstation.png',
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
     category: 'Systems',       desc: 'Processes, memory management, file systems and scheduling.',
   },
   'WebTech':          {
-    icon: 'https://img.icons8.com/fluency/96/web.png',
+    icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
     category: 'Programming',   desc: 'HTML, CSS, JavaScript, REST APIs and full-stack concepts.',
   },
 };
@@ -87,10 +88,10 @@ const SUBJECT_META = {
 const CATEGORIES = ['All', 'Programming', 'Core CS', 'Systems', 'Networking', 'Databases', 'Data Science', 'Mathematics', 'Theory'];
 
 const DIFF_OPTIONS = [
-  { value: 'easy',       label: '🟢 Easy' },
-  { value: 'moderate-1', label: '🟡 Moderate I' },
-  { value: 'moderate-2', label: '🟠 Moderate II' },
-  { value: 'hard',       label: '🔴 Hard' },
+  { value: 'easy',       label: 'Easy' },
+  { value: 'moderate-1', label: 'Moderate I' },
+  { value: 'moderate-2', label: 'Moderate II' },
+  { value: 'hard',       label: 'Hard' },
 ];
 
 /* ── Course Card ──────────────────────────────────────── */
@@ -98,10 +99,10 @@ const CourseCard = ({ subject, meta, onTest, onPractice }) => (
   <div className="course-card">
     <div className="course-card-banner">
       <img
-        src={meta.icon}
+        src={getSubjectImage(subject)}
         alt={subject}
         className="course-card-img"
-        onError={(e) => { e.target.src = 'https://img.icons8.com/fluency/96/book.png'; }}
+        onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = DEFAULT_SUBJECT_IMAGE; }}
       />
       <span className="course-category-pill">{meta.category}</span>
     </div>
@@ -182,7 +183,7 @@ const SubjectSelection = ({ user }) => {
 
       {/* ── HERO HEADER ── */}
       <div style={{
-        background: 'linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 60%, #FFF7ED 100%)',
+        background: 'var(--hero-bg)',
         borderBottom: '1px solid var(--border-o)',
         padding: '48px 0 36px',
       }}>
@@ -190,7 +191,7 @@ const SubjectSelection = ({ user }) => {
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
             <div>
               <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--orange-500)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
-                📚 Course Catalog
+                Course Catalog
               </div>
               <h1 style={{ fontSize: '34px', fontWeight: 900, letterSpacing: '-1px', color: 'var(--text)', margin: 0, lineHeight: 1.2 }}>
                 Explore CSE Subjects
@@ -203,10 +204,10 @@ const SubjectSelection = ({ user }) => {
                   Take Mixed Test →
                 </button>
                 <button className="btn btn-secondary" style={{ padding: '10px 16px', fontSize: '13px', background: 'var(--orange-50)', color: 'var(--orange-600)', borderColor: 'var(--orange-200)', whiteSpace: 'nowrap' }} onClick={() => navigate('/explain')}>
-                  🎙️ AI Explanation Mode
+                  Test Yourself
                 </button>
                 <button className="btn btn-secondary" style={{ padding: '10px 16px', fontSize: '13px', background: 'var(--orange-50)', color: 'var(--orange-600)', borderColor: 'var(--orange-200)', whiteSpace: 'nowrap' }} onClick={() => navigate('/project')}>
-                  💻 Mini Code Project
+                  Mini Code Practice
                 </button>
                 <div style={{ position: 'relative', flex: 1, minWidth: '280px' }}>
                   <input type="text"
@@ -237,7 +238,7 @@ const SubjectSelection = ({ user }) => {
               </div>
             </div>
             <div style={{
-              background: 'white', borderRadius: '14px', padding: '18px 28px',
+              background: 'var(--surface)', borderRadius: '14px', padding: '18px 28px',
               border: '1.5px solid var(--border-o)', textAlign: 'center',
               boxShadow: '0 4px 16px rgba(249,115,22,0.1)',
             }}>
@@ -249,7 +250,7 @@ const SubjectSelection = ({ user }) => {
       </div>
 
       {/* ── CATEGORY FILTERS ── */}
-      <div style={{ borderBottom: '1px solid var(--border)', background: 'white', position: 'sticky', top: '64px', zIndex: 100 }}>
+      <div style={{ borderBottom: '1px solid var(--border)', background: 'var(--surface)', position: 'sticky', top: '64px', zIndex: 100 }}>
         <div className="container" style={{ paddingTop: '14px', paddingBottom: '14px', maxWidth: '1100px' }}>
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
             {CATEGORIES.map(cat => {
@@ -284,7 +285,7 @@ const SubjectSelection = ({ user }) => {
                 key={subject}
                 subject={subject}
                 meta={SUBJECT_META[subject] || {
-                  icon: 'https://img.icons8.com/fluency/96/book.png',
+                  icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>,
                   category: 'General', desc: 'Core computer science concepts.',
                 }}
                 onTest={openModal}
@@ -302,15 +303,16 @@ const SubjectSelection = ({ user }) => {
             <div className="modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                 <img
-                  src={SUBJECT_META[modal]?.icon || 'https://img.icons8.com/fluency/96/book.png'}
-                  alt={modal} style={{ width: '44px', height: '44px', objectFit: 'contain' }}
+                  src={getSubjectImage(modal)}
+                  alt={modal} style={{ width: '52px', height: '52px', objectFit: 'contain', borderRadius: '10px', padding: '7px', background: 'white' }}
+                  onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = DEFAULT_SUBJECT_IMAGE; }}
                 />
                 <div>
                   <div style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Configure Test</div>
                   <h2 style={{ margin: 0, fontSize: '20px' }}>{modal}</h2>
                 </div>
               </div>
-              <button className="modal-close" onClick={() => setModal(null)}>✕</button>
+              <button className="modal-close" onClick={() => setModal(null)}>X</button>
             </div>
 
             <div className="config-group">
@@ -362,7 +364,7 @@ const SubjectSelection = ({ user }) => {
             </div>
 
             <div className="modal-proctor-notice">
-              🔒 <strong>Proctoring Active:</strong> Tab switching, copy-paste, and right-click are disabled. Any violation terminates your test immediately.
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:6, color:"#64748B"}}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg><strong>Proctoring Active:</strong> Tab switching, copy-paste, and right-click are disabled. Any violation terminates your test immediately.
             </div>
 
             <div style={{ display: 'flex', gap: '12px', marginTop: '24px' }}>

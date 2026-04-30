@@ -34,7 +34,7 @@ const LearningDNA = () => {
     <div className="container" style={{ paddingTop: '80px', paddingBottom: '80px', maxWidth: '1000px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
         <button className="btn btn-secondary" onClick={() => navigate('/dashboard')}>← Back</button>
-        <span className="proctor-badge" style={{background: 'var(--orange-500)'}}>🧠 Advanced Learning Profile</span>
+        <span className="proctor-badge" style={{background: 'var(--orange-500)'}}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#8B5CF6"}}><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path></svg> Advanced Learning Profile</span>
       </div>
 
       <div className="dash-hero-card" style={{ padding: '40px', marginBottom: '24px', background: 'linear-gradient(135deg, #1C1917, #2D2723)' }}>
@@ -49,7 +49,7 @@ const LearningDNA = () => {
         <div className="dash-col-side" style={{ flex: 1 }}>
           <div className="card" style={{ height: '100%' }}>
             <h2 style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <img src="https://img.icons8.com/color/48/dna-helix.png" alt="dna" style={{width: 24}}/>
+              
               Psychometric Traits
             </h2>
             <ResponsiveContainer width="100%" height={300}>

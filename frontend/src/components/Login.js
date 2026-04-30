@@ -4,10 +4,10 @@ import axios from 'axios';
 import '../App.css';
 
 const FEATURES = [
-  { icon: 'https://img.icons8.com/fluency/48/target.png', text: 'Adaptive questions that match your skill level' },
-  { icon: 'https://img.icons8.com/fluency/48/combo-chart.png', text: 'Real-time performance analytics & progress tracking' },
-  { icon: 'https://img.icons8.com/fluency/48/graduation-cap.png', text: 'Free NPTEL & Coursera course recommendations' },
-  { icon: 'https://img.icons8.com/fluency/48/trophy.png', text: 'Compete on leaderboards and earn achievement badges' },
+  { icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>, text: 'Adaptive questions that match your skill level' },
+  { icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>, text: 'Real-time performance analytics & progress tracking' },
+  { icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>, text: 'Free NPTEL & Coursera course recommendations' },
+  { icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{color:"var(--orange-500)"}}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>, text: 'Compete on leaderboards and earn achievement badges' },
 ];
 
 const Login = ({ onLogin }) => {
@@ -75,8 +75,7 @@ const Login = ({ onLogin }) => {
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 flexShrink: 0, padding: '8px',
               }}>
-                <img src={f.icon} alt="" style={{ width: '22px', height: '22px', objectFit: 'contain' }}
-                  onError={(e) => { e.target.style.display = 'none'; }} />
+                {f.icon}
               </span>
               <span style={{ fontSize: '14px', fontWeight: 500, opacity: 0.92 }}>{f.text}</span>
             </div>
@@ -126,12 +125,12 @@ const Login = ({ onLogin }) => {
                 value={formData.password} onChange={handleChange} required />
             </div>
 
-            {error && <div className="error">⚠️ {error}</div>}
+            {error && <div className="error"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#F59E0B"}}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg> Warning: {error}</div>}
 
             <button type="submit" className="btn btn-primary"
               style={{ width: '100%', padding: '13px', fontSize: '15px', marginTop: '6px' }}
               disabled={loading}>
-              {loading ? '⏳ Signing in…' : 'Sign In →'}
+              {loading ? ' Signing in…' : 'Sign In →'}
             </button>
           </form>
 
@@ -156,8 +155,24 @@ const Login = ({ onLogin }) => {
             display: 'flex', gap: '20px', justifyContent: 'center',
             marginTop: '40px', color: 'var(--text-muted)', fontSize: '12px',
           }}>
-            {['🔒 Secure', '🆓 Free Forever', '📱 Works on Mobile'].map(t => (
-              <span key={t} style={{ fontWeight: 600 }}>{t}</span>
+            {[
+              {
+                icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ verticalAlign: 'middle', color: '#64748B' }}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>,
+                text: 'Secure'
+              },
+              {
+                icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ verticalAlign: 'middle', color: '#10B981' }}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>,
+                text: 'Free Forever'
+              },
+              {
+                icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ verticalAlign: 'middle', color: '#64748B' }}><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>,
+                text: 'Works on Mobile'
+              }
+            ].map((badge, index) => (
+              <span key={index} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontWeight: 600 }}>
+                {badge.icon}
+                {badge.text}
+              </span>
             ))}
           </div>
         </div>

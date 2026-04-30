@@ -12,6 +12,7 @@ const Results = ({ user }) => {
   const [downloading, setDownloading] = useState(false);
   const navigate = useNavigate();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchResults();
   }, []);
@@ -96,9 +97,7 @@ const Results = ({ user }) => {
                 onClick={handleDownloadPDF}
                 disabled={downloading}
               >
-                <img src="https://img.icons8.com/fluency/24/pdf.png" alt="pdf"
-                  style={{ width: '16px', height: '16px' }}
-                  onError={(e) => { e.target.style.display = 'none'; }} />
+                
                 {downloading ? 'Generating...' : 'Download PDF'}
               </button>
             )}
@@ -145,7 +144,7 @@ const Results = ({ user }) => {
             
             {recommendations.youtube_videos && recommendations.youtube_videos.length > 0 && (
               <div className="recommendations">
-                <h3 style={{ marginBottom: '20px', color: 'var(--orange-600)' }}>📺 YouTube Videos</h3>
+                <h3 style={{ marginBottom: '20px', color: 'var(--orange-600)' }}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#EF4444"}}><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.16 1 12 1 12s0 3.84.46 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.84 23 12 23 12s0-3.84-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg> YouTube Videos</h3>
                 {recommendations.youtube_videos.slice(0, 5).map((video, index) => (
                   <div key={index} className="recommendation-item">
                     {video.thumbnail && (
@@ -166,7 +165,7 @@ const Results = ({ user }) => {
             {recommendations.courses && recommendations.courses.length > 0 && (
               <div className="recommendations" style={{ marginTop: '30px' }}>
                 <h3 style={{ marginBottom: '20px', color: 'var(--orange-600)' }}>
-                  🎓 Recommended Courses — Coursera
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:"middle", marginRight:8, color:"#F97316"}}><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg> Recommended Courses — Coursera
                 </h3>
                 {recommendations.courses.map((course, index) => (
                   <div key={index} className="recommendation-item">
@@ -190,7 +189,7 @@ const Results = ({ user }) => {
             {recommendations.nptel_courses && recommendations.nptel_courses.length > 0 && (
               <div className="recommendations" style={{ marginTop: '30px' }}>
                 <h3 style={{ marginBottom: '6px', color: 'var(--orange-600)' }}>
-                  🏛️ NPTEL Free Courses — IIT / IISc
+                   NPTEL Free Courses — IIT / IISc
                 </h3>
                 <p style={{ color: '#888', fontSize: '13px', marginBottom: '16px' }}>
                   Government-certified free courses by India's top institutes. Optional paid certificate available.
