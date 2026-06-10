@@ -17,6 +17,7 @@ import ProjectTask     from './components/ProjectTask';
 import Challenges      from './components/Challenges';
 import LearningDNA     from './components/LearningDNA';
 import ResumeAnalyser  from './components/ResumeAnalyser';
+import LandingPage     from './components/LandingPage';
 import './App.css';
 
 function App() {
@@ -101,7 +102,7 @@ function App() {
           <Route path="/results/:testId"     element={authOnly(<Results user={user} />)} />
           <Route path="/practice/:subject"   element={authOnly(<PracticeMode user={user} />)} />
 
-          <Route path="/" element={<Navigate to={user ? '/dashboard' : '/login'} />} />
+          <Route path="/" element={user ? <Navigate to="/dashboard" /> : <LandingPage />} />
         </Routes>
       </div>
     </Router>

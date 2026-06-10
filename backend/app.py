@@ -10,7 +10,12 @@ from dotenv import load_dotenv
 import json
 import re
 from urllib.parse import quote_plus
-from googleapiclient.discovery import build
+
+try:
+    from googleapiclient.discovery import build
+    YOUTUBE_API_AVAILABLE = True
+except ImportError:
+    YOUTUBE_API_AVAILABLE = False
 
 load_dotenv()
 
@@ -62,6 +67,7 @@ learning_behavior_collection = db['learning_behavior']
 evaluations_collection = db['evaluations']
 resumes_collection = db['resumes']
 interview_sessions_collection = db['interview_sessions']
+roadmaps_collection = db['roadmaps']
 
 # Optional text index creation. Keep it opt-in so app startup does not block
 # when MongoDB is offline or DNS is restricted in local development.
@@ -1334,22 +1340,632 @@ def evaluate_project():
         return jsonify({'error': str(e)}), 500
 
 
+def generate_fallback_roadmap(weak_areas, level):
+    # Fallback topics database for common computer science subjects
+    fallback_db = {
+        'Data Structures': [
+            {
+                "id": "ds_1",
+                "title": "Arrays & Dynamic Lists",
+                "description": f"Master basic memory layouts. Focus on dynamic array resizing, time complexities of standard operations, and differences at a {level} level.",
+                "subtopics": ["Single & Multi-dimensional arrays", "Dynamic sizing & amortized time", "List traversal and pointer manipulations"],
+                "resources": [{"title": "NPTEL Data Structures Course", "type": "course", "url": "https://nptel.ac.in/courses/106106145"}, {"title": "YouTube: Array Data Structure", "type": "video", "url": "https://www.youtube.com/results?search_query=Array+Data+Structure+Tutorial"}]
+            },
+            {
+                "id": "ds_2",
+                "title": "Linked Lists & Stacks",
+                "description": "Learn pointer-based non-contiguous memory collections. Standard LIFO and FIFO behavior implementation.",
+                "subtopics": ["Singly vs Doubly Linked Lists", "Stack operations & applications", "Queue operations & circular queues"],
+                "resources": [{"title": "NPTEL Data Structures Course", "type": "course", "url": "https://nptel.ac.in/courses/106106145"}, {"title": "YouTube: Linked Lists & Stacks", "type": "video", "url": "https://www.youtube.com/results?search_query=Linked+Lists+and+Stacks+Tutorial"}]
+            },
+            {
+                "id": "ds_3",
+                "title": "Trees & Graphs",
+                "description": "Explore hierarchical and non-linear data structures. Study traversal algorithms and representation techniques.",
+                "subtopics": ["Binary Search Trees (BST)", "Graph representations (Adjacency Matrix/List)", "BFS and DFS traversals"],
+                "resources": [{"title": "NPTEL Data Structures Course", "type": "course", "url": "https://nptel.ac.in/courses/106106145"}, {"title": "YouTube: Trees and Graphs Algorithms", "type": "video", "url": "https://www.youtube.com/results?search_query=Trees+and+Graphs+Algorithms+Tutorial"}]
+            }
+        ],
+        'Algorithm': [
+            {
+                "id": "algo_1",
+                "title": "Searching & Sorting",
+                "description": f"Understand core algorithm patterns. Contrast divide-and-conquer vs linear time sorting approaches for {level} engineering.",
+                "subtopics": ["Binary Search & variations", "Merge Sort & Quick Sort divide-and-conquer", "Time and space complexity comparisons"],
+                "resources": [{"title": "NPTEL Algorithms Course", "type": "course", "url": "https://nptel.ac.in/courses/106101060"}, {"title": "YouTube: Searching and Sorting Algorithms", "type": "video", "url": "https://www.youtube.com/results?search_query=Searching+and+Sorting+Algorithms+Tutorial"}]
+            },
+            {
+                "id": "algo_2",
+                "title": "Greedy & Dynamic Programming",
+                "description": "Master optimization strategies. Break problems down to overlapping subproblems and make greedy choices.",
+                "subtopics": ["Greedy method vs Dynamic Programming", "Memoization & Tabulation techniques", "Classic problems (0/1 Knapsack, Coin Change)"],
+                "resources": [{"title": "NPTEL Algorithms Course", "type": "course", "url": "https://nptel.ac.in/courses/106101060"}, {"title": "YouTube: Dynamic Programming Intro", "type": "video", "url": "https://www.youtube.com/results?search_query=Dynamic+Programming+Introduction"}]
+            },
+            {
+                "id": "algo_3",
+                "title": "Graph Algorithms",
+                "description": "Learn network pathways and optimization formulas over graph models.",
+                "subtopics": ["Dijkstra's Shortest Path", "Prim & Kruskal Minimum Spanning Tree", "Topological Sorting & cycle detection"],
+                "resources": [{"title": "NPTEL Algorithms Course", "type": "course", "url": "https://nptel.ac.in/courses/106101060"}, {"title": "YouTube: Graph Algorithms", "type": "video", "url": "https://www.youtube.com/results?search_query=Graph+Algorithms+Dijkstra+Prim"}]
+            }
+        ],
+        'DBMS': [
+            {
+                "id": "dbms_1",
+                "title": "Relational Schema & SQL",
+                "description": "Learn the foundation of relational databases. Focus on writing structured queries and relational algebra.",
+                "subtopics": ["Entity-Relationship (ER) Diagrams", "Basic & Advanced SQL SELECT queries", "JOIN operations & Subqueries"],
+                "resources": [{"title": "NPTEL DBMS Course", "type": "course", "url": "https://nptel.ac.in/courses/106104135"}, {"title": "YouTube: SQL Joins and Queries", "type": "video", "url": "https://www.youtube.com/results?search_query=SQL+Joins+and+Queries+Tutorial"}]
+            },
+            {
+                "id": "dbms_2",
+                "title": "Database Normalization",
+                "description": "Deconstruct large tables to minimize redundancy and prevent dependency anomalies.",
+                "subtopics": ["Functional dependencies", "1NF, 2NF, and 3NF conditions", "Boyce-Codd Normal Form (BCNF)"],
+                "resources": [{"title": "NPTEL DBMS Course", "type": "course", "url": "https://nptel.ac.in/courses/106104135"}, {"title": "YouTube: Database Normalization", "type": "video", "url": "https://www.youtube.com/results?search_query=Database+Normalization+Tutorial"}]
+            },
+            {
+                "id": "dbms_3",
+                "title": "Transactions & Concurrency",
+                "description": "Understand reliability and concurrency controls inside transactional databases.",
+                "subtopics": ["ACID properties & Transaction states", "Serializability & schedules", "Lock-based concurrency control"],
+                "resources": [{"title": "NPTEL DBMS Course", "type": "course", "url": "https://nptel.ac.in/courses/106104135"}, {"title": "YouTube: Database Transactions", "type": "video", "url": "https://www.youtube.com/results?search_query=Database+Transactions+and+ACID"}]
+            }
+        ],
+        'OS': [
+            {
+                "id": "os_1",
+                "title": "Process Management",
+                "description": "Learn how the OS manages executing software instances, scheduling them on the CPU.",
+                "subtopics": ["Process states & context switching", "CPU Scheduling (FCFS, SJF, Round Robin)", "Inter-Process Communication & Deadlocks"],
+                "resources": [{"title": "NPTEL OS Course", "type": "course", "url": "https://nptel.ac.in/courses/106105083"}, {"title": "YouTube: CPU Scheduling Algorithms", "type": "video", "url": "https://www.youtube.com/results?search_query=CPU+Scheduling+Algorithms+OS"}]
+            },
+            {
+                "id": "os_2",
+                "title": "Memory Management",
+                "description": "Explore physical and virtual memory partition, allocation, and translation mechanics.",
+                "subtopics": ["Paging vs Segmentation", "Virtual memory & Translation Lookaside Buffers", "Page replacement algorithms (FIFO, LRU)"],
+                "resources": [{"title": "NPTEL OS Course", "type": "course", "url": "https://nptel.ac.in/courses/106105083"}, {"title": "YouTube: OS Memory Management", "type": "video", "url": "https://www.youtube.com/results?search_query=OS+Memory+Management+Paging"}]
+            },
+            {
+                "id": "os_3",
+                "title": "File Systems & Storage",
+                "description": "Understand directory layouts, file access pathways, and hardware hard disk interfaces.",
+                "subtopics": ["File allocation methods (Linked, Indexed)", "Disk scheduling algorithms (SSTF, SCAN)", "Directory structures & disk management"],
+                "resources": [{"title": "NPTEL OS Course", "type": "course", "url": "https://nptel.ac.in/courses/106105083"}, {"title": "YouTube: Disk Scheduling Algorithms", "type": "video", "url": "https://www.youtube.com/results?search_query=Disk+Scheduling+Algorithms+OS"}]
+            }
+        ],
+        'CN': [
+            {
+                "id": "cn_1",
+                "title": "Network Reference Models",
+                "description": "Study OSI and TCP/IP layered networking stacks.",
+                "subtopics": ["OSI 7-layer architecture functions", "TCP/IP vs OSI model", "Physical layer and media components"],
+                "resources": [{"title": "NPTEL Networks Course", "type": "course", "url": "https://nptel.ac.in/courses/106105081"}, {"title": "YouTube: OSI Model Explained", "type": "video", "url": "https://www.youtube.com/results?search_query=OSI+Model+7+Layers+Explained"}]
+            },
+            {
+                "id": "cn_2",
+                "title": "IP Routing & Subnetting",
+                "description": "Master routing protocols and IP address configurations.",
+                "subtopics": ["Subnetting & CIDR notation", "IPv4 vs IPv6 headers", "Routing protocols (RIP, OSPF, BGP)"],
+                "resources": [{"title": "NPTEL Networks Course", "type": "course", "url": "https://nptel.ac.in/courses/106105081"}, {"title": "YouTube: IP Subnetting Tutorial", "type": "video", "url": "https://www.youtube.com/results?search_query=IP+Subnetting+Tutorial+Step+by+Step"}]
+            },
+            {
+                "id": "cn_3",
+                "title": "Transport & Application Protocols",
+                "description": "Study network endpoints handling and data transmission rules.",
+                "subtopics": ["TCP vs UDP transmission", "TCP 3-way handshake & congestion control", "HTTP, DNS, and DHCP mechanics"],
+                "resources": [{"title": "NPTEL Networks Course", "type": "course", "url": "https://nptel.ac.in/courses/106105081"}, {"title": "YouTube: TCP vs UDP Differences", "type": "video", "url": "https://www.youtube.com/results?search_query=TCP+vs+UDP+Differences"}]
+            }
+        ],
+        'Python': [
+            {
+                "id": "py_1",
+                "title": "Syntax & Core Structures",
+                "description": "Build strong base in Python scripting structures.",
+                "subtopics": ["Lists, tuples, sets, dict operations", "List comprehensions & generators", "Function scopes & lambda functions"],
+                "resources": [{"title": "NPTEL Python Course", "type": "course", "url": "https://nptel.ac.in/courses/106106145"}, {"title": "YouTube: Python Core Tutorial", "type": "video", "url": "https://www.youtube.com/results?search_query=Python+Core+Concepts+Tutorial"}]
+            },
+            {
+                "id": "py_2",
+                "title": "OOP in Python",
+                "description": "Implement Object-Oriented design within Python context.",
+                "subtopics": ["Classes, objects & instantiation", "Inheritance & multiple inheritance rules", "Dunder methods and encapsulation"],
+                "resources": [{"title": "NPTEL Python Course", "type": "course", "url": "https://nptel.ac.in/courses/106106145"}, {"title": "YouTube: Python OOP Tutorial", "type": "video", "url": "https://www.youtube.com/results?search_query=Python+Object+Oriented+Programming"}]
+            },
+            {
+                "id": "py_3",
+                "title": "Libraries & Exceptions",
+                "description": "Handle runtime error routines and utilize professional libraries.",
+                "subtopics": ["Try-except-finally blocks", "Custom exceptions handling", "Introduction to NumPy and Pandas"],
+                "resources": [{"title": "NPTEL Python Course", "type": "course", "url": "https://nptel.ac.in/courses/106106145"}, {"title": "YouTube: Python Exception Handling", "type": "video", "url": "https://www.youtube.com/results?search_query=Python+Exception+Handling"}]
+            }
+        ],
+        'Java': [
+            {
+                "id": "java_1",
+                "title": "Java Syntax & OOP Basics",
+                "description": "Master static typing, classes, and fundamental principles in Java.",
+                "subtopics": ["JDK vs JRE vs JVM architectures", "Variables, scopes & loops", "Access modifiers & inheritance"],
+                "resources": [{"title": "NPTEL Java Course", "type": "course", "url": "https://nptel.ac.in/courses/106105127"}, {"title": "YouTube: Java OOP Tutorial", "type": "video", "url": "https://www.youtube.com/results?search_query=Java+Object+Oriented+Programming"}]
+            },
+            {
+                "id": "java_2",
+                "title": "Interfaces & Exceptions",
+                "description": "Understand abstract interfaces and error routines in compiler execution.",
+                "subtopics": ["Interfaces vs Abstract Classes", "Exception Hierarchy & handling", "Polymorphism & method overriding"],
+                "resources": [{"title": "NPTEL Java Course", "type": "course", "url": "https://nptel.ac.in/courses/106105127"}, {"title": "YouTube: Java Interfaces Tutorial", "type": "video", "url": "https://www.youtube.com/results?search_query=Java+Interfaces+and+Abstract+Classes"}]
+            },
+            {
+                "id": "java_3",
+                "title": "Java Collections Framework",
+                "description": "Utilize prebuilt generic structures for efficient data management.",
+                "subtopics": ["List implementations (ArrayList, LinkedList)", "Set & Map implementations (HashSet, HashMap)", "Java Generics and Multithreading basics"],
+                "resources": [{"title": "NPTEL Java Course", "type": "course", "url": "https://nptel.ac.in/courses/106105127"}, {"title": "YouTube: Java Collections Framework", "type": "video", "url": "https://www.youtube.com/results?search_query=Java+Collections+Framework+Tutorial"}]
+            }
+        ],
+        'ML': [
+            {
+                "id": "ml_1",
+                "title": "Supervised Learning Models",
+                "description": "Learn mapping input variables to output variables based on labeled datasets.",
+                "subtopics": ["Linear & Logistic Regression", "Decision Trees & Random Forests", "Support Vector Machines (SVM)"],
+                "resources": [{"title": "NPTEL ML Course", "type": "course", "url": "https://nptel.ac.in/courses/106106139"}]
+            },
+            {
+                "id": "ml_2",
+                "title": "Unsupervised Learning",
+                "description": "Discover hidden patterns and groupings in unlabeled data.",
+                "subtopics": ["K-Means Clustering", "Principal Component Analysis (PCA)", "Hierarchical Clustering"],
+                "resources": [{"title": "NPTEL ML Course", "type": "course", "url": "https://nptel.ac.in/courses/106106139"}]
+            },
+            {
+                "id": "ml_3",
+                "title": "Model Evaluation",
+                "description": "Select correct metrics to judge model precision and validity.",
+                "subtopics": ["Precision, Recall & F1-Score", "Confusion Matrix analysis", "Bias-Variance Tradeoff"],
+                "resources": [{"title": "NPTEL ML Course", "type": "course", "url": "https://nptel.ac.in/courses/106106139"}]
+            }
+        ],
+        'Cloud Computing': [
+            {
+                "id": "cloud_1",
+                "title": "Cloud Basics & Virtualization",
+                "description": "Study virtual machines and underlying virtualization architectures.",
+                "subtopics": ["IaaS vs PaaS vs SaaS definitions", "Hypervisors & hardware sharing", "Public, Private, and Hybrid Cloud models"],
+                "resources": [{"title": "NPTEL Cloud Course", "type": "course", "url": "https://nptel.ac.in/courses/106104189"}]
+            },
+            {
+                "id": "cloud_2",
+                "title": "Core Services & Storage",
+                "description": "Examine server instances, cloud database structures, and bucket storage options.",
+                "subtopics": ["VM Provisioning", "Object Storage (S3-like) vs Block Storage", "Cloud database structures"],
+                "resources": [{"title": "NPTEL Cloud Course", "type": "course", "url": "https://nptel.ac.in/courses/106104189"}]
+            },
+            {
+                "id": "cloud_3",
+                "title": "Security & Architecture",
+                "description": "Configure access control and scale systems globally.",
+                "subtopics": ["Identity & Access Management (IAM)", "Load Balancing & Auto-scaling", "Disaster Recovery setups"],
+                "resources": [{"title": "NPTEL Cloud Course", "type": "course", "url": "https://nptel.ac.in/courses/106104189"}]
+            }
+        ],
+        'C Programming': [
+            {
+                "id": "c_1",
+                "title": "Control Flow & Structures",
+                "description": "Build foundational structures in native code execution.",
+                "subtopics": ["Basic Datatypes & Variables", "If-else statements and Loop structures", "Functions & Variable Scopes"],
+                "resources": [{"title": "NPTEL C Course", "type": "course", "url": "https://nptel.ac.in/courses/106102064"}]
+            },
+            {
+                "id": "c_2",
+                "title": "Pointers & Arrays",
+                "description": "Master memory access addresses and pointers dynamics.",
+                "subtopics": ["Pointer declarations & dereferencing", "Pointer arithmetic & Arrays", "Dynamic Memory Allocation (malloc, calloc, free)"],
+                "resources": [{"title": "NPTEL C Course", "type": "course", "url": "https://nptel.ac.in/courses/106102064"}]
+            },
+            {
+                "id": "c_3",
+                "title": "Structs & Files",
+                "description": "Construct compound types and save program state into native files.",
+                "subtopics": ["Defining structs & unions", "Pointers to structures", "File I/O functions (fopen, fclose, fprintf, fscanf)"],
+                "resources": [{"title": "NPTEL C Course", "type": "course", "url": "https://nptel.ac.in/courses/106102064"}]
+            }
+        ],
+        'General CS': [
+            {
+                "id": "gcs_1",
+                "title": "Programming Foundations",
+                "description": f"Master structural computer programming building blocks. Learn basic conditional executions and loops.",
+                "subtopics": ["Variables, Expressions & Basic Types", "Conditionals, Logic & Branching", "Functions & Variable Scopes"],
+                "resources": [{"title": "YouTube: Programming Basics", "type": "video", "url": "https://www.youtube.com/results?search_query=Computer+Programming+Basics+Tutorial"}]
+            },
+            {
+                "id": "gcs_2",
+                "title": "Basic Data Structures",
+                "description": "Store and manipulate memory blocks using standard sequential collections.",
+                "subtopics": ["Static Arrays & Multi-Dimensional lists", "String operations & search algorithms", "Introduction to Stack & Queue layouts"],
+                "resources": [{"title": "YouTube: Data Structures Crash Course", "type": "video", "url": "https://www.youtube.com/results?search_query=Data+Structures+Crash+Course"}]
+            },
+            {
+                "id": "gcs_3",
+                "title": "Software Development Life Cycle",
+                "description": "Review industry standards on code creation cycles, version controls, and testing layouts.",
+                "subtopics": ["SDLC Models (Waterfall vs Agile)", "Git basics & commands", "Unit testing foundations"],
+                "resources": [{"title": "YouTube: Git Version Control", "type": "video", "url": "https://www.youtube.com/results?search_query=Git+and+GitHub+Tutorial"}]
+            }
+        ]
+    }
+
+    # Map aliases
+    fallback_db['DCN'] = fallback_db['CN']
+    fallback_db['OOP'] = fallback_db['Java']
+    fallback_db['WebTech'] = fallback_db['Python']
+    fallback_db['Maths'] = fallback_db['Data Structures']
+
+    chosen_subjects = [s for s in weak_areas if s in fallback_db]
+    if not chosen_subjects:
+        chosen_subjects = ["Data Structures", "Algorithm"]
+        # double check availability
+        for sub in chosen_subjects:
+            if sub not in fallback_db:
+                chosen_subjects = ["General CS"]
+                break
+
+    weeks = []
+    # Week 1, 2, 3 selection
+    for w in range(1, 4):
+        week_topics = []
+        for i, sub in enumerate(chosen_subjects[:3]):
+            topics_list = fallback_db.get(sub, [])
+            if len(topics_list) >= w:
+                t = topics_list[w-1].copy()
+                t["id"] = f"w{w}_t{i+1}"
+                week_topics.append(t)
+        
+        # Aux topic if only 1 subject
+        if len(week_topics) == 1:
+            aux_topics = {
+                1: {
+                    "id": "w1_t2",
+                    "title": "Development Workspace Setup",
+                    "description": "Establish a local compiler, IDE, and terminal debug workspace.",
+                    "subtopics": ["Configure VS Code or IDE", "Install runtimes and debuggers", "Initialize Git repository"],
+                    "resources": [{"title": "Setting up Developer Environment", "type": "video", "url": "https://www.youtube.com/results?search_query=setting+up+developer+environment"}]
+                },
+                2: {
+                    "id": "w2_t2",
+                    "title": "Debugging & Profiling Basics",
+                    "description": "Learn how to read stack traces, inspect variable memory, and evaluate performance execution logs.",
+                    "subtopics": ["Set breakpoints in debugger", "Analyze runtime call stacks", "Trace memory allocations"],
+                    "resources": [{"title": "How to debug code tutorial", "type": "video", "url": "https://www.youtube.com/results?search_query=how+to+debug+code"}]
+                },
+                3: {
+                    "id": "w3_t2",
+                    "title": "Code Optimization & Refactoring",
+                    "description": "Refactor nested loops, clean up unused variables, and optimize memory layout functions.",
+                    "subtopics": ["Clean Code style guidelines", "DRY principle & encapsulation", "Reducing time/space complexity"],
+                    "resources": [{"title": "Code refactoring patterns", "type": "video", "url": "https://www.youtube.com/results?search_query=code+refactoring+patterns"}]
+                }
+            }
+            week_topics.append(aux_topics[w])
+            
+        weeks.append({
+            "week_number": w,
+            "title": f"Week {w}: " + (" & ".join(chosen_subjects[:2]) if w == 1 else "Deep Dive Concepts"),
+            "description": f"Focus on understanding core details and starting practice tasks.",
+            "topics": week_topics
+        })
+
+    # Week 4 is static
+    week4_topics = [
+        {
+            "id": "w4_t1",
+            "title": "Practical Project Application",
+            "description": "Develop a micro-project applying the subjects learned. For example, build a custom data structures library or write a clean API service.",
+            "subtopics": ["Design system & modules", "Integrate core logic algorithms", "Add unit tests and error boundaries"],
+            "resources": [{"title": "YouTube: Building portfolio projects", "type": "video", "url": "https://www.youtube.com/results?search_query=building+software+portfolio+projects"}]
+        },
+        {
+            "id": "w4_t2",
+            "title": "Comprehensive Quiz & Review",
+            "description": "Evaluate your improvement by taking mixed Adaptive Tests on the platform. Review flashcards for remaining weak terms.",
+            "subtopics": ["Attempt a full 20-question Adaptive Test", "Review failed answers & explanation card notes", "Refresh Spaced Repetition cards in review deck"],
+            "resources": [{"title": "Go to Adaptive Test", "type": "course", "url": "http://localhost:3000/subjects"}]
+        }
+    ]
+    weeks.append({
+        "week_number": 4,
+        "title": "Week 4: Capstone & Integration",
+        "description": "Synthesize everything learned through practical projects and testing reviews.",
+        "topics": week4_topics
+    })
+
+    title = f"Learning Roadmap for " + ", ".join(chosen_subjects[:3])
+    return {
+        "title": title,
+        "weeks": weeks
+    }
+
+
+@app.route('/api/roadmap', methods=['GET'])
+@jwt_required()
+def get_roadmap():
+    try:
+        user_id = get_jwt_identity()
+        roadmap = roadmaps_collection.find_one({'user_id': user_id})
+        if not roadmap:
+            return jsonify({'roadmap': None}), 200
+        
+        roadmap['_id'] = str(roadmap['_id'])
+        return jsonify({'roadmap': roadmap}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/roadmap/generate', methods=['POST'])
+@jwt_required()
+def generate_roadmap_api():
+    try:
+        user_id = get_jwt_identity()
+        data = request.json or {}
+        weak_areas = data.get('weak_areas', [])
+        level      = data.get('level', 'Intermediate')
+        
+        if not weak_areas:
+            user_id_query = {'$in': [user_id, ObjectId(user_id)]} if ObjectId.is_valid(user_id) else user_id
+            all_tests = list(tests_collection.find({'user_id': user_id_query, 'status': 'completed'}).sort('started_at', -1).limit(20))
+            if all_tests:
+                weak_areas = list(set([t.get('subject') for t in all_tests if t.get('analytics', {}).get('accuracy', 0) < 70]))[:3]
+
+        roadmap_data = None
+        if AI_ENABLED:
+            prompt = (
+                "You are an expert computer science teacher and mentor. Create a highly personalized, 4-week study plan "
+                f"for a {level} level student whose weakest areas are: {', '.join(weak_areas) if weak_areas else 'General Computer Science'}.\n\n"
+                "You must return ONLY a JSON object and absolutely nothing else. Do NOT wrap it in markdown like ```json or similar formatting, just raw JSON.\n"
+                "The JSON structure must match this schema exactly:\n"
+                "{\n"
+                '  "title": "Roadmap title based on weak areas",\n'
+                '  "weeks": [\n'
+                "    {\n"
+                '      "week_number": 1,\n'
+                '      "title": "Week 1 Focus Title",\n'
+                '      "description": "Short summary of this week\'s goal",\n'
+                '      "topics": [\n'
+                "        {\n"
+                '          "id": "w1_t1",\n'
+                '          "title": "Topic Name",\n'
+                '          "description": "Sleek, actionable 2-sentence description of the topic",\n'
+                '          "subtopics": ["Subtopic 1", "Subtopic 2", "Subtopic 3"],\n'
+                '          "resources": [\n'
+                "            {\n"
+                '              "title": "Search YouTube for Topic Name",\n'
+                '              "type": "video",\n'
+                '              "url": "https://www.youtube.com/results?search_query=search+query"\n'
+                "            }\n"
+                "          ]\n"
+                "        }\n"
+                "      ]\n"
+                "    }\n"
+                "  ]\n"
+                "}\n\n"
+                "Rules:\n"
+                "1. Weeks must be numbered 1 to 4.\n"
+                "2. Generate 2-3 detailed topics per week.\n"
+                "3. Keep topic IDs unique (e.g., w1_t1, w1_t2, w2_t1, etc.).\n"
+                "4. Return ONLY valid, parseable JSON."
+            )
+            try:
+                result_text = _safe_openai_call(prompt)
+                clean_text = result_text.strip()
+                if clean_text.startswith("```json"):
+                    clean_text = clean_text[7:]
+                if clean_text.endswith("```"):
+                    clean_text = clean_text[:-3]
+                clean_text = clean_text.strip()
+                roadmap_data = json.loads(clean_text)
+            except Exception as e:
+                print(f"[Roadmap AI Parsing Error] {e}. Falling back to rule-based generator.")
+                roadmap_data = generate_fallback_roadmap(weak_areas, level)
+        else:
+            roadmap_data = generate_fallback_roadmap(weak_areas, level)
+
+        if not roadmap_data:
+            roadmap_data = generate_fallback_roadmap(weak_areas, level)
+
+        progress = {}
+        subtopic_progress = {}
+        notes = {}
+        for week in roadmap_data.get('weeks', []):
+            for topic in week.get('topics', []):
+                t_id = topic.get('id', 'unknown')
+                progress[t_id] = 'todo'
+                notes[t_id] = ''
+                for s_idx, subtopic in enumerate(topic.get('subtopics', [])):
+                    subtopic_progress[f"{t_id}_{s_idx}"] = False
+
+        roadmap_doc = {
+            'user_id': user_id,
+            'title': roadmap_data.get('title', 'Your Custom Learning Roadmap'),
+            'weeks': roadmap_data.get('weeks', []),
+            'progress': progress,
+            'subtopic_progress': subtopic_progress,
+            'notes': notes,
+            'weak_areas': weak_areas,
+            'level': level,
+            'created_at': datetime.now(timezone.utc),
+            'updated_at': datetime.now(timezone.utc)
+        }
+
+        roadmaps_collection.update_one(
+            {'user_id': user_id},
+            {'$set': roadmap_doc},
+            upsert=True
+        )
+
+        saved_doc = roadmaps_collection.find_one({'user_id': user_id})
+        saved_doc['_id'] = str(saved_doc['_id'])
+        return jsonify({'roadmap': saved_doc}), 200
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/roadmap/update-status', methods=['POST'])
+@jwt_required()
+def update_roadmap_status():
+    try:
+        user_id = get_jwt_identity()
+        data = request.json or {}
+        topic_id = data.get('topic_id')
+        status = data.get('status')
+
+        if not topic_id or status not in ['todo', 'in_progress', 'completed']:
+            return jsonify({'error': 'Missing or invalid topic_id or status'}), 400
+
+        roadmap = roadmaps_collection.find_one({'user_id': user_id})
+        if not roadmap:
+            return jsonify({'error': 'Roadmap not found'}), 404
+
+        update_fields = {f"progress.{topic_id}": status, "updated_at": datetime.now(timezone.utc)}
+
+        subtopics_count = 0
+        for week in roadmap.get('weeks', []):
+            for topic in week.get('topics', []):
+                if topic.get('id') == topic_id:
+                    subtopics_count = len(topic.get('subtopics', []))
+                    break
+
+        if subtopics_count > 0:
+            if status == 'completed':
+                for s_idx in range(subtopics_count):
+                    update_fields[f"subtopic_progress.{topic_id}_{s_idx}"] = True
+            elif status == 'todo':
+                for s_idx in range(subtopics_count):
+                    update_fields[f"subtopic_progress.{topic_id}_{s_idx}"] = False
+
+        roadmaps_collection.update_one(
+            {'user_id': user_id},
+            {'$set': update_fields}
+        )
+        return jsonify({'message': 'Status updated successfully'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/roadmap/update-subtopic', methods=['POST'])
+@jwt_required()
+def update_roadmap_subtopic():
+    try:
+        user_id = get_jwt_identity()
+        data = request.json or {}
+        topic_id = data.get('topic_id')
+        subtopic_index = data.get('subtopic_index')
+        completed = data.get('completed', False)
+
+        if not topic_id or subtopic_index is None:
+            return jsonify({'error': 'Missing topic_id or subtopic_index'}), 400
+
+        roadmap = roadmaps_collection.find_one({'user_id': user_id})
+        if not roadmap:
+            return jsonify({'error': 'Roadmap not found'}), 404
+
+        subkey = f"{topic_id}_{subtopic_index}"
+        subtopic_progress = roadmap.get('subtopic_progress', {})
+        subtopic_progress[subkey] = completed
+
+        subtopics_count = 0
+        for week in roadmap.get('weeks', []):
+            for topic in week.get('topics', []):
+                if topic.get('id') == topic_id:
+                    subtopics_count = len(topic.get('subtopics', []))
+                    break
+
+        completed_subtopics_count = sum([1 for s_idx in range(subtopics_count) if subtopic_progress.get(f"{topic_id}_{s_idx}", False)])
+        
+        parent_status = 'todo'
+        if completed_subtopics_count == subtopics_count:
+            parent_status = 'completed'
+        elif completed_subtopics_count > 0:
+            parent_status = 'in_progress'
+
+        update_fields = {
+            f"subtopic_progress.{subkey}": completed,
+            f"progress.{topic_id}": parent_status,
+            "updated_at": datetime.now(timezone.utc)
+        }
+
+        roadmaps_collection.update_one(
+            {'user_id': user_id},
+            {'$set': update_fields}
+        )
+
+        return jsonify({
+            'message': 'Subtopic updated successfully',
+            'parent_status': parent_status,
+            'completed_count': completed_subtopics_count,
+            'total_count': subtopics_count
+        }), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/roadmap/update-notes', methods=['POST'])
+@jwt_required()
+def update_roadmap_notes():
+    try:
+        user_id = get_jwt_identity()
+        data = request.json or {}
+        topic_id = data.get('topic_id')
+        notes = data.get('notes', '')
+
+        if not topic_id:
+            return jsonify({'error': 'Missing topic_id'}), 400
+
+        roadmaps_collection.update_one(
+            {'user_id': user_id},
+            {'$set': {f"notes.{topic_id}": notes, "updated_at": datetime.now(timezone.utc)}}
+        )
+        return jsonify({'message': 'Notes saved successfully'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+# Legacy endpoint backward compatibility
 @app.route('/api/ai/roadmap', methods=['POST'])
 @jwt_required()
 def ai_roadmap():
     try:
-        data = request.json
+        user_id = get_jwt_identity()
+        roadmap = roadmaps_collection.find_one({'user_id': user_id})
+        if roadmap:
+            markdown_content = f"# {roadmap.get('title', 'Learning Roadmap')}\n\n"
+            for week in roadmap.get('weeks', []):
+                markdown_content += f"## Week {week.get('week_number')}: {week.get('title')}\n"
+                markdown_content += f"{week.get('description')}\n"
+                for topic in week.get('topics', []):
+                    markdown_content += f"- **{topic.get('title')}**: {topic.get('description')}\n"
+                    for sub in topic.get('subtopics', []):
+                        markdown_content += f"  - {sub}\n"
+            return jsonify({'roadmap': markdown_content}), 200
+            
+        data = request.json or {}
         weak_areas = data.get('weak_areas', [])
         level      = data.get('level', 'Beginner')
         
-        prompt = (
-            f"You are an expert technical mentor. A {level} student needs a 4-week study roadmap.\n"
-            f"Their weakest topics are: {', '.join(weak_areas) if weak_areas else 'General Computer Science'}.\n"
-            "Generate a highly structured Markdown roadmap outlining what they should study each week. "
-            "Keep it actionable, brief, and beautifully formatted with bullet points."
-        )
-        roadmap = _safe_openai_call(prompt)
-        return jsonify({'roadmap': roadmap}), 200
+        roadmap_data = generate_fallback_roadmap(weak_areas, level)
+        markdown_content = f"# {roadmap_data.get('title', 'Learning Roadmap')}\n\n"
+        for week in roadmap_data.get('weeks', []):
+            markdown_content += f"## Week {week.get('week_number')}: {week.get('title')}\n"
+            markdown_content += f"{week.get('description')}\n"
+            for topic in week.get('topics', []):
+                markdown_content += f"- **{topic.get('title')}**: {topic.get('description')}\n"
+                for sub in topic.get('subtopics', []):
+                    markdown_content += f"  - {sub}\n"
+        return jsonify({'roadmap': markdown_content}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 

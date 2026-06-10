@@ -1,4 +1,4 @@
-# AI-Driven Adaptive Testing & Learning Platform for CSE Students
+# AI-Driven Adaptive Testing & Learning Platform
 
 A comprehensive adaptive testing and learning analytics platform that personalizes education through AI-powered assessments, real-time recommendations, and advanced learning insights.
 
